@@ -1,136 +1,179 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Day 2 · 先让AI问你 · Haoyu 的 AI 工具箱</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <meta name="description" content="不必一次说全。一句“写之前先问我3个问题”，AI 就从代笔的人变成采访你的人。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffc46b'/><stop offset='.55' stop-color='%23f07b2e'/><stop offset='1' stop-color='%23e2505c'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <a class="brand" href="../"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
-      <div class="nav-links"><a href="../">每日卡片</a><a href="../about.html">关于</a></div>
-    </nav>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
 
-    <main class="article">
-      <a class="back" href="../">← 返回卡片墙</a>
-      <header>
-        <span class="tag">Day 2 · 2026-10-14 · 第1周 · 用AI写字</span>
-        <h1>先让AI问你</h1>
-        <p class="sub">不必一次说全，让它来采访你。</p>
-      </header>
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #ffd36b 0%, #ff9f43 50%, #ff6b6b 100%)">问</div>
+        <span class="eyebrow reveal d1">Day 2 · 用 AI 写字</span>
+        <h1 class="headline reveal d1">先让 AI<br>问你。</h1>
+        <p class="lead reveal d2">不必一次说全，让它来采访你。</p>
+        <div class="links reveal d3"><a href="#practice">看我被采访</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 14 日 · 第 1 周</p>
+      </div>
+    </section>
 
-      <!-- 今天学了什么 -->
-      <section class="panel">
-        <h2>📖 今天学了什么</h2>
-        <p>Day 1 发现：AI 缺素材时，要么留括号，要么自己编。可我们自己也常常想不全该给它什么。</p>
-        <div class="quote">一句"写之前，先问我3个问题"，它就从代笔的人，变成了采访你的人。</div>
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">缺素材时，AI 要么留括号，要么自己编。<br><span class="dim">可我们自己，也常常想不全该给它什么。</span></p>
+        <p class="pull reveal">一句“写之前，先问我 3 个问题”，<br>它就从代笔的人，变成了采访你的人。</p>
 
-        <h3>怎么问才好</h3>
-        <ul>
-          <li><b>一次只问一个</b>：一口气抛来5个问题，人会敷衍；一个一个答，答得才具体。</li>
-          <li><b>限定数量</b>：3 个左右刚好，问太多就成了填表。</li>
-          <li><b>问完再动笔</b>：说清楚"等我答完再写"，免得它边问边写。</li>
-          <li><b>答得越具体越像你</b>：哪天、在哪、当时心里想什么，这些细节 AI 编不出来。</li>
-        </ul>
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>一次只问一个</h4><p>一口气抛来五个问题，人会敷衍；一个一个答，才答得具体。</p></div>
+          <div class="feature reveal d1"><span class="k">02</span><h4>限定数量</h4><p>3 个左右刚好。问太多，就成了填表。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>问完再动笔</h4><p>说清楚“等我答完再写”，免得它边问边写。</p></div>
+          <div class="feature hl reveal d3"><span class="k">04</span><h4>越具体越像你</h4><p>哪天、在哪、当时心里想什么。这些细节，AI 编不出来。</p></div>
+        </div>
 
-        <h3>写进 skill 的一条规则</h3>
-        <pre>写作规则：
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>写进我的 skill 的一条规则</h4>
+            <pre class="code" style="margin-top:12px">写作规则：
 - 动笔前，先检查我有没有给出真实素材（人物、时间、地点、细节、数字）。
 - 缺什么就先问我，一次一个问题，最多3个；不要用括号占位，也不要编造。</pre>
-      </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- 我的练习 -->
-      <section class="panel">
-        <h2>✍️ 我的练习：被 AI 采访了三次</h2>
-        <pre>我想发一条小红书，分享我在德国留学的一个日常小片段。
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">没等到羊腿，<br>先等来一包奥利奥。</h2>
+          <p class="lead reveal d2">我想发一条小红书，写在德国留学的一个日常小片段。这次不急着写，先让 AI 采访我三个问题。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">我对 AI 说</span>
+          <pre class="code">我想发一条小红书，分享我在德国留学的一个日常小片段。
 写之前，先问我3个最关键的问题，一次只问一个，等我回答完再问下一个。
 问完再动笔，字数200字左右，语气自然真诚，不要网红腔。</pre>
-
-        <h3>问题 1 · 你想分享的是哪一个具体的小片段？</h3>
-        <p><b>我答：</b>今天中午下课之后去了肉铺，大概13点左右，因为我周二预定了两条羊腿，他们叫我去拿，但是我去了之后他们跟我说还没到，可能周五才能到。</p>
-
-        <h3>问题 2 · 当时那一刻，你心里是什么感觉？</h3>
-        <p><b>我答：</b>我心里是比较失落的，因为我本来是想炖羊肉吃的，但是确实，这帮德国人就这样。</p>
-
-        <h3>问题 3 · 从肉铺出来之后呢？</h3>
-        <p><b>我答：</b>从肉铺出来之后我去了对面的 Müller，买了一包奥利奥。</p>
-
-        <h3>成稿</h3>
-        <div class="quote"><b>没等到羊腿，先等来一包奥利奥</b><br>
-        周二在肉铺订了两条羊腿，店里说可以来取了。今天中午一下课，我就揣着炖羊肉的念头过去，到的时候大概一点。<br>
-        店员<mark>很平静地</mark>告诉我：还没到，可能要周五。<br>
-        说不失落是假的。<mark>天越来越凉</mark>，脑子里早就是一锅冒着热气的羊肉了。但也没什么好争的，<mark>在德国待久了</mark>，"再等等"大概就是这里的日常。<br>
-        出门看见对面的 Müller，进去买了一包奥利奥。<br>
-        羊肉留给周五，今天先用一块饼干，哄哄自己。<br>
-        #德国留学 #留学日常 #在德国的一天</div>
-        <p>AI 最后还说：它保留了我原话里"这帮德国人就这样"的无奈，只是换成了更温和的说法；想更直白、带点吐槽味，可以再调一版。</p>
-
-        <h3>我的收获</h3>
-        <ul>
-          <li>一个一个答，答得才具体。13点、两条羊腿、周五、Müller、奥利奥，这些细节 AI 编不出来，成稿才像我。</li>
-          <li>标黄的几句是 AI 添的，添得合理，但发之前要自己点头认可。</li>
-          <li>AI 会悄悄把语气改温和。想保留原味，就说"保留我原话的语气"。</li>
-        </ul>
-      </section>
-
-      <!-- 今天的小工具 -->
-      <section class="panel" id="tool">
-        <h2>🧰 "先问我"提示词生成器</h2>
-        <p style="color:var(--text-2);margin-top:0">选一种要写的东西，填一句主题，它会生成一段"先采访再动笔"的提示词，并提示 AI 可能会问你什么，你可以提前想好。</p>
-
-        <div class="chips" id="presets"></div>
-
-        <div class="field">
-          <label for="f-topic">想写什么 <small>一句话就够</small></label>
-          <input type="text" id="f-topic" placeholder="例：分享我在德国留学的一个日常小片段">
-        </div>
-        <div class="field">
-          <label for="f-n">先问我几个问题 <small id="n-val">3 个</small></label>
-          <input type="range" id="f-n" min="1" max="5" value="3">
-        </div>
-        <div class="field">
-          <label for="f-len">字数</label>
-          <input type="text" id="f-len" placeholder="例：200字左右">
-        </div>
-        <div class="field">
-          <label for="f-tone">语气</label>
-          <input type="text" id="f-tone" placeholder="例：自然真诚，不要网红腔">
-        </div>
-        <div class="field">
-          <label><span><input type="checkbox" id="f-one" checked> 一次只问一个，等我答完再问下一个</span></label>
-        </div>
-        <div class="field">
-          <label><span><input type="checkbox" id="f-rule" checked> 不准留括号、不准编造</span></label>
         </div>
 
-        <div id="check"></div>
-
-        <div class="field">
-          <label for="out">生成的提示词</label>
-          <textarea id="out" class="output" rows="8" readonly></textarea>
+        <div class="qa">
+          <div class="bubble ai reveal"><span class="who">AI · 问题 1</span>你想分享的是哪一个具体的小片段？</div>
+          <div class="bubble me reveal"><span class="who">我</span>今天中午下课之后去了肉铺，大概13点左右，因为我周二预定了两条羊腿，他们叫我去拿，但是我去了之后他们跟我说还没到，可能周五才能到。</div>
+          <div class="bubble ai reveal"><span class="who">AI · 问题 2</span>当时那一刻，你心里是什么感觉？</div>
+          <div class="bubble me reveal"><span class="who">我</span>我心里是比较失落的，因为我本来是想炖羊肉吃的，但是确实，这帮德国人就这样。</div>
+          <div class="bubble ai reveal"><span class="who">AI · 问题 3</span>从肉铺出来之后呢？</div>
+          <div class="bubble me reveal"><span class="who">我</span>从肉铺出来之后我去了对面的 Müller，买了一包奥利奥。</div>
         </div>
-        <div class="row">
-          <button class="btn" id="copy">复制提示词</button>
-          <button class="btn ghost" id="clear">清空</button>
-        </div>
-      </section>
 
-      <div class="pager">
-        <a href="day-01.html">← Day 1 一句话，和五件套</a>
-        <span style="color:var(--text-3)">Day 3 明天见 →</span>
+        <article class="result-card reveal">
+          <span class="label">AI 写的成稿</span>
+          <h4>没等到羊腿，先等来一包奥利奥</h4>
+          <p>周二在肉铺订了两条羊腿，店里说可以来取了。今天中午一下课，我就揣着炖羊肉的念头过去，到的时候大概一点。</p>
+          <p>店员<mark>很平静地</mark>告诉我：还没到，可能要周五。</p>
+          <p>说不失落是假的。<mark>天越来越凉</mark>，脑子里早就是一锅冒着热气的羊肉了。但也没什么好争的，<mark>在德国待久了</mark>，“再等等”大概就是这里的日常。</p>
+          <p>出门看见对面的 Müller，进去买了一包奥利奥。</p>
+          <p>羊肉留给周五，今天先用一块饼干，哄哄自己。</p>
+          <p class="tags">#德国留学 #留学日常 #在德国的一天</p>
+          <p class="legend"><mark>标黄</mark> 是 AI 自己添的。AI 还说：它把我那句“这帮德国人就这样”换成了更温和的说法，想更直白、带点吐槽味，可以再调一版。</p>
+        </article>
+
+        <div class="center" style="margin-top:96px">
+          <h3 class="subtitle reveal">我的收获</h3>
+        </div>
+        <div class="note-grid">
+          <div class="note reveal"><div class="num gradient-text">1</div><h4>细节编不出来</h4><p>13 点、两条羊腿、周五、Müller、奥利奥。一个一个答，成稿才像我。</p></div>
+          <div class="note reveal d1"><div class="num gradient-text">2</div><h4>添的要点头</h4><p>标黄的几句是 AI 添的，添得合理，但发之前要自己认可。</p></div>
+          <div class="note reveal d2"><div class="num gradient-text">3</div><h4>保留原味</h4><p>AI 会悄悄把语气改温和。想留住原话的味道，就说“保留我原话的语气”。</p></div>
+        </div>
       </div>
-    </main>
-  </div>
+    </section>
 
-  <div class="toast" id="toast">已复制，去 Claude 里粘贴吧</div>
-  <footer>和 Claude 一起，一天一块砖。</footer>
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">“先问我”提示词生成器。</h2>
+          <p class="lead reveal d2">选一种要写的东西，填一句主题。它会生成一段“先采访再动笔”的提示词，还会提醒你 AI 可能会问什么。</p>
+        </div>
 
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="seg" id="presets"></div>
+            <div class="field">
+              <label for="f-topic"><span>想写什么</span><small>一句话就够</small></label>
+              <input type="text" id="f-topic" placeholder="分享我在德国留学的一个日常小片段">
+            </div>
+            <div class="field">
+              <label for="f-n"><span>先问我几个问题</span><small id="n-val">3 个</small></label>
+              <input type="range" id="f-n" min="1" max="5" value="3">
+            </div>
+            <div class="field">
+              <label for="f-len"><span>字数</span></label>
+              <input type="text" id="f-len" placeholder="200字左右">
+            </div>
+            <div class="field">
+              <label for="f-tone"><span>语气</span></label>
+              <input type="text" id="f-tone" placeholder="自然真诚，不要网红腔">
+            </div>
+            <label class="toggle"><span>一次只问一个，答完再问下一个</span><input type="checkbox" id="f-one" checked></label>
+            <label class="toggle"><span>不准留括号、不准编造</span><input type="checkbox" id="f-rule" checked></label>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>生成的提示词</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="9" readonly placeholder="在左边填一句主题，提示词会出现在这里。"></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制提示词</button>
+              <button class="btn ghost" id="clear">清空</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-01.html"><small>上一课 · Day 1</small><b>‹ 一句话，和五件套</b></a>
+          <span class="next"><small>下一课 · Day 3</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span>和 Claude 一起，一天一块砖。</span>
+      <span><a href="../">首页</a> · <a href="../about.html">关于</a></span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
   <script>
     const PRESETS = {
-      "小红书笔记": { kind: "一条小红书", topic: "分享我在德国留学的一个日常小片段", len: "200字左右", tone: "自然真诚，不要网红腔",
+      "小红书": { kind: "一条小红书", topic: "分享我在德国留学的一个日常小片段", len: "200字左右", tone: "自然真诚，不要网红腔",
         asks: ["那天发生了什么具体的事？", "你当时心里是什么感受？", "想让看的人带走什么？"] },
       "闲鱼商品": { kind: "一段闲鱼商品描述", topic: "卖掉一件我用不上的东西", len: "150字左右", tone: "真诚亲切，不要夸张词",
         asks: ["是什么东西、什么牌子？", "用了多久、成色如何、有没有瑕疵？", "想卖多少钱、在哪交易？"] },
@@ -166,18 +209,12 @@
       if ($("f-rule").checked) lines.push("只用我回答里的真实信息，不要用括号占位，也不要编造细节。");
       $("out").value = lines.join("\n");
       $("check").innerHTML = asks.length
-        ? `<div class="hint ok">它多半会问你：${asks.slice(0, n).map(a => "「" + a + "」").join(" ")}　可以先想一想。</div>`
-        : `<div class="hint ok">提示词好了。答它问题时，越具体越像你。</div>`;
+        ? `<div class="hint ok">它多半会问你：${asks.slice(0, n).map(a => "「" + a + "」").join(" ")} 可以先想一想。</div>`
+        : `<div class="hint ok">提示词好了。回答它的问题时，越具体越像你。</div>`;
     }
     ["f-topic", "f-n", "f-len", "f-tone"].forEach(id => $(id).addEventListener("input", build));
     ["f-one", "f-rule"].forEach(id => $(id).addEventListener("change", build));
-
-    $("copy").addEventListener("click", async () => {
-      const t = $("out").value; if (!t) return;
-      try { await navigator.clipboard.writeText(t); }
-      catch { $("out").select(); document.execCommand("copy"); }
-      $("toast").classList.add("show"); setTimeout(() => $("toast").classList.remove("show"), 1600);
-    });
+    $("copy").addEventListener("click", () => copyText($("out").value));
     $("clear").addEventListener("click", () => {
       ["f-topic", "f-len", "f-tone"].forEach(id => $(id).value = "");
       kind = ""; asks = [];

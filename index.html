@@ -1,51 +1,130 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Haoyu 的 AI 工具箱</title>
   <meta name="description" content="每天学一点，每天多一个能用的小工具。">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffc46b'/><stop offset='.55' stop-color='%23f07b2e'/><stop offset='1' stop-color='%23e2505c'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <a class="brand" href="./"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
-      <div class="nav-links"><a href="./">每日卡片</a><a href="about.html">关于</a></div>
-    </nav>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="./"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="./" aria-current="page">首页</a>
+        <a href="#all">全部课程</a>
+        <a href="about.html">关于</a>
+      </div>
+    </div>
+  </nav>
 
+  <main>
     <section class="hero">
-      <h1>每天学一点，<br>每天多一个能用的小工具。</h1>
-      <p>这里记录我学 AI 的每一天：上面是当天学到的道理，下面是当天亲手做出来、点开就能用的小工具。</p>
-      <div class="stats">
-        <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
-        <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
-        <div class="stat"><b id="s-since">—</b><span>开始于</span></div>
+      <div class="container">
+        <span class="eyebrow reveal">Haoyu 的 AI 工具箱</span>
+        <h1 class="headline reveal d1">每天学一点。<br><span class="gradient-text">每天多一个能用的小工具。</span></h1>
+        <p class="lead reveal d2">这里记录我学 AI 的每一天：当天学到的道理，我亲手做的练习，和一个点开就能用的小工具。</p>
+        <div class="links reveal d3"><a href="#latest">看最新一课</a><a href="about.html">认识我</a></div>
+        <div class="stats reveal d4">
+          <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
+          <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
+          <div class="stat"><b id="s-pct">0%</b><span>四周课程进度</span></div>
+        </div>
       </div>
     </section>
 
-    <div class="section-title">每日卡片</div>
-    <div class="grid" id="grid"></div>
-  </div>
+    <section class="section alt tight" id="latest">
+      <div class="container">
+        <div id="showcase"></div>
+      </div>
+    </section>
 
-  <footer>和 Claude 一起，一天一块砖。</footer>
+    <section class="section" id="all">
+      <div class="container wide">
+        <div class="center">
+          <h2 class="title reveal">全部课程</h2>
+          <p class="lead reveal d1" style="margin-bottom:56px">每一课都有笔记、练习和一个小工具。</p>
+        </div>
+        <div class="tiles" id="tiles"></div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container wide">
+        <div class="center">
+          <h2 class="title reveal">四周，从写字到做产品。</h2>
+          <p class="lead reveal d1">写字是地基，图片和 PPT 是表达，最后把学到的东西做成一件真正的产品。</p>
+        </div>
+        <div class="roadmap" id="roadmap"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span>和 Claude 一起，一天一块砖。</span>
+      <span><a href="about.html">关于</a></span>
+    </div>
+  </footer>
 
   <script src="assets/days.js"></script>
+  <script src="assets/site.js"></script>
   <script>
-    const days = (window.DAYS || []).slice().sort((a, b) => b.day - a.day);
-    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    document.getElementById("grid").innerHTML = days.map(d => `
-      <a class="card" href="${esc(d.url)}">
-        <div class="meta"><span class="day">Day ${d.day}</span><span>${esc(d.date)}</span></div>
-        <span><span class="tag">${esc(d.week)}</span></span>
-        <h3>${esc(d.title)}</h3>
-        <p>${esc(d.summary)}</p>
-        ${d.tool ? `<div class="tool">${esc(d.tool)}</div>` : ""}
-      </a>`).join("");
-    document.getElementById("s-days").textContent = days.length;
-    document.getElementById("s-tools").textContent = days.filter(d => d.tool).length;
-    if (days.length) document.getElementById("s-since").textContent = days[days.length - 1].date.slice(5).replace("-", "月") + "日";
+    (function () {
+      const days = (window.DAYS || []).slice().sort((a, b) => b.day - a.day);
+      const weeks = window.WEEKS || [];
+      const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+      const glyph = (d, cls) => `<div class="glyph ${cls || ""}" style="${d.grad ? `--g:${esc(d.grad)}` : ""}">${esc(d.glyph || d.day)}</div>`;
+      const weekName = n => (weeks.find(w => w.n === n) || {}).title || "";
+
+      // 最新一课
+      const latest = days[0];
+      if (latest) {
+        document.getElementById("showcase").innerHTML = `
+          <a class="showcase reveal" href="${esc(latest.url)}">
+            ${glyph(latest)}
+            <span class="badge-new">最新 · DAY ${latest.day}</span>
+            <h2 class="title">${esc(latest.title)}</h2>
+            <p class="lead">${esc(latest.summary)}</p>
+            <div class="links"><span style="color:var(--accent-text)">阅读这一课 ›</span><span style="color:var(--accent-text)">打开${esc(latest.tool)} ›</span></div>
+          </a>`;
+      }
+
+      // 全部课程
+      document.getElementById("tiles").innerHTML = days.map((d, i) => `
+        <a class="tile reveal d${Math.min(i, 3)}" href="${esc(d.url)}">
+          ${glyph(d, "sm")}
+          <span class="meta">Day ${d.day} · 第${d.week}周 · ${esc(weekName(d.week))}</span>
+          <h3>${esc(d.title)}</h3>
+          <p>${esc(d.summary)}</p>
+          ${d.tool ? `<span class="foot">${esc(d.tool)}</span>` : ""}
+        </a>`).join("");
+
+      // 路线图
+      const total = weeks.reduce((s, w) => s + w.days, 0) || 28;
+      let start = 0;
+      const curWeek = latest ? latest.week : 1;
+      document.getElementById("roadmap").innerHTML = weeks.map((w, i) => {
+        const done = days.filter(d => d.week === w.n).length;
+        const pct = Math.round(Math.min(done, w.days) / w.days * 100);
+        start += w.days;
+        return `<div class="week reveal d${i} ${w.n === curWeek ? "now" : ""}">
+          <div class="n">第 ${w.n} 周</div>
+          <h4>${esc(w.title)}</h4>
+          <div class="bar"><i style="--w:${pct}%"></i></div>
+          <div class="p">${done ? `已完成 ${done} / ${w.days} 天` : "即将解锁"}</div>
+        </div>`;
+      }).join("");
+
+      document.getElementById("s-days").textContent = days.length;
+      document.getElementById("s-tools").textContent = days.filter(d => d.tool).length;
+      document.getElementById("s-pct").textContent = Math.round(days.length / total * 100) + "%";
+      window.observeReveal && window.observeReveal();
+    })();
   </script>
 </body>
 </html>

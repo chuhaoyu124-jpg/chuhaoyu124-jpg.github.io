@@ -1,52 +1,79 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>关于 · Haoyu 的 AI 工具箱</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffc46b'/><stop offset='.55' stop-color='%23f07b2e'/><stop offset='1' stop-color='%23e2505c'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <nav class="nav">
-      <a class="brand" href="./"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
-      <div class="nav-links"><a href="./">每日卡片</a><a href="about.html">关于</a></div>
-    </nav>
-
-    <main class="article">
-      <header>
-        <h1>你好，我是 Haoyu</h1>
-        <p class="sub">一个正在认真学 AI 的人。</p>
-      </header>
-
-      <div class="panel">
-        <h2>🌱 我在学什么</h2>
-        <p>每天大约一小时，跟着自己定的课程，一步步学会用 AI 做事：</p>
-        <ul class="about-list">
-          <li><b>写字</b>：写提示词、改写文案、让 AI 模仿我的语气</li>
-          <li><b>做图</b>：用 Claude Code 写代码做海报、配图和动图</li>
-          <li><b>做 PPT 和短视频</b>：从大纲到成品</li>
-          <li><b>把信息做成产品</b>：手册、展示页和推广文案</li>
-        </ul>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="./"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="./">首页</a>
+        <a href="./#all">全部课程</a>
+        <a href="about.html" aria-current="page">关于</a>
       </div>
+    </div>
+  </nav>
 
-      <div class="panel">
-        <h2>🧰 我可以帮你做</h2>
-        <ul class="about-list">
-          <li>闲鱼、小红书的商品描述和文案</li>
-          <li>社交媒体配图和简单海报</li>
-          <li>PPT 大纲和排版（陆续解锁中）</li>
-        </ul>
-        <p style="color:var(--text-2)">这个网站上的每一个小工具，都是我学完当天亲手做出来的。</p>
+  <main>
+    <section class="about-hero">
+      <div class="container narrow">
+        <div class="avatar reveal">H</div>
+        <h1 class="headline reveal d1">你好，我是 Haoyu。</h1>
+        <p class="lead reveal d2">一个正在认真学 AI 的人。<br>每天一小时，把学到的东西做成能用的工具。</p>
       </div>
+    </section>
 
-      <div class="panel">
-        <h2>✉️ 联系我</h2>
-        <p style="color:var(--text-2)">联系方式即将添加。</p>
+    <section class="section alt">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我在学什么</span>
+          <h2 class="title reveal d1">从写一句话，<br>到做出一件产品。</h2>
+        </div>
+        <div class="features">
+          <div class="feature reveal"><span class="k">第 1 周</span><h4>写字</h4><p>写提示词、改写文案，让 AI 模仿我的语气。</p></div>
+          <div class="feature reveal d1"><span class="k">第 2 周</span><h4>做图</h4><p>用 Claude Code 写代码，做海报、配图和动图。</p></div>
+          <div class="feature reveal d2"><span class="k">第 3 周</span><h4>PPT 与视频</h4><p>从大纲到成品，做一份真正好看的 PPT。</p></div>
+          <div class="feature reveal d3"><span class="k">第 4 周</span><h4>做产品</h4><p>把信息做成手册、展示页和推广文案。</p></div>
+        </div>
       </div>
-    </main>
-  </div>
-  <footer>和 Claude 一起，一天一块砖。</footer>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="center">
+          <span class="chapter-label reveal">我可以帮你做</span>
+          <h2 class="title reveal d1">每一个工具，<br>都是我亲手做的。</h2>
+        </div>
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal"><div class="num gradient-text">文案</div><h4>闲鱼、小红书</h4><p>商品描述、生活笔记，真实、具体、不浮夸。</p></div>
+          <div class="note reveal d1"><div class="num gradient-text">配图</div><h4>海报与社媒图</h4><p>简洁好看的配图和简单海报，陆续解锁中。</p></div>
+          <div class="note reveal d2"><div class="num gradient-text">PPT</div><h4>大纲与排版</h4><p>把一篇文章变成一份清楚的 PPT，第 3 周解锁。</p></div>
+        </div>
+        <div class="links reveal" style="margin-top:56px"><a href="./#all">看看我做过的工具</a></div>
+      </div>
+    </section>
+
+    <section class="section alt tight">
+      <div class="container narrow center">
+        <h2 class="subtitle reveal">想找我聊聊？</h2>
+        <p class="muted reveal d1">联系方式即将添加。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span>和 Claude 一起，一天一块砖。</span>
+      <span><a href="./">首页</a></span>
+    </div>
+  </footer>
+  <script src="assets/site.js"></script>
 </body>
 </html>
