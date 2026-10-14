@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="每天学一点，每天多一个能用的小工具。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="./"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
+      <div class="nav-links"><a href="./">每日卡片</a><a href="about.html">关于</a></div>
+    </nav>
+
+    <section class="hero">
+      <h1>每天学一点，<br>每天多一个能用的小工具。</h1>
+      <p>这里记录我学 AI 的每一天：上面是当天学到的道理，下面是当天亲手做出来、点开就能用的小工具。</p>
+      <div class="stats">
+        <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
+        <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
+        <div class="stat"><b id="s-since">—</b><span>开始于</span></div>
+      </div>
+    </section>
+
+    <div class="section-title">每日卡片</div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <footer>和 Claude 一起，一天一块砖。</footer>
+
+  <script src="assets/days.js"></script>
+  <script>
+    const days = (window.DAYS || []).slice().sort((a, b) => b.day - a.day);
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    document.getElementById("grid").innerHTML = days.map(d => `
+      <a class="card" href="${esc(d.url)}">
+        <div class="meta"><span class="day">Day ${d.day}</span><span>${esc(d.date)}</span></div>
+        <span><span class="tag">${esc(d.week)}</span></span>
+        <h3>${esc(d.title)}</h3>
+        <p>${esc(d.summary)}</p>
+        ${d.tool ? `<div class="tool">${esc(d.tool)}</div>` : ""}
+      </a>`).join("");
+    document.getElementById("s-days").textContent = days.length;
+    document.getElementById("s-tools").textContent = days.filter(d => d.tool).length;
+    if (days.length) document.getElementById("s-since").textContent = days[days.length - 1].date.slice(5).replace("-", "月") + "日";
+  </script>
+</body>
+</html>

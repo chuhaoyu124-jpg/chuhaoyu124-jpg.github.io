@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 1 · 一句话，和五件套 · Haoyu 的 AI 工具箱</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
+      <div class="nav-links"><a href="../">每日卡片</a><a href="../about.html">关于</a></div>
+    </nav>
+
+    <main class="article">
+      <a class="back" href="../">← 返回卡片墙</a>
+      <header>
+        <span class="tag">Day 1 · 2026-10-14 · 第1周 · 用AI写字</span>
+        <h1>一句话，和五件套</h1>
+        <p class="sub">AI 不怕你啰嗦，就怕你含糊。</p>
+      </header>
+
+      <!-- 今天学了什么 -->
+      <section class="panel">
+        <h2>📖 今天学了什么</h2>
+        <p>"帮我写个介绍"只是一句话。好的提示词有四件套：<b>角色、任务、要求、示例</b>。多花三十秒写清楚，就省下来回改的十分钟。</p>
+
+        <h3>一个意外的发现</h3>
+        <p>我把四件套写得很全面，AI 交回来的东西反而<b>更短</b>。原因有两个：</p>
+        <ul>
+          <li><b>它很听话。</b>我写了"80字以内"，它就乖乖交了60字。一句话那版没有限制，它就加标题、加表情，看上去更丰满。</li>
+          <li><b>"全面"大多是空格子。</b>品牌、几成新、价格、地点，全是括号等我自己填。篇幅长了，信息却一条也没多。</li>
+        </ul>
+        <div class="quote">四件套管的是"怎么写"，"写什么"得靠你喂的事实。</div>
+
+        <h3>升级：五件套</h3>
+        <p>加上一条<b>素材</b>，把真实信息告诉它：</p>
+        <p><b>角色 · 任务 · 素材 · 要求 · 示例</b></p>
+        <p>加了素材以后，AI 写出的文案没有一个括号，复制过去就能发。</p>
+
+        <h3>还要记住的一点</h3>
+        <p>AI 会顺手补一些你没说过的话，比如"灯身和灯罩都干净"。发出去之前，<b>确认每一句都是真的</b>。</p>
+      </section>
+
+      <!-- 今天的小工具 -->
+      <section class="panel" id="tool">
+        <h2>🧰 五件套提示词生成器</h2>
+        <p style="color:var(--text-2);margin-top:0">选一个场景，或者自己填。填好后点下方按钮复制，粘贴到 Claude 里就能用。</p>
+
+        <div class="chips" id="presets"></div>
+
+        <div class="field">
+          <label for="f-role">① 角色 <small>它是谁</small></label>
+          <input type="text" id="f-role" placeholder="例：一个很会写闲鱼文案的学生卖家">
+        </div>
+        <div class="field">
+          <label for="f-task">② 任务 <small>要做什么</small></label>
+          <input type="text" id="f-task" placeholder="例：帮我写一段二手台灯的商品描述">
+        </div>
+        <div class="field">
+          <label for="f-material">③ 素材 <small>真实信息，最重要的一件</small></label>
+          <textarea id="f-material" rows="3" placeholder="例：宜家台灯，用了一年，三档调光，底座有一点划痕，原价25欧，想卖10欧，宿舍楼下自提"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-req">④ 要求 <small>字数、语气、必须写到的、不要的</small></label>
+          <textarea id="f-req" rows="2" placeholder="例：150字左右，把成色、功能、价格、自提写全，语气真诚，不要夸张词"></textarea>
+        </div>
+        <div class="field">
+          <label for="f-example">⑤ 示例 <small>给一段你喜欢的风格</small></label>
+          <textarea id="f-example" rows="2" placeholder="例：用了半年，几乎全新，毕业清仓，诚心出～"></textarea>
+        </div>
+        <div class="field">
+          <label><span><input type="checkbox" id="f-ask" checked> 素材不够时，让 AI 先问我</span></label>
+        </div>
+
+        <div id="check"></div>
+
+        <div class="field">
+          <label for="out">生成的提示词</label>
+          <textarea id="out" class="output" rows="10" readonly></textarea>
+        </div>
+        <div class="row">
+          <button class="btn" id="copy">复制提示词</button>
+          <button class="btn ghost" id="clear">清空</button>
+        </div>
+      </section>
+
+      <div class="pager">
+        <span></span>
+        <span style="color:var(--text-3)">Day 2 明天见 →</span>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">已复制，去 Claude 里粘贴吧</div>
+  <footer>和 Claude 一起，一天一块砖。</footer>
+
+  <script>
+    const PRESETS = {
+      "闲鱼商品": {
+        role: "一个很会写闲鱼文案的学生卖家",
+        task: "帮我写一段二手台灯的商品描述",
+        material: "宜家台灯，用了一年，三档调光，底座有一点划痕，原价25欧，想卖10欧，学校宿舍楼下自提",
+        req: "150字左右，把成色、功能、价格、自提写全，语气真诚，不要夸张词",
+        example: "用了半年，几乎全新，毕业清仓，诚心出～"
+      },
+      "小红书笔记": {
+        role: "一个文风温柔、擅长生活分享的小红书博主",
+        task: "写一篇小红书笔记，分享我的一个日常",
+        material: "",
+        req: "标题15字以内带一个emoji；正文300字左右，分3段；结尾加5个话题标签；不要营销腔",
+        example: "今天也是被阳光叫醒的一天☀️ 楼下面包店的可颂刚出炉……"
+      },
+      "德语邮件": {
+        role: "一个熟悉德国大学沟通礼仪的德语写作助手",
+        task: "帮我给教授写一封德语邮件",
+        material: "",
+        req: "用正式的 Sie，150词以内，开头结尾用标准格式；写完附一份中文翻译方便我核对",
+        example: "Sehr geehrte Frau Professorin Müller, ich wende mich an Sie, weil …"
+      },
+      "朋友圈文案": {
+        role: "一个说话自然、有点小幽默的朋友",
+        task: "帮我写一条朋友圈",
+        material: "",
+        req: "50字以内，口语化，不要鸡汤，最多一个emoji，给我3个版本挑",
+        example: "周末成功把自己养活了，冰箱从空的变成了满的。"
+      }
+    };
+    const $ = id => document.getElementById(id);
+    const F = ["role", "task", "material", "req", "example"];
+
+    $("presets").innerHTML = Object.keys(PRESETS).map(k => `<button class="chip" data-k="${k}">${k}</button>`).join("");
+    $("presets").addEventListener("click", e => {
+      const k = e.target.dataset.k; if (!k) return;
+      document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c === e.target));
+      F.forEach(f => $("f-" + f).value = PRESETS[k][f]);
+      build();
+    });
+
+    function build() {
+      const v = Object.fromEntries(F.map(f => [f, $("f-" + f).value.trim()]));
+      const lines = [];
+      if (v.role) lines.push(`你是${v.role.replace(/^你是/, "")}。`);
+      if (v.task) lines.push(`任务：${v.task}`);
+      if (v.material) lines.push(`素材：${v.material}`);
+      if (v.req) lines.push(`要求：${v.req}`);
+      if (v.example) lines.push(`示例风格：“${v.example.replace(/^["“]|["”]$/g, "")}”`);
+      if ($("f-ask").checked && lines.length) lines.push("如果素材里缺少写好这段内容必须的信息，请先问我，不要自己编造或留括号。");
+      $("out").value = lines.join("\n");
+
+      const filled = F.filter(f => v[f]).length;
+      let msg = "";
+      if (!filled) msg = "";
+      else if (!v.material) msg = `<div class="hint warn">还没填"素材"。没有真实信息，AI 只能留括号或自己编。</div>`;
+      else if (filled < 5) msg = `<div class="hint warn">已填 ${filled}/5 件，再补上 ${F.filter(f => !v[f]).map(f => ({role:"角色",task:"任务",material:"素材",req:"要求",example:"示例"})[f]).join("、")} 会更稳。</div>`;
+      else msg = `<div class="hint ok">五件套齐了，可以复制去用了 ✨</div>`;
+      $("check").innerHTML = msg;
+    }
+    F.forEach(f => $("f-" + f).addEventListener("input", build));
+    $("f-ask").addEventListener("change", build);
+
+    $("copy").addEventListener("click", async () => {
+      const t = $("out").value; if (!t) return;
+      try { await navigator.clipboard.writeText(t); }
+      catch { $("out").select(); document.execCommand("copy"); }
+      $("toast").classList.add("show"); setTimeout(() => $("toast").classList.remove("show"), 1600);
+    });
+    $("clear").addEventListener("click", () => {
+      F.forEach(f => $("f-" + f).value = "");
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
+      build();
+    });
+    build();
+  </script>
+</body>
+</html>
