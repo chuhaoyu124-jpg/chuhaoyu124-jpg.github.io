@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 2 · 先让AI问你 · Haoyu 的 AI 工具箱</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23e08a3c'/></svg>">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="../"><span class="sun"></span>Haoyu 的 AI 工具箱</a>
+      <div class="nav-links"><a href="../">每日卡片</a><a href="../about.html">关于</a></div>
+    </nav>
+
+    <main class="article">
+      <a class="back" href="../">← 返回卡片墙</a>
+      <header>
+        <span class="tag">Day 2 · 2026-10-14 · 第1周 · 用AI写字</span>
+        <h1>先让AI问你</h1>
+        <p class="sub">不必一次说全，让它来采访你。</p>
+      </header>
+
+      <!-- 今天学了什么 -->
+      <section class="panel">
+        <h2>📖 今天学了什么</h2>
+        <p>Day 1 发现：AI 缺素材时，要么留括号，要么自己编。可我们自己也常常想不全该给它什么。</p>
+        <div class="quote">一句"写之前，先问我3个问题"，它就从代笔的人，变成了采访你的人。</div>
+
+        <h3>怎么问才好</h3>
+        <ul>
+          <li><b>一次只问一个</b>：一口气抛来5个问题，人会敷衍；一个一个答，答得才具体。</li>
+          <li><b>限定数量</b>：3 个左右刚好，问太多就成了填表。</li>
+          <li><b>问完再动笔</b>：说清楚"等我答完再写"，免得它边问边写。</li>
+          <li><b>答得越具体越像你</b>：哪天、在哪、当时心里想什么，这些细节 AI 编不出来。</li>
+        </ul>
+
+        <h3>写进 skill 的一条规则</h3>
+        <pre>写作规则：
+- 动笔前，先检查我有没有给出真实素材（人物、时间、地点、细节、数字）。
+- 缺什么就先问我，一次一个问题，最多3个；不要用括号占位，也不要编造。</pre>
+      </section>
+
+      <!-- 我的练习 -->
+      <section class="panel">
+        <h2>✍️ 我的练习</h2>
+        <p style="color:var(--text-2)">今天的练习：让 Claude 先问 3 个问题，再写一条德国留学日常的小红书。练完后，我的提示词、AI 的提问、成稿和收获会补在这里。</p>
+        <pre>我想发一条小红书，分享我在德国留学的一个日常小片段。
+写之前，先问我3个最关键的问题，一次只问一个，等我回答完再问下一个。
+问完再动笔，字数200字左右，语气自然真诚，不要网红腔。</pre>
+      </section>
+
+      <!-- 今天的小工具 -->
+      <section class="panel" id="tool">
+        <h2>🧰 "先问我"提示词生成器</h2>
+        <p style="color:var(--text-2);margin-top:0">选一种要写的东西，填一句主题，它会生成一段"先采访再动笔"的提示词，并提示 AI 可能会问你什么，你可以提前想好。</p>
+
+        <div class="chips" id="presets"></div>
+
+        <div class="field">
+          <label for="f-topic">想写什么 <small>一句话就够</small></label>
+          <input type="text" id="f-topic" placeholder="例：分享我在德国留学的一个日常小片段">
+        </div>
+        <div class="field">
+          <label for="f-n">先问我几个问题 <small id="n-val">3 个</small></label>
+          <input type="range" id="f-n" min="1" max="5" value="3">
+        </div>
+        <div class="field">
+          <label for="f-len">字数</label>
+          <input type="text" id="f-len" placeholder="例：200字左右">
+        </div>
+        <div class="field">
+          <label for="f-tone">语气</label>
+          <input type="text" id="f-tone" placeholder="例：自然真诚，不要网红腔">
+        </div>
+        <div class="field">
+          <label><span><input type="checkbox" id="f-one" checked> 一次只问一个，等我答完再问下一个</span></label>
+        </div>
+        <div class="field">
+          <label><span><input type="checkbox" id="f-rule" checked> 不准留括号、不准编造</span></label>
+        </div>
+
+        <div id="check"></div>
+
+        <div class="field">
+          <label for="out">生成的提示词</label>
+          <textarea id="out" class="output" rows="8" readonly></textarea>
+        </div>
+        <div class="row">
+          <button class="btn" id="copy">复制提示词</button>
+          <button class="btn ghost" id="clear">清空</button>
+        </div>
+      </section>
+
+      <div class="pager">
+        <a href="day-01.html">← Day 1 一句话，和五件套</a>
+        <span style="color:var(--text-3)">Day 3 明天见 →</span>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">已复制，去 Claude 里粘贴吧</div>
+  <footer>和 Claude 一起，一天一块砖。</footer>
+
+  <script>
+    const PRESETS = {
+      "小红书笔记": { kind: "一条小红书", topic: "分享我在德国留学的一个日常小片段", len: "200字左右", tone: "自然真诚，不要网红腔",
+        asks: ["那天发生了什么具体的事？", "你当时心里是什么感受？", "想让看的人带走什么？"] },
+      "闲鱼商品": { kind: "一段闲鱼商品描述", topic: "卖掉一件我用不上的东西", len: "150字左右", tone: "真诚亲切，不要夸张词",
+        asks: ["是什么东西、什么牌子？", "用了多久、成色如何、有没有瑕疵？", "想卖多少钱、在哪交易？"] },
+      "德语邮件": { kind: "一封给教授的德语邮件", topic: "跟教授请假或询问一件事", len: "150词以内", tone: "正式礼貌，用 Sie",
+        asks: ["教授怎么称呼？", "具体要请求或说明什么？", "有没有时间、课程名之类的细节？"] },
+      "自我介绍": { kind: "一段自我介绍", topic: "在新场合介绍我自己", len: "100字左右", tone: "大方自然，不要客套话",
+        asks: ["这是在什么场合、给谁看？", "你最想让对方记住你的哪一点？", "有没有一个能说明你的小故事？"] }
+    };
+    const $ = id => document.getElementById(id);
+    let kind = "";
+    let asks = [];
+
+    $("presets").innerHTML = Object.keys(PRESETS).map(k => `<button class="chip" data-k="${k}">${k}</button>`).join("");
+    $("presets").addEventListener("click", e => {
+      const k = e.target.dataset.k; if (!k) return;
+      document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c === e.target));
+      const p = PRESETS[k];
+      kind = p.kind; asks = p.asks;
+      $("f-topic").value = p.topic; $("f-len").value = p.len; $("f-tone").value = p.tone;
+      build();
+    });
+
+    function build() {
+      const topic = $("f-topic").value.trim();
+      const n = $("f-n").value;
+      $("n-val").textContent = n + " 个";
+      if (!topic) { $("out").value = ""; $("check").innerHTML = ""; return; }
+      const lines = [];
+      lines.push(`我想写${kind || "一段内容"}：${topic}。`);
+      lines.push(`写之前，先问我${n}个最关键的问题${$("f-one").checked ? "，一次只问一个，等我回答完再问下一个" : ""}。`);
+      const req = [$("f-len").value.trim(), $("f-tone").value.trim()].filter(Boolean).join("，");
+      lines.push(`问完再动笔${req ? "，" + req : ""}。`);
+      if ($("f-rule").checked) lines.push("只用我回答里的真实信息，不要用括号占位，也不要编造细节。");
+      $("out").value = lines.join("\n");
+      $("check").innerHTML = asks.length
+        ? `<div class="hint ok">它多半会问你：${asks.slice(0, n).map(a => "「" + a + "」").join(" ")}　可以先想一想。</div>`
+        : `<div class="hint ok">提示词好了。答它问题时，越具体越像你。</div>`;
+    }
+    ["f-topic", "f-n", "f-len", "f-tone"].forEach(id => $(id).addEventListener("input", build));
+    ["f-one", "f-rule"].forEach(id => $(id).addEventListener("change", build));
+
+    $("copy").addEventListener("click", async () => {
+      const t = $("out").value; if (!t) return;
+      try { await navigator.clipboard.writeText(t); }
+      catch { $("out").select(); document.execCommand("copy"); }
+      $("toast").classList.add("show"); setTimeout(() => $("toast").classList.remove("show"), 1600);
+    });
+    $("clear").addEventListener("click", () => {
+      ["f-topic", "f-len", "f-tone"].forEach(id => $(id).value = "");
+      kind = ""; asks = [];
+      document.querySelectorAll(".chip").forEach(c => c.classList.remove("on"));
+      build();
+    });
+    build();
+  </script>
+</body>
+</html>
