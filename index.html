@@ -10,6 +10,14 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23ffc46b'/><stop offset='.55' stop-color='%23f07b2e'/><stop offset='1' stop-color='%23e2505c'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="每天学一点，每天多一个能用的小工具。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="assets/icon-180.png">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -28,7 +36,7 @@
     <section class="hero">
       <div class="container">
         <span class="eyebrow reveal">Haoyu 的 AI 工具箱</span>
-        <h1 class="headline reveal d1">每天学一点。<br><span class="gradient-text">每天多一个能用的小工具。</span></h1>
+        <h1 class="headline reveal d1">每天学一点。<br><span class="gradient-text"><span class="nb">每天多一个</span><span class="nb">能用的小工具。</span></span></h1>
         <p class="lead reveal d2">这里记录我学 AI 的每一天：当天学到的道理，我亲手做的练习，和一个点开就能用的小工具。</p>
         <div class="links reveal d3"><a href="#latest">看最新一课</a><a href="about.html">认识我</a></div>
         <div class="stats reveal d4">
@@ -36,6 +44,7 @@
           <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
           <div class="stat"><b id="s-pct">0%</b><span>四周课程进度</span></div>
         </div>
+        <nav class="dock reveal d4" id="dock" aria-label="我做过的工具"></nav>
       </div>
     </section>
 
@@ -68,8 +77,9 @@
 
   <footer class="footer">
     <div class="container wide">
-      <span>和 Claude 一起，一天一块砖。</span>
+      <span class="crumbs"><a href="index.html">Haoyu 的 AI 工具箱</a></span>
       <span><a href="about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
     </div>
   </footer>
 
@@ -95,6 +105,15 @@
             <div class="links"><span style="color:var(--accent-text)">阅读这一课 ›</span><span style="color:var(--accent-text)">打开${esc(latest.tool)} ›</span></div>
           </a>`;
       }
+
+      // 图标陈列：按顺序排开已完成的课，本周剩下的天数留空位
+      const asc = days.slice().reverse();
+      const wk = weeks.find(w => w.n === (latest ? latest.week : 1));
+      const left = wk ? Math.max(0, wk.days - days.filter(d => d.week === wk.n).length) : 0;
+      const nextDay = latest ? latest.day + 1 : 1;
+      document.getElementById("dock").innerHTML =
+        asc.map(d => `<a href="${esc(d.url)}" data-label="Day ${d.day} · ${esc(d.tool || d.title)}" aria-label="Day ${d.day}：${esc(d.title)}">${glyph(d, "sm")}</a>`).join("") +
+        Array.from({ length: left }, (_, i) => `<span title="Day ${nextDay + i}，即将解锁"><div class="glyph sm locked">${nextDay + i}</div></span>`).join("");
 
       // 全部课程
       document.getElementById("tiles").innerHTML = days.map((d, i) => `

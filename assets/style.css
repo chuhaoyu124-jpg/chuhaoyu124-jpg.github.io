@@ -368,3 +368,41 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   .roadmap { grid-template-columns: 1fr; }
   .brand span.full { display: none; }
 }
+
+/* ---------- 精修：排版、焦点、图标陈列、页脚 ---------- */
+/* 标题均衡断行，避免最后一行只剩一两个字 */
+.headline, .title, .subtitle, .statement, .pull, h3, h4 { text-wrap: balance; }
+/* 短标题只在标点处换行，放不下时才断字 */
+.title { word-break: keep-all; overflow-wrap: anywhere; }
+/* 不拆开的词组 */
+.nb { display: inline-block; }
+.lead, p { text-wrap: pretty; }
+/* 键盘导航时的焦点环 */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; }
+::selection { background: var(--accent-soft); }
+
+/* 首页图标陈列：已完成的课程 + 本周待解锁 */
+.dock { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 56px auto 0; max-width: 560px; }
+.dock a, .dock span { position: relative; display: block; border-radius: 16px; transition: transform .4s var(--ease-out); }
+.dock a:hover { transform: translateY(-6px) scale(1.06); text-decoration: none; }
+.dock a::after {
+  content: attr(data-label); position: absolute; left: 50%; top: calc(100% + 10px); transform: translateX(-50%) translateY(-4px);
+  white-space: nowrap; font-size: 12px; color: var(--text-2); opacity: 0; pointer-events: none;
+  transition: opacity .25s var(--ease), transform .25s var(--ease);
+}
+.dock a:hover::after, .dock a:focus-visible::after { opacity: 1; transform: translateX(-50%); }
+.dock .glyph.locked { font-size: 18px; font-weight: 500; box-shadow: inset 0 0 0 1px var(--line); background: transparent; }
+@media (max-width: 480px) { .dock { gap: 8px; } .dock a, .dock span { border-radius: 12px; } .dock .glyph.sm { width: 40px; height: 40px; border-radius: 12px; font-size: 19px; } .dock .glyph.locked { font-size: 15px; } }
+
+/* 页脚：Apple 式面包屑 + 版权 */
+.footer .crumbs { display: flex; align-items: center; gap: 8px; color: var(--text-2); }
+.footer .crumbs .sep { color: var(--text-3); }
+.footer .copy { width: 100%; color: var(--text-3); margin-top: 6px; }
+
+/* 课程页导航：当前所在版块高亮 */
+.nav-links a.active { color: var(--text); }
+
+/* 404 */
+.notfound { min-height: 72vh; display: grid; place-items: center; text-align: center; padding: 120px 0 80px; }
+.notfound .glyph { margin: 0 auto 28px; }

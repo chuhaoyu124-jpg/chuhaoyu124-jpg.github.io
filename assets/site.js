@@ -22,6 +22,19 @@
   };
   document.addEventListener("DOMContentLoaded", () => window.observeReveal());
 
+  // 课程页：导航里的“笔记 / 练习 / 工具”随滚动高亮当前版块
+  const spy = [...document.querySelectorAll('.nav-links a[href^="#"]')]
+    .map(a => [a, document.querySelector(a.getAttribute("href"))]).filter(([, s]) => s);
+  if (spy.length && "IntersectionObserver" in window) {
+    const so = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        spy.forEach(([a, s]) => a.classList.toggle("active", s === e.target));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    spy.forEach(([, s]) => so.observe(s));
+  }
+
   // 复制到剪贴板 + 轻提示
   window.copyText = async function (text, msg) {
     if (!text) return;
