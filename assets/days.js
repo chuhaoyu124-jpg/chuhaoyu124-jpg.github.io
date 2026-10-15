@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 4,
+    keywords: "多版本 三个版本 标题 挑选 混合 小红书 羊腿",
+    date: "2026-10-15",
+    week: 1,
+    title: "多要几版，挑一个，再混合",
+    summary: "AI 的第一版只是随手抽的一张牌。一次要 3 个方向不同的版本，挑一个，再把别的版本的好处借过来。",
+    tool: "三版本提示词生成器",
+    glyph: "选",
+    grad: "linear-gradient(135deg, #c3b5ff 0%, #8a7dff 50%, #5b6cf0 100%)",
+    url: "days/day-04.html"
+  },
+  {
     day: 3,
     keywords: "语气 风格 模仿 范文 样本 朋友圈 小红书 德国",
     date: "2026-10-15",
