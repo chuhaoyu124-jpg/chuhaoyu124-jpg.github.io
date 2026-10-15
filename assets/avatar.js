@@ -1,5 +1,8 @@
 // 虚拟形象：眼睛跟着鼠标（手机上跟着手指）走，表情随你的动作变化
 // 用法：页面里放一个 <button type="button" class="me" data-avatar aria-label="…"></button>，再引入本文件
+// 图片模式：加 data-avatar-img="assets/me.png"，就用这张图（3D 渲染图等）代替代码画的脸，
+//   图片会跟着鼠标转头、有一束流动的光。再加 data-avatar-faces="hover:assets/me-smile.png,wink:assets/me-wink.png,…"
+//   可给各表情配不同的图（hover / near / curious / surprised / sleepy / wink / shy），缺的表情用底图
 (function () {
   const hosts = [...document.querySelectorAll("[data-avatar]")];
   if (!hosts.length) return;
@@ -155,7 +158,15 @@
   // ---- 每个形象 ----
   hosts.forEach((host, n) => {
     const id = "me" + n;
-    host.innerHTML = svg(id);
+    const photo = host.dataset.avatarImg;
+    const faceImgs = {};
+    (host.dataset.avatarFaces || "").split(",").map(x => x.trim()).filter(Boolean).forEach(x => { const i = x.indexOf(":"); if (i > 0) faceImgs[x.slice(0, i).trim()] = x.slice(i + 1).trim(); });
+    if (photo) {
+      host.classList.add("me-photo");
+      host.innerHTML = `<div class="me-stage"><div class="me-card"><img class="me-img" src="${photo.replace(/"/g, "&quot;")}" alt="" draggable="false"><img class="me-img me-img-alt" alt="" draggable="false"><div class="me-gloss"></div></div></div>
+        <span class="me-zs"><span class="me-z">z</span><span class="me-z">z</span><span class="me-z">Z</span></span><span class="me-say" role="status" aria-live="polite"></span>`;
+      Object.values(faceImgs).forEach(src => { const i = new Image(); i.src = src; }); // 预加载
+    } else host.innerHTML = svg(id);
     host.style.setProperty("--shut", SHUT + "px");
     const $ = s => host.querySelector(s), $$ = s => [...host.querySelectorAll(s)];
     const el = {
@@ -168,6 +179,15 @@
     function setFace(name) {
       if (s.face === name) return;
       s.face = name;
+      host.classList.toggle("sleepy", name === "sleepy");
+      if (photo) {
+        const src = faceImgs[name] || "";
+        const alt = $(".me-img-alt");
+        if (src) { if (alt.getAttribute("src") !== src) alt.src = src; alt.classList.add("show"); }
+        else alt.classList.remove("show");
+        host.dataset.face = name;
+        return;
+      }
       const f = FACES[name], m = MOUTHS[f.mouth];
       el.mouth.setAttribute("d", m[0]);
       el.mouth.setAttribute("fill", m[1]);
@@ -181,7 +201,6 @@
       const happy = side => f.eyes === "happy" || (f.eyes === "wink" && side === "L");
       el.open.forEach(e => e.style.opacity = happy(e.dataset.side) ? 0 : 1);
       el.happy.forEach(e => e.style.opacity = happy(e.dataset.side) ? 1 : 0);
-      host.classList.toggle("sleepy", name === "sleepy");
     }
     function say(text, ms) {
       el.say.textContent = text;
@@ -259,6 +278,21 @@
           host.classList.remove("blink"); void host.offsetWidth; host.classList.add("blink");
         }
         s.nextBlink = now + (Math.random() < .2 ? 260 : 2400 + Math.random() * 3600);
+      }
+
+      // 图片模式：整张图朝鼠标方向转，光随之流动
+      if (photo) {
+        const tx = reduce ? 0 : Math.cos(a) * 12 * k, ty = reduce ? 0 : Math.sin(a) * 9 * k + (face === "sleepy" ? 6 : 0);
+        s.fx += (tx - s.fx) * .12; s.fy += (ty - s.fy) * .12;
+        const sc = face === "hover" ? 1.06 : face === "surprised" ? 1.03 : 1;
+        s.rot += (sc - s.rot - 1) * .15;
+        host.style.setProperty("--ry", s.fx.toFixed(2) + "deg");
+        host.style.setProperty("--rx", (-s.fy).toFixed(2) + "deg");
+        host.style.setProperty("--sc", (1 + s.rot).toFixed(3));
+        host.style.setProperty("--gx", (50 + Math.cos(a) * 45 * k).toFixed(1) + "%");
+        host.style.setProperty("--gy", (50 + Math.sin(a) * 45 * k).toFixed(1) + "%");
+        P.speed *= .92;
+        return;
       }
 
       // 平滑跟随
