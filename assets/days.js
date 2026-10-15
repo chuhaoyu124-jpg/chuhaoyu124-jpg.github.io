@@ -2,6 +2,17 @@
 // glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 3,
+    date: "2026-10-15",
+    week: 1,
+    title: "给范文，胜过给形容词",
+    summary: "“自然真诚”每个人理解都不一样。与其形容语气，不如给 AI 看一段你自己写的话。",
+    tool: "语气样本提示词生成器",
+    glyph: "样",
+    grad: "linear-gradient(135deg, #a8e6a1 0%, #3fbf8f 50%, #2d8fb8 100%)",
+    url: "days/day-03.html"
+  },
+  {
     day: 2,
     date: "2026-10-14",
     week: 1,
