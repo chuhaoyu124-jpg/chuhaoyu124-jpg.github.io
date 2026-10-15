@@ -406,3 +406,80 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: non
 /* 404 */
 .notfound { min-height: 72vh; display: grid; place-items: center; text-align: center; padding: 120px 0 80px; }
 .notfound .glyph { margin: 0 auto 28px; }
+
+/* ---------- 动效 2.0：更流畅的过场、图标、卡片 ----------
+   全部只在系统没有开启“减弱动态效果”时生效 */
+@media (prefers-reduced-motion: no-preference) {
+  /* 页面之间淡入淡出，点开课程时图标会“飞”到课程页顶部 */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root) { animation: vt-out .32s var(--ease) both; }
+  ::view-transition-new(root) { animation: vt-in .5s var(--ease-out) both; }
+  ::view-transition-group(hero-glyph) { animation-duration: .65s; animation-timing-function: var(--ease-out); }
+  .lesson-hero .glyph { view-transition-name: hero-glyph; }
+  .lesson-hero .glyph.reveal { opacity: 1; }
+
+  /* 大标题：带一点虚化浮现 */
+  .headline.reveal, .title.reveal, .statement.reveal { filter: blur(10px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out), filter 1s var(--ease-out); }
+  .headline.reveal.in, .title.reveal.in, .statement.reveal.in { filter: none; }
+  .no-motion .reveal { filter: none !important; }
+
+  /* 首页渐变字缓缓流动 */
+  .hero .gradient-text { background-size: 220% 100%; animation: shimmer 9s ease-in-out infinite alternate; }
+
+  /* 主图标轻轻漂浮 */
+  .lesson-hero .glyph, .showcase .glyph, .about-hero .avatar, .notfound .glyph { animation: float 6s ease-in-out infinite; }
+
+  /* 首页图标陈列：依次弹出 */
+  .dock.reveal:not(.in) > * { opacity: 0; }
+  .dock.in > * { animation: pop .75s cubic-bezier(.34, 1.56, .64, 1) backwards; animation-delay: calc(var(--i, 0) * 70ms + .25s); }
+
+  /* 最新一课的大卡片：滚进来时由小到大 */
+  @supports (animation-timeline: view()) {
+    #showcase { animation: grow linear both; animation-timeline: view(); animation-range: entry 0% cover 35%; }
+  }
+
+  /* 卡片：跟随鼠标微微倾斜，并有一束暖光 */
+  .tile:hover, .showcase:hover { --s: 1.02; transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--s)); }
+  .showcase:hover { --s: 1.01; }
+  .tile.tilting, .showcase.tilting { transition: transform .15s linear, box-shadow .45s var(--ease-out); }
+
+  /* 按钮、开关按下去有回弹 */
+  .btn, .btn-pill, .chip, .seg button { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), filter .2s var(--ease), background .2s var(--ease), color .2s var(--ease); }
+  .btn:active, .btn-pill:active, .chip:active, .seg button:active { transform: scale(.94); transition-duration: .1s; }
+
+  /* 课程里的小卡片悬停时轻轻抬起 */
+  .feature, .note, .week, .attempt { transition: transform .45s var(--ease-out), box-shadow .45s var(--ease-out); }
+  .feature:hover, .note:hover, .week:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+}
+
+.tile, .showcase { position: relative; overflow: hidden; }
+.tile::before, .showcase::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 159, 67, .14), transparent 45%);
+  transition: opacity .4s var(--ease);
+}
+.tile:hover::before, .showcase:hover::before { opacity: 1; }
+.tile > *, .showcase > * { position: relative; }
+
+/* 图标悬停时扫过一道光 */
+.glyph:not(.locked) { position: relative; overflow: hidden; }
+.glyph:not(.locked)::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, .5) 48%, transparent 66%);
+  transform: translateX(-130%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:hover .glyph:not(.locked)::after { transition: transform .9s var(--ease-out); transform: translateX(130%); }
+  .lesson-hero .glyph::after, .showcase .glyph::after { animation: sweep 1.2s var(--ease-out) .7s both; }
+}
+
+/* 课程页阅读进度：导航下沿的一条暖橙细线 */
+.readbar { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--grad-warm); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+
+@keyframes vt-out { to { opacity: 0; transform: scale(.985); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+@keyframes shimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes sweep { from { transform: translateX(-130%); } to { transform: translateX(130%); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.6); } }
+@keyframes grow { from { transform: scale(.9); opacity: .35; } to { transform: none; opacity: 1; } }
