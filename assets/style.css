@@ -685,3 +685,45 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
   .attempt { padding: 22px 18px; }
   .swipe-hint { display: none; }
 }
+
+/* ---------- 虚拟形象：照着 Haoyu 画的卡通头像，眼睛跟着鼠标走 ---------- */
+.me {
+  position: relative; display: block; width: 128px; height: 128px; margin: 0 auto 24px; padding: 0;
+  border: 0; border-radius: 50%; background: none; cursor: pointer; font: inherit; color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.me.me-lg { width: 176px; height: 176px; margin-bottom: 30px; }
+.me svg { width: 100%; height: 100%; border-radius: 50%; overflow: visible; box-shadow: 0 16px 40px -12px rgba(240, 123, 46, .6); transition: transform .4s var(--ease-out); }
+.me:active svg { transform: scale(.95); }
+.me:focus-visible { outline-offset: 6px; border-radius: 50%; }
+.me-brow { transform-box: fill-box; transform-origin: center; transition: transform .35s var(--ease-out); }
+.me-lid { transition: transform .3s var(--ease-out); }
+.me-eye-open, .me-eye-happy, .me-lash { transition: opacity .15s var(--ease); }
+.me-cheek { transition: opacity .45s var(--ease); }
+.me-mouth { transition: d .25s var(--ease-out), fill .2s var(--ease); }
+.me.blink .me-lid { animation: me-blink .17s ease-in-out; }
+.me-z { opacity: 0; transition: opacity .5s var(--ease); }
+.me.sleepy .me-z { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .me-bob { animation: me-breathe 4.5s ease-in-out infinite; }
+  .me.sleepy .me-z { animation: me-z 2.6s ease-in-out infinite; }
+  .me.sleepy .me-z:nth-child(2) { animation-delay: .4s; }
+  .me.sleepy .me-z:nth-child(3) { animation-delay: .8s; }
+}
+.me-say {
+  position: absolute; left: 50%; bottom: calc(100% + 10px); z-index: 2; white-space: nowrap;
+  padding: 8px 14px; border-radius: 16px; font-size: 14px; font-weight: 500; line-height: 1.3;
+  background: var(--surface); color: var(--text); box-shadow: var(--shadow-lg), 0 0 0 1px var(--line-soft);
+  opacity: 0; pointer-events: none; transform: translate(-50%, 6px) scale(.92); transform-origin: 50% 100%;
+  transition: opacity .2s var(--ease), transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.me-say::after { content: ""; position: absolute; left: 50%; top: 100%; margin-left: -6px; border: 6px solid transparent; border-top-color: var(--surface); }
+.me-say.show { opacity: 1; transform: translate(-50%, 0); }
+.me-heart {
+  position: absolute; left: var(--x, 50%); top: 28%; color: #ff6b81; font-size: 18px; pointer-events: none;
+  animation: me-heart 1.1s var(--ease-out) both;
+}
+@keyframes me-blink { 50% { transform: translateY(var(--shut, 17px)); } }
+@keyframes me-breathe { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(1.6px); } }
+@keyframes me-z { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(-5px); opacity: 1; } }
+@keyframes me-heart { from { opacity: 1; transform: translate(-50%, 0) scale(.5); } to { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), -80px) scale(1.25); } }
