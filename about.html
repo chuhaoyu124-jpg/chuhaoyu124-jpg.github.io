@@ -2,9 +2,13 @@
 <html lang="zh-CN" class="no-js">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <title>关于 · Haoyu 的 AI 工具箱</title>
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
@@ -34,8 +38,8 @@
   <main>
     <section class="about-hero">
       <div class="container narrow">
-        <div class="avatar reveal">H</div>
-        <h1 class="headline reveal d1">你好，我是 Haoyu。</h1>
+        <button type="button" class="me me-lg reveal" data-avatar data-avatar-img="assets/me.jpg" aria-label="Haoyu 的 3D 卡通形象，点一下打个招呼"></button>
+        <h1 class="headline reveal d1"><span class="nb">你好，</span><span class="nb">我是 Haoyu。</span></h1>
         <p class="lead reveal d2">一个正在认真学 AI 的人。<br>每天一小时，把学到的东西做成能用的工具。</p>
       </div>
     </section>
@@ -86,5 +90,6 @@
     </div>
   </footer>
   <script src="assets/site.js"></script>
+  <script src="assets/avatar.js"></script>
 </body>
 </html>
