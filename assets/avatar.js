@@ -5,24 +5,27 @@
   if (!hosts.length) return;
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // 照着 Haoyu 本人画的：黑色蘑菇头齐刘海、圆脸、细长单眼皮、抿嘴小得意、浅粉卫衣 + 黑外套
-  const C = { skin: "#ffe0c8", skinDark: "#f3c4a2", hair: "#1e1a19", hairHi: "#3a3230", ink: "#2a2220", mouth: "#c4544b", cheek: "#ff8f86", hoodie: "#f6d9df", hoodieDark: "#e9c0c9", jacket: "#2b2829" };
-  const EYES = { L: [77, 107], R: [123, 107] };
-  const ERY = 7.5; // 眼睛高度的一半：单眼皮，细长一点
+  // 照着 Haoyu 本人的照片画，3D 动画电影那种质感。抓的特征：
+  // 黑色蓬松蘑菇头，刘海偏分、盖住眉毛；圆润的脸，脸颊饱满，下巴柔和；
+  // 细长的单眼皮眼睛，眼角微微下垂，眼神放松；眉毛平直偏粗、贴近眼睛；
+  // 鼻头圆润；嘴唇略厚、抿着嘴笑得有点得意；浅粉色连帽卫衣外面套黑外套
+  const C = { skin: "#f7cfae", ink: "#2a1d18", mouth: "#b9574e", cheek: "#ff8a7a" };
+  const EYES = { L: [76, 110], R: [124, 110] };
+  const ERY = 7; // 眼睛高度的一半：单眼皮，细长一点
   const SHUT = ERY * 2 + 2;
 
   // 嘴型：[路径, 填充]
   const MOUTHS = {
-    smile: ["M89 129 Q100 134 112 127", "none"],
-    grin: ["M86 124 Q100 139 114 124", "none"],
-    open: ["M85 123 Q100 146 115 123 Q100 127 85 123 Z", C.mouth],
-    small: ["M93 128 Q100 133 107 128", "none"],
-    o: ["M100 123 C105 123 107 128 107 131 C107 135 104 137 100 137 C96 137 93 135 93 131 C93 128 95 123 100 123 Z", C.mouth],
-    flat: ["M94 130 Q100 132 106 130", "none"]
+    smile: ["M88 137 Q100 141 112 136", "none"],
+    grin: ["M86 135 Q100 146 114 134", "none"],
+    open: ["M86 134 Q100 154 114 134 Q100 139 86 134 Z", C.mouth],
+    small: ["M93 137 Q100 141 107 137", "none"],
+    o: ["M100 132 C105 132 107 137 107 140 C107 144 104 147 100 147 C96 147 93 144 93 140 C93 137 95 132 100 132 Z", C.mouth],
+    flat: ["M94 138 Q100 140 106 138", "none"]
   };
   // 表情：嘴、眉毛高低/角度、腮红、眼皮、眼睛样式、瞳孔大小
   const FACES = {
-    idle: { mouth: "smile", brow: 0, browRot: 0, cheek: .28, lid: 2, eyes: "open" },
+    idle: { mouth: "smile", brow: 0, browRot: 0, cheek: .28, lid: 2.5, eyes: "open" },
     near: { mouth: "grin", brow: -1, browRot: 0, cheek: .45, lid: 0, eyes: "open" },
     hover: { mouth: "open", brow: -3, browRot: 0, cheek: .7, lid: 0, eyes: "happy" },
     curious: { mouth: "small", brow: -5, browRot: -6, cheek: .32, lid: 0, eyes: "open", pupil: 1.12 },
@@ -36,42 +39,81 @@
 
   function svg(id) {
     const eye = (side, [x, y]) => `
-      <clipPath id="${id}-c${side}"><ellipse cx="${x}" cy="${y}" rx="12" ry="${ERY + .5}"/></clipPath>
-      <g class="me-eye-open" data-side="${side}" clip-path="url(#${id}-c${side})">
-        <ellipse cx="${x}" cy="${y}" rx="11.5" ry="${ERY}" fill="#fff"/>
-        <g class="me-pupil"><circle cx="${x}" cy="${y}" r="5.6" fill="#1d1513"/><circle cx="${x + 2}" cy="${y - 2.2}" r="1.8" fill="#fff"/></g>
-        <g class="me-lid"><rect x="${x - 13}" y="${y - ERY - 30}" width="26" height="30" fill="${C.skin}"/><path d="M${x - 13} ${y - ERY - .5} H${x + 13}" stroke="${C.ink}" stroke-width="2.6" stroke-linecap="round"/></g>
+      <clipPath id="${id}-c${side}"><path d="M${x - 13} ${y + 1} C${x - 10} ${y - ERY - 2} ${x + 10} ${y - ERY - 2} ${x + 13} ${y} C${x + 10} ${y + ERY + 1} ${x - 10} ${y + ERY + 1} ${x - 13} ${y + 1} Z"/></clipPath>
+      <g class="me-eye-open" data-side="${side}">
+        <g clip-path="url(#${id}-c${side})">
+          <rect x="${x - 14}" y="${y - 12}" width="28" height="24" fill="url(#${id}-white)"/>
+          <g class="me-pupil">
+            <circle cx="${x}" cy="${y}" r="6.6" fill="url(#${id}-iris)"/>
+            <circle cx="${x}" cy="${y}" r="6.6" fill="none" stroke="#2b1a12" stroke-width="1"/>
+            <circle cx="${x}" cy="${y + .3}" r="3.1" fill="#120a08"/>
+            <circle cx="${x + 2.3}" cy="${y - 2.4}" r="1.9" fill="#fff"/>
+            <circle cx="${x - 2.2}" cy="${y + 2.6}" r=".9" fill="#fff" opacity=".7"/>
+          </g>
+          <path d="M${x - 14} ${y - 12} H${x + 14} V${y - 2} C${x + 8} ${y - 6} ${x - 8} ${y - 6} ${x - 14} ${y - 2} Z" fill="#000" opacity=".16"/>
+          <g class="me-lid"><rect x="${x - 15}" y="${y - ERY - 32}" width="30" height="32" fill="url(#${id}-lid)"/><path d="M${x - 14} ${y - ERY - .3} H${x + 14}" stroke="${C.ink}" stroke-width="2.2" stroke-linecap="round"/></g>
+        </g>
       </g>
-      <path d="M${x - 12} ${y - 1} Q${x} ${y - ERY - 3.5} ${x + 12} ${y - 1}" fill="none" stroke="${C.ink}" stroke-width="2.4" stroke-linecap="round" class="me-lash" data-side="${side}"/>
-      <path class="me-eye-happy" data-side="${side}" d="M${x - 11} ${y + 3} Q${x} ${y - 7} ${x + 11} ${y + 3}" fill="none" stroke="${C.ink}" stroke-width="3.6" stroke-linecap="round" opacity="0"/>`;
+      <path class="me-lash" data-side="${side}" d="M${x - 13} ${y + 1} C${x - 10} ${y - ERY - 3} ${x + 10} ${y - ERY - 3} ${x + 13.5} ${y - .5}" fill="none" stroke="${C.ink}" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M${x - 11} ${y + ERY + 1.5} Q${x} ${y + ERY + 3.5} ${x + 11} ${y + ERY + 1.5}" fill="none" stroke="#c98e6c" stroke-width="1" opacity=".7"/>
+      <path class="me-eye-happy" data-side="${side}" d="M${x - 11} ${y + 3} Q${x} ${y - 7} ${x + 11} ${y + 3}" fill="none" stroke="${C.ink}" stroke-width="3.4" stroke-linecap="round" opacity="0"/>`;
     return `<svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="${id}-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffc46b"/><stop offset=".55" stop-color="#f07b2e"/><stop offset="1" stop-color="#e2505c"/></linearGradient>
+        <linearGradient id="${id}-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd58a"/><stop offset=".55" stop-color="#f07b2e"/><stop offset="1" stop-color="#e2505c"/></linearGradient>
+        <radialGradient id="${id}-skin" cx=".42" cy=".36" r=".75"><stop offset="0" stop-color="#ffe3c6"/><stop offset=".55" stop-color="#f7cfae"/><stop offset="1" stop-color="#d9a07c"/></radialGradient>
+        <radialGradient id="${id}-lid" cx=".5" cy="1" r="1"><stop offset="0" stop-color="#f3c6a4"/><stop offset="1" stop-color="#f7cfae"/></radialGradient>
+        <radialGradient id="${id}-white" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe3ea"/></radialGradient>
+        <radialGradient id="${id}-iris" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#8a5a3c"/><stop offset=".6" stop-color="#4a2b1c"/><stop offset="1" stop-color="#2a1710"/></radialGradient>
+        <radialGradient id="${id}-hair" cx=".45" cy=".25" r=".8"><stop offset="0" stop-color="#4a4140"/><stop offset=".5" stop-color="#231d1c"/><stop offset="1" stop-color="#0e0b0b"/></radialGradient>
+        <linearGradient id="${id}-hoodie" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe4e8"/><stop offset="1" stop-color="#e8c3cb"/></linearGradient>
+        <linearGradient id="${id}-jacket" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3638"/><stop offset=".5" stop-color="#222021"/><stop offset="1" stop-color="#121011"/></linearGradient>
+        <radialGradient id="${id}-cheek" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${C.cheek}"/><stop offset="1" stop-color="${C.cheek}" stop-opacity="0"/></radialGradient>
+        <radialGradient id="${id}-nose" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#ffdcc0"/><stop offset="1" stop-color="#e3a985"/></radialGradient>
+        <linearGradient id="${id}-lip" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d98a7c"/><stop offset="1" stop-color="#c06a60"/></linearGradient>
         <clipPath id="${id}-clip"><circle cx="100" cy="100" r="100"/></clipPath>
       </defs>
       <circle cx="100" cy="100" r="100" fill="url(#${id}-bg)"/>
+      <circle cx="100" cy="100" r="100" fill="#000" opacity=".06"/>
       <g clip-path="url(#${id}-clip)"><g class="me-bob">
-        <path d="M14 206 C16 170 50 154 100 154 C150 154 184 170 186 206 Z" fill="${C.jacket}"/>
-        <path d="M66 160 Q100 150 134 160 L120 206 H80 Z" fill="${C.hoodie}"/>
-        <path d="M90 134 H110 V156 Q100 162 90 156 Z" fill="${C.skinDark}"/>
-        <path d="M60 164 C64 146 84 150 100 158 C116 150 136 146 140 164 C130 158 116 162 100 170 C84 162 70 158 60 164 Z" fill="${C.hoodieDark}"/>
-        <path d="M93 168 V186 M107 168 V186" stroke="${C.hoodieDark}" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M66 160 L56 206 M134 160 L144 206" stroke="#1a1818" stroke-width="2" opacity=".6"/>
+        <!-- 黑外套 + 粉卫衣帽子 + 脖子 -->
+        <path d="M8 210 C10 168 44 150 100 150 C156 150 190 168 192 210 Z" fill="url(#${id}-jacket)"/>
+        <path d="M58 164 C66 148 84 144 100 156 C116 144 134 148 142 164 L134 212 H66 Z" fill="url(#${id}-hoodie)"/>
+        <path d="M58 164 C70 154 86 156 100 170 C114 156 130 154 142 164 C132 160 116 166 100 180 C84 166 68 160 58 164 Z" fill="#d9adb8" opacity=".75"/>
+        <path d="M92 176 V196 M108 176 V196" stroke="#d6a8b3" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M60 166 C56 184 54 198 54 212 M140 166 C144 184 146 198 146 212" fill="none" stroke="#0c0a0a" stroke-width="2" opacity=".5"/>
+        <path d="M89 130 H111 V158 C104 165 96 165 89 158 Z" fill="#dba57f"/>
         <g class="me-head">
-          <path d="M38 112 C30 62 62 30 101 30 C140 30 172 62 162 112 C160 120 156 124 152 124 L48 124 C44 124 40 120 38 112 Z" fill="${C.hair}"/>
-          <ellipse cx="43" cy="114" rx="8" ry="11" fill="${C.skinDark}"/><ellipse cx="157" cy="114" rx="8" ry="11" fill="${C.skinDark}"/>
-          <path d="M44 106 C44 78 70 64 100 64 C130 64 156 78 156 106 C156 142 132 166 100 166 C68 166 44 142 44 106 Z" fill="${C.skin}"/>
-          <path d="M42 104 C40 60 66 38 101 38 C136 38 162 60 158 104 C154 92 150 86 146 84 C130 88 112 86 100 84 C86 87 70 88 54 84 C50 88 45 95 42 104 Z" fill="${C.hair}"/>
-          <path d="M66 52 C80 44 96 42 112 44" fill="none" stroke="${C.hairHi}" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-          <path d="M70 84 L73 78 M86 85 L88 79 M104 84 L102 78 M120 85 L118 79 M136 84 L133 78" stroke="${C.hair}" stroke-width="4" stroke-linecap="round"/>
+          <!-- 后发 -->
+          <path d="M34 118 C26 56 60 24 101 24 C142 24 176 56 166 118 C164 128 158 132 152 132 L48 132 C42 132 36 128 34 118 Z" fill="url(#${id}-hair)"/>
+          <!-- 耳朵 -->
+          <ellipse cx="42" cy="118" rx="8.5" ry="12" fill="#e8b48f"/><ellipse cx="42" cy="118" rx="4.5" ry="7" fill="#d79a74"/>
+          <ellipse cx="158" cy="118" rx="8.5" ry="12" fill="#e8b48f"/><ellipse cx="158" cy="118" rx="4.5" ry="7" fill="#d79a74"/>
+          <!-- 脸：圆润饱满，下巴柔和 -->
+          <path d="M43 104 C43 76 68 60 100 60 C132 60 157 76 157 104 C157 140 134 170 100 170 C66 170 43 140 43 104 Z" fill="url(#${id}-skin)"/>
+          <path d="M46 118 C50 150 70 168 100 168 C130 168 150 150 154 118 C150 154 128 172 100 172 C72 172 50 154 46 118 Z" fill="#c98b66" opacity=".35"/>
+          <ellipse cx="100" cy="160" rx="14" ry="4" fill="#d9a07c" opacity=".45"/>
+          <!-- 刘海：蓬松、偏分、盖住眉毛 -->
+          <path d="M40 108 C38 58 66 34 101 34 C138 34 164 58 160 108 C156 92 150 84 146 80 C138 92 128 96 118 92 C110 100 100 102 92 96 C84 104 72 104 64 94 C56 96 48 100 40 108 Z" fill="url(#${id}-hair)"/>
+          <path d="M66 90 C74 82 84 80 92 92 M118 88 C112 80 104 76 96 82" fill="none" stroke="#0e0b0b" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+          <path d="M60 50 C72 40 90 36 110 38 M118 42 C128 44 138 50 146 60" fill="none" stroke="#6b605e" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+          <path d="M70 44 C84 38 98 37 112 40" fill="none" stroke="#8f8381" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          <!-- 刘海投下的阴影 -->
+          <path d="M44 108 C56 100 68 100 76 104 C86 108 96 106 100 104 C108 102 120 100 130 98 C142 96 152 96 156 108 C150 102 140 102 130 104 C118 106 108 110 100 110 C90 110 80 110 70 108 C60 106 50 108 44 108 Z" fill="#8b5a3c" opacity=".16"/>
           <g class="me-face">
-            <ellipse class="me-cheek" cx="62" cy="126" rx="11" ry="6.5" fill="${C.cheek}" opacity=".28"/>
-            <ellipse class="me-cheek" cx="138" cy="126" rx="11" ry="6.5" fill="${C.cheek}" opacity=".28"/>
-            <path class="me-brow" data-side="L" d="M67 95 Q77 92 87 94" fill="none" stroke="${C.ink}" stroke-width="3.2" stroke-linecap="round"/>
-            <path class="me-brow" data-side="R" d="M113 94 Q123 92 133 95" fill="none" stroke="${C.ink}" stroke-width="3.2" stroke-linecap="round"/>
+            <ellipse class="me-cheek" cx="60" cy="128" rx="14" ry="8" fill="url(#${id}-cheek)" opacity=".28"/>
+            <ellipse class="me-cheek" cx="140" cy="128" rx="14" ry="8" fill="url(#${id}-cheek)" opacity=".28"/>
+            <!-- 眉毛：平直、偏粗、贴近眼睛 -->
+            <path class="me-brow" data-side="L" d="M64 97 C72 92 82 92 90 95" fill="none" stroke="${C.ink}" stroke-width="3.8" stroke-linecap="round"/>
+            <path class="me-brow" data-side="R" d="M110 95 C118 92 128 92 136 97" fill="none" stroke="${C.ink}" stroke-width="3.8" stroke-linecap="round"/>
             ${eye("L", EYES.L)}${eye("R", EYES.R)}
-            <path d="M96 117 Q100 120.5 104 117" fill="none" stroke="#e5a585" stroke-width="2.4" stroke-linecap="round"/>
-            <path class="me-mouth" d="${MOUTHS.smile[0]}" fill="none" stroke="${C.ink}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- 鼻子：鼻头圆润 -->
+            <path d="M96 112 C94 118 92 122 93 125" fill="none" stroke="#d49a76" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>
+            <ellipse cx="100" cy="124" rx="7.5" ry="5" fill="url(#${id}-nose)"/>
+            <path d="M94 126.5 Q96 129 99 128 M106 126.5 Q104 129 101 128" fill="none" stroke="#c98b66" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+            <!-- 嘴：略厚的嘴唇，抿着嘴笑 -->
+            <path d="M88 137 Q100 133 112 137 Q100 141 88 137 Z" fill="url(#${id}-lip)" opacity=".85"/>
+            <path class="me-mouth" d="${MOUTHS.smile[0]}" fill="none" stroke="${C.ink}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+            <path d="M90 141 Q100 146 110 141" fill="none" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>
           </g>
         </g>
       </g></g>
