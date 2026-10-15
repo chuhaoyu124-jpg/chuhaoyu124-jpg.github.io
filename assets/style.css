@@ -483,3 +483,82 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: non
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.6); } }
 @keyframes grow { from { transform: scale(.9); opacity: .35; } to { transform: none; opacity: 1; } }
+
+/* ---------- 3.0：搜索面板、外观切换、代码复制 ----------
+   参照 Raycast / Linear 的 ⌘K 面板、Vercel 的外观切换、Stripe 文档的代码复制 */
+.nav .container { justify-content: flex-start; }
+.nav-links { margin-left: auto; }
+.nav-tools { display: flex; align-items: center; gap: 4px; margin-left: 10px; }
+.nav-tool {
+  display: inline-flex; align-items: center; gap: 6px; height: 30px; min-width: 30px; padding: 0 7px;
+  font: inherit; font-size: 12px; color: var(--text-2); background: transparent; border: 0; border-radius: 8px; cursor: pointer;
+  transition: color .2s var(--ease), background .2s var(--ease);
+}
+.nav-tool:hover { color: var(--text); background: var(--line-soft); }
+.nav-tool svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.nav-tool .kbd-hint { font-size: 11px; color: var(--text-3); padding: 1px 6px; border-radius: 5px; box-shadow: inset 0 0 0 1px var(--line); letter-spacing: .02em; }
+@media (max-width: 760px) { .nav-tool .kbd-hint { display: none; } .nav-tools { margin-left: 6px; gap: 0; } }
+@media (max-width: 380px) { .nav-links { gap: 14px; } }
+
+kbd {
+  display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px;
+  font: 500 11px/1 var(--font); color: var(--text-2); background: var(--surface); border-radius: 5px;
+  box-shadow: inset 0 0 0 1px var(--line), 0 1px 0 var(--line);
+}
+
+body.palette-open { overflow: hidden; }
+.palette { position: fixed; inset: 0; z-index: 100; display: flex; justify-content: center; align-items: flex-start; padding: 12vh 16px 16px; }
+.palette[hidden] { display: none; }
+.palette-scrim { position: absolute; inset: 0; background: rgba(0, 0, 0, .28); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); opacity: 0; transition: opacity .2s var(--ease); }
+.palette-box {
+  position: relative; width: 100%; max-width: 620px; max-height: 72vh; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border-radius: 18px; box-shadow: 0 30px 80px rgba(0, 0, 0, .28), 0 0 0 1px var(--line-soft);
+  opacity: 0; transform: translateY(-8px) scale(.98); transition: opacity .2s var(--ease), transform .3s var(--ease-out);
+}
+.palette.show .palette-scrim { opacity: 1; }
+.palette.show .palette-box { opacity: 1; transform: none; }
+.palette-field { display: flex; align-items: center; gap: 12px; padding: 0 16px 0 20px; border-bottom: 1px solid var(--line-soft); flex: none; }
+.palette-field svg { width: 20px; height: 20px; fill: none; stroke: var(--text-3); stroke-width: 1.8; stroke-linecap: round; flex: none; }
+.palette-field input[type="text"] { border: 0; background: transparent; box-shadow: none; padding: 18px 0; font-size: 18px; border-radius: 0; }
+.palette-field input[type="text"]:focus { background: transparent; box-shadow: none; }
+.palette-field kbd { cursor: pointer; }
+.palette-list { list-style: none; margin: 0; padding: 8px; overflow-y: auto; overscroll-behavior: contain; }
+.palette-group { font-size: 12px; font-weight: 600; color: var(--text-3); padding: 12px 12px 6px; }
+.palette-list li[data-i] { display: flex; align-items: center; gap: 14px; padding: 9px 12px; border-radius: 12px; cursor: pointer; }
+.palette-list li[aria-selected="true"] { background: var(--bg-alt); }
+.palette-list .glyph.xs { width: 34px; height: 34px; border-radius: 10px; font-size: 16px; }
+.palette-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; flex: none; background: var(--bg-alt); color: var(--text-2); font-size: 16px; font-weight: 600; }
+li[aria-selected="true"] .palette-ico { background: var(--surface); }
+.palette-txt { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.palette-txt b { font-size: 15px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.palette-txt small { font-size: 13px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.palette-txt mark { background: none; color: var(--accent-text); padding: 0; }
+.palette-go { color: var(--text-3); font-size: 14px; opacity: 0; }
+li[aria-selected="true"] .palette-go { opacity: 1; }
+.palette-empty { text-align: center; color: var(--text-2); font-size: 15px; padding: 40px 16px; line-height: 1.7; }
+.palette-foot { display: flex; gap: 18px; justify-content: flex-end; padding: 10px 16px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--text-3); flex: none; }
+.palette-foot span { display: inline-flex; align-items: center; gap: 4px; }
+@media (max-width: 760px) { .palette { padding-top: 64px; } .palette-foot { display: none; } }
+
+/* 代码块右上角的“复制” */
+.code-wrap { position: relative; }
+.code-copy {
+  position: absolute; top: 8px; right: 8px; font: inherit; font-size: 12px; font-weight: 500;
+  padding: 4px 10px; border: 0; border-radius: 980px; cursor: pointer;
+  color: var(--text-2); background: var(--surface); box-shadow: 0 0 0 1px var(--line-soft), var(--shadow-sm);
+  opacity: 0; transform: translateY(-2px); transition: opacity .2s var(--ease), transform .2s var(--ease), color .2s var(--ease);
+}
+.section.alt .code-copy { background: var(--bg-alt); }
+.code-wrap:hover .code-copy, .code-copy:focus-visible, .code-copy.done { opacity: 1; transform: none; }
+.code-copy:hover { color: var(--text); }
+.code-copy.done { color: var(--ok); }
+@media (hover: none) { .code-copy { opacity: 1; transform: none; } }
+
+/* 课程页标题下：阅读时长 + 分享 */
+.share-link { font: inherit; color: var(--accent-text); background: none; border: 0; padding: 0; cursor: pointer; }
+.share-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* 切换外观时整页柔和交叉淡化（不用页面切换那种上浮） */
+html.theme-switching::view-transition-old(root) { animation: none; }
+html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(--ease) both; }
+@keyframes theme-fade { from { opacity: 0; } }
