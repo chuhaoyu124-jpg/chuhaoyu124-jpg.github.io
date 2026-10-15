@@ -373,6 +373,64 @@
     }
   });
 
-  const init = () => { mountNavTools(); mountCodeCopy(); mountLessonMeta(); };
+  // ---- 手机：底部标签栏（像 iOS App） ----
+  const TAB_ICONS = {
+    home: '<path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4z"/>',
+    grid: '<rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/>',
+    search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/>',
+    me: '<circle cx="12" cy="8.5" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/>',
+    learn: '<path d="M4 5.5A2 2 0 0 1 6 4h5v16H6a2 2 0 0 0-2 1.5zM20 5.5A2 2 0 0 0 18 4h-5v16h5a2 2 0 0 1 2 1.5z"/>',
+    practice: '<path d="M14.5 5.5 18.5 9.5M4 20l1-4.5L15.8 4.7a1.8 1.8 0 0 1 2.5 0l1 1a1.8 1.8 0 0 1 0 2.5L8.5 19z"/>',
+    tool: '<path d="M12 3.5 13.9 9l5.6.3-4.4 3.5 1.5 5.5L12 15.2l-4.6 3.1 1.5-5.5-4.4-3.5L10.1 9z"/>'
+  };
+  function mountTabbar() {
+    if (document.querySelector(".tabbar")) return;
+    const lesson = document.querySelector(".lesson-hero") && document.getElementById("learn");
+    const page = location.pathname.split("/").pop() || "index.html";
+    const tabs = lesson
+      ? [["home", "首页", href("index.html")], ["learn", "笔记", "#learn"], ["practice", "练习", "#practice"], ["tool", "工具", "#tool"], ["search", "搜索"]]
+      : [["home", "首页", href("index.html"), page === "index.html"], ["grid", "课程", href("index.html#all")], ["search", "搜索"], ["me", "关于", href("about.html"), page === "about.html"]];
+    const bar = document.createElement("nav");
+    bar.className = "tabbar";
+    bar.setAttribute("aria-label", "快捷导航");
+    bar.innerHTML = tabs.map(([k, label, url, cur]) => {
+      const ico = `<svg viewBox="0 0 24 24" aria-hidden="true">${TAB_ICONS[k]}</svg>`;
+      return url
+        ? `<a href="${esc(url)}" data-tab="${k}"${cur ? ' aria-current="page"' : ""}>${ico}<span>${label}</span></a>`
+        : `<button type="button" data-tab="${k}">${ico}<span>${label}</span></button>`;
+    }).join("");
+    document.body.appendChild(bar);
+    bar.querySelector('[data-tab="search"]').addEventListener("click", openPalette);
+
+    // 课程页：标签随滚动高亮
+    const spy = [...bar.querySelectorAll('a[href^="#"]')].map(a => [a, document.querySelector(a.getAttribute("href"))]).filter(([, s]) => s);
+    if (spy.length && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) spy.forEach(([a, s]) => a.classList.toggle("active", s === e.target));
+      }), { rootMargin: "-45% 0px -50% 0px" });
+      spy.forEach(([, s]) => io.observe(s));
+    }
+  }
+
+  // ---- 手机：做工具时，底部浮出“复制提示词” ----
+  function mountFabCopy() {
+    const tool = document.getElementById("tool"), copy = document.getElementById("copy");
+    if (!tool || !copy || !("IntersectionObserver" in window)) return;
+    const fab = document.createElement("button");
+    fab.type = "button"; fab.className = "fab-copy";
+    fab.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>复制提示词';
+    fab.addEventListener("click", () => copy.click());
+    document.body.appendChild(fab);
+    let inTool = false, copyVisible = false;
+    const sync = () => fab.classList.toggle("show", inTool && !copyVisible);
+    new IntersectionObserver(es => { inTool = es[0].isIntersecting; sync(); }, { rootMargin: "-30% 0px -20% 0px" }).observe(tool);
+    new IntersectionObserver(es => { copyVisible = es[0].isIntersecting; sync(); }).observe(copy);
+  }
+
+  // 手机上打字时（键盘弹出），收起底部栏，免得挡住输入框
+  document.addEventListener("focusin", e => { if (typing(e.target) && !e.target.closest(".palette")) document.body.classList.add("typing"); });
+  document.addEventListener("focusout", () => document.body.classList.remove("typing"));
+
+  const init = () => { mountNavTools(); mountCodeCopy(); mountLessonMeta(); mountTabbar(); mountFabCopy(); };
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();
 })();
