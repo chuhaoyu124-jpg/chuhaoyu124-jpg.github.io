@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 5,
+    keywords: "改写 缩短 扩写 语气 受众 格式 表格 课程笔记",
+    date: "2026-10-16",
+    week: 1,
+    title: "一段话，五种改法",
+    summary: "“帮我改一下”太模糊。说清往哪个方向改：缩短、扩写、换语气、换受众、换格式，AI 才知道怎么下手。",
+    tool: "改写菜单",
+    glyph: "改",
+    grad: "linear-gradient(135deg, #ffb3c7 0%, #ff7aa2 50%, #c94fd6 100%)",
+    url: "days/day-05.html"
+  },
+  {
     day: 4,
     keywords: "多版本 三个版本 标题 挑选 混合 小红书 羊腿",
     date: "2026-10-15",
