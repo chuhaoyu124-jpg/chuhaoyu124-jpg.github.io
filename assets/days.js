@@ -10,7 +10,7 @@ window.DAYS = [
     summary: "“帮我改一下”太模糊。说清往哪个方向改：缩短、扩写、换语气、换受众、换格式，AI 才知道怎么下手。",
     tool: "改写菜单",
     glyph: "改",
-    grad: "linear-gradient(135deg, #ffb3c7 0%, #ff7aa2 50%, #c94fd6 100%)",
+    grad: "linear-gradient(135deg, #c7e6ff 0%, #6cb4f5 50%, #3166d6 100%)",
     url: "days/day-05.html"
   },
   {
@@ -46,7 +46,7 @@ window.DAYS = [
     summary: "不必一次说全。一句“写之前先问我3个问题”，AI 就从代笔的人变成采访你的人。",
     tool: "“先问我”提示词生成器",
     glyph: "问",
-    grad: "linear-gradient(135deg, #ffd36b 0%, #ff9f43 50%, #ff6b6b 100%)",
+    grad: "linear-gradient(135deg, #a5f3e8 0%, #2dd4bf 50%, #0e9fb3 100%)",
     url: "days/day-02.html"
   },
   {
@@ -58,7 +58,7 @@ window.DAYS = [
     summary: "AI 不怕你啰嗦，就怕你含糊。好提示词有五件套：角色、任务、素材、要求、示例。",
     tool: "五件套提示词生成器",
     glyph: "五",
-    grad: "linear-gradient(135deg, #ffc46b 0%, #f07b2e 55%, #e2505c 100%)",
+    grad: "linear-gradient(135deg, #8fd8ff 0%, #38bdf8 50%, #4f7cf7 100%)",
     url: "days/day-01.html"
   }
 ];

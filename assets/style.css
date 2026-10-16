@@ -1,5 +1,5 @@
 /* Haoyu 的 AI 工具箱 · 设计系统
-   白灰交替的底色、近黑的文字、一点暖橙作记号。深色模式跟随系统。 */
+   白色底、近黑的文字、天蓝色作辅助色（配一点湖蓝和矢车菊蓝）。深色模式跟随系统。 */
 
 :root {
   --bg: #ffffff;
@@ -11,19 +11,20 @@
   --text-3: #86868b;
   --line: #d2d2d7;
   --line-soft: #e8e8ed;
-  --accent: #f07b2e;
-  --accent-text: #c2580f;
-  --accent-soft: #fff1e6;
+  --accent: #0789d1;
+  --accent-text: #0369a1;
+  --accent-soft: #e6f4fd;
+  --accent-rgb: 14, 165, 233;
   --ok: #248a3d;
   --ok-soft: #e9f6ec;
   --warn: #b25000;
   --warn-soft: #fff4e5;
-  --mark: rgba(255, 179, 64, .38);
+  --mark: rgba(56, 189, 248, .28);
   --nav-bg: rgba(255, 255, 255, .72);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, .04);
   --shadow: 0 4px 24px rgba(0, 0, 0, .06);
   --shadow-lg: 0 18px 50px rgba(0, 0, 0, .10);
-  --grad-warm: linear-gradient(135deg, #ffc46b 0%, #f07b2e 55%, #e2505c 100%);
+  --grad-warm: linear-gradient(135deg, #8fd8ff 0%, #38bdf8 50%, #4f7cf7 100%);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
   --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
   --ease: cubic-bezier(.25, .1, .25, 1);
@@ -38,9 +39,9 @@
     --bg: #000000; --bg-alt: #101012; --surface: #1c1c1e; --surface-alt: #161618;
     --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #86868b;
     --line: #424245; --line-soft: #2c2c2e;
-    --accent: #ff9a4d; --accent-text: #ffa766; --accent-soft: #2e1e12;
+    --accent: #2ba8ef; --accent-text: #7dd3fc; --accent-soft: #0b2433; --accent-rgb: 56, 189, 248;
     --ok: #30d158; --ok-soft: #0f2a17; --warn: #ffb340; --warn-soft: #2e2210;
-    --mark: rgba(255, 179, 64, .30);
+    --mark: rgba(56, 189, 248, .30);
     --nav-bg: rgba(22, 22, 23, .72);
     --shadow-sm: 0 0 0 transparent; --shadow: 0 0 0 transparent; --shadow-lg: 0 18px 50px rgba(0, 0, 0, .5);
     color-scheme: dark;
@@ -50,9 +51,9 @@
   --bg: #000000; --bg-alt: #101012; --surface: #1c1c1e; --surface-alt: #161618;
   --text: #f5f5f7; --text-2: #a1a1a6; --text-3: #86868b;
   --line: #424245; --line-soft: #2c2c2e;
-  --accent: #ff9a4d; --accent-text: #ffa766; --accent-soft: #2e1e12;
+  --accent: #2ba8ef; --accent-text: #7dd3fc; --accent-soft: #0b2433; --accent-rgb: 56, 189, 248;
   --ok: #30d158; --ok-soft: #0f2a17; --warn: #ffb340; --warn-soft: #2e2210;
-  --mark: rgba(255, 179, 64, .30);
+  --mark: rgba(56, 189, 248, .30);
   --nav-bg: rgba(22, 22, 23, .72);
   --shadow-sm: 0 0 0 transparent; --shadow: 0 0 0 transparent; --shadow-lg: 0 18px 50px rgba(0, 0, 0, .5);
   color-scheme: dark;
@@ -107,7 +108,7 @@ mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3
 .muted { color: var(--text-2); }
 .gradient-text { background: var(--grad-warm); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-/* Apple 式文字链接：蓝字换成暖橙，后跟 › */
+/* Apple 式文字链接：天蓝色，后跟 › */
 .links { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 26px; font-size: 19px; }
 .links a::after { content: " ›"; }
 .btn-pill {
@@ -146,10 +147,10 @@ mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3
   --g: var(--grad-warm);
   width: 88px; height: 88px; border-radius: 24px; background: var(--g);
   display: grid; place-items: center; color: #fff; font-size: 40px; font-weight: 700; letter-spacing: -.02em;
-  box-shadow: 0 10px 30px -8px rgba(240, 123, 46, .55), inset 0 1px 0 rgba(255,255,255,.35);
+  box-shadow: 0 10px 30px -8px rgba(var(--accent-rgb), .55), inset 0 1px 0 rgba(255,255,255,.35);
   flex: none; user-select: none;
 }
-.glyph.sm { width: 56px; height: 56px; border-radius: 16px; font-size: 26px; box-shadow: 0 6px 18px -6px rgba(240, 123, 46, .5), inset 0 1px 0 rgba(255,255,255,.35); }
+.glyph.sm { width: 56px; height: 56px; border-radius: 16px; font-size: 26px; box-shadow: 0 6px 18px -6px rgba(var(--accent-rgb), .5), inset 0 1px 0 rgba(255,255,255,.35); }
 .glyph.xs { width: 40px; height: 40px; border-radius: 11px; font-size: 18px; box-shadow: none; }
 .glyph.locked { background: var(--line-soft); color: var(--text-3); box-shadow: none; }
 
@@ -198,7 +199,7 @@ mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 3
 .feature .k { font-size: 13px; color: var(--text-3); font-weight: 600; }
 .feature h4 { font-size: 22px; font-weight: 700; letter-spacing: -.02em; margin: 4px 0 6px; }
 .feature p { margin: 0; font-size: 15px; color: var(--text-2); line-height: 1.5; }
-.feature.hl { background: var(--grad-warm); color: #fff; box-shadow: 0 14px 34px -14px rgba(240,123,46,.7); }
+.feature.hl { background: var(--grad-warm); color: #fff; box-shadow: 0 14px 34px -14px rgba(var(--accent-rgb), .7); }
 .feature.hl .k, .feature.hl p { color: rgba(255,255,255,.88); }
 .feature .tag-new { position: absolute; top: 18px; right: 18px; font-size: 11px; font-weight: 700; letter-spacing: .06em; background: rgba(255,255,255,.25); color: #fff; padding: 2px 8px; border-radius: 980px; }
 
@@ -322,7 +323,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 
 /* ---------- 关于 ---------- */
 .about-hero { padding: 120px 0 80px; text-align: center; }
-.avatar { width: 112px; height: 112px; border-radius: 50%; margin: 0 auto 30px; background: var(--grad-warm); display: grid; place-items: center; color: #fff; font-size: 46px; font-weight: 700; box-shadow: 0 16px 40px -12px rgba(240,123,46,.6); }
+.avatar { width: 112px; height: 112px; border-radius: 50%; margin: 0 auto 30px; background: var(--grad-warm); display: grid; place-items: center; color: #fff; font-size: 46px; font-weight: 700; box-shadow: 0 16px 40px -12px rgba(var(--accent-rgb), .6); }
 
 /* ---------- 页脚 ---------- */
 .footer { background: var(--bg-alt); color: var(--text-3); font-size: 12px; padding: 22px 0 30px; }
@@ -455,7 +456,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: non
 .tile, .showcase { position: relative; overflow: hidden; }
 .tile::before, .showcase::before {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; border-radius: inherit;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 159, 67, .14), transparent 45%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--accent-rgb), .14), transparent 45%);
   transition: opacity .4s var(--ease);
 }
 .tile:hover::before, .showcase:hover::before { opacity: 1; }
@@ -473,7 +474,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline: non
   .lesson-hero .glyph::after, .showcase .glyph::after { animation: sweep 1.2s var(--ease-out) .7s both; }
 }
 
-/* 课程页阅读进度：导航下沿的一条暖橙细线 */
+/* 课程页阅读进度：导航下沿的一条天蓝细线 */
 .readbar { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--grad-warm); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
 
 @keyframes vt-out { to { opacity: 0; transform: scale(.985); } }
@@ -634,7 +635,7 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
     display: inline-flex; align-items: center; gap: 8px; position: fixed; z-index: 54; left: 50%;
     bottom: calc(76px + env(safe-area-inset-bottom));
     font: inherit; font-size: 16px; font-weight: 600; color: #fff; background: var(--accent); border: 0; border-radius: 980px;
-    padding: 13px 24px; box-shadow: 0 12px 30px -8px rgba(240, 123, 46, .65); cursor: pointer;
+    padding: 13px 24px; box-shadow: 0 12px 30px -8px rgba(var(--accent-rgb), .65); cursor: pointer;
     opacity: 0; pointer-events: none; transform: translate(-50%, 20px); transition: opacity .25s var(--ease), transform .35s var(--ease-out);
   }
   .fab-copy svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linejoin: round; }
@@ -694,7 +695,7 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
   -webkit-tap-highlight-color: transparent;
 }
 .me.me-lg { width: 176px; height: 176px; margin-bottom: 30px; }
-.me svg { width: 100%; height: 100%; border-radius: 50%; overflow: visible; box-shadow: 0 16px 40px -12px rgba(240, 123, 46, .6); transition: transform .4s var(--ease-out); }
+.me svg { width: 100%; height: 100%; border-radius: 50%; overflow: visible; box-shadow: 0 16px 40px -12px rgba(var(--accent-rgb), .6); transition: transform .4s var(--ease-out); }
 .me:active svg { transform: scale(.95); }
 .me:not(.bubble):focus-visible { outline-offset: 6px; border-radius: 50%; }
 .me-brow { transform-box: fill-box; transform-origin: center; transition: transform .35s var(--ease-out); }
@@ -734,7 +735,7 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
 .me.me-photo .me-card {
   position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; transform-style: preserve-3d;
   transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--sc, 1));
-  box-shadow: 0 16px 40px -12px rgba(240, 123, 46, .6), inset 0 0 0 3px rgba(255, 255, 255, .6);
+  box-shadow: 0 16px 40px -12px rgba(var(--accent-rgb), .6), inset 0 0 0 3px rgba(255, 255, 255, .6);
   background: var(--grad-warm);
 }
 .me.me-photo .me-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; }

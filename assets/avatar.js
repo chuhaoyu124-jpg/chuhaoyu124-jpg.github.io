@@ -62,7 +62,7 @@
       <path class="me-eye-happy" data-side="${side}" d="M${x - 11} ${y + 3} Q${x} ${y - 7} ${x + 11} ${y + 3}" fill="none" stroke="${C.ink}" stroke-width="3.4" stroke-linecap="round" opacity="0"/>`;
     return `<svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="${id}-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd58a"/><stop offset=".55" stop-color="#f07b2e"/><stop offset="1" stop-color="#e2505c"/></linearGradient>
+        <linearGradient id="${id}-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a9e2ff"/><stop offset=".55" stop-color="#38bdf8"/><stop offset="1" stop-color="#4f7cf7"/></linearGradient>
         <radialGradient id="${id}-skin" cx=".42" cy=".36" r=".75"><stop offset="0" stop-color="#ffe3c6"/><stop offset=".55" stop-color="#f7cfae"/><stop offset="1" stop-color="#d9a07c"/></radialGradient>
         <radialGradient id="${id}-lid" cx=".5" cy="1" r="1"><stop offset="0" stop-color="#f3c6a4"/><stop offset="1" stop-color="#f7cfae"/></radialGradient>
         <radialGradient id="${id}-white" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe3ea"/></radialGradient>
