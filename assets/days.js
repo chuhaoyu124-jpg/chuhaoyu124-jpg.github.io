@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 6,
+    keywords: "挑刺 批评 自查 检查 德语 邮件 语法 报告 修改",
+    date: "2026-10-17",
+    week: 1,
+    title: "先让 AI 挑刺，再动手改",
+    summary: "直接让 AI 改，它会顺手把你的话全换掉。先让它当严格的老师，只挑问题不动笔，改哪条由你决定。",
+    tool: "挑刺提示词生成器",
+    glyph: "挑",
+    grad: "linear-gradient(135deg, #b8f3d9 0%, #34d1a8 50%, #1597a8 100%)",
+    url: "days/day-06.html"
+  },
+  {
     day: 5,
     keywords: "改写 缩短 扩写 语气 受众 格式 表格 课程笔记",
     date: "2026-10-16",

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 6 · 先让 AI 挑刺，再动手改 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="直接让 AI 改，它会顺手把你的话全换掉。先让它当严格的老师，只挑问题不动笔，改哪条由你决定。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 6 · 先让 AI 挑刺，再动手改 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="直接让 AI 改，它会顺手把你的话全换掉。先让它当严格的老师，只挑问题不动笔，改哪条由你决定。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-06.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #b8f3d9 0%, #34d1a8 50%, #1597a8 100%)">挑</div>
+        <span class="eyebrow reveal d1">Day 6 · 用 AI 写字</span>
+        <h1 class="headline reveal d1">先让 AI 挑刺，<br>再动手改。</h1>
+        <p class="lead reveal d2">让它当老师，而不是当代笔。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 17 日 · 第 1 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">直接说“帮我改改”，AI 会顺手把整段重写。<br><span class="dim">改完很通顺，却不再是我的话，我也不知道原来错在哪。</span></p>
+        <p class="pull reveal">先挑刺，不动笔。<br>改哪一条，由我决定。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>只挑不改</h4><p>“先只指出问题，不要给修改后的全文。”它就会停在诊断这一步。</p></div>
+          <div class="feature reveal d1"><span class="k">02</span><h4>给它标准</h4><p>语法、逻辑、清晰、语气、术语，说清从哪几个角度挑，它才挑得准。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>限数量，排轻重</h4><p>“最多 5 条，按严重程度排序”，免得一堆鸡毛蒜皮淹没真问题。</p></div>
+          <div class="feature hl reveal d3"><span class="k">04</span><h4>我选，它改</h4><p>看完清单，我说“改第 1 和第 3 条，其他不动”。改得少，才学得到。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>写进我的 skill 的一块：自查清单</h4>
+            <pre class="code" style="margin-top:12px">【自查清单】
+我说“帮我看看”时，先当严格的老师，只挑问题不改写：
+- 从语法、逻辑、清晰、语气、术语五个角度看
+- 最多5条，按严重程度排序，每条引用原句并说明原因
+- 不要只夸，也不要客套
+等我选好要改哪几条，再只改那几处。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">请 AI 当一回严格的老师。</h2>
+          <p class="lead reveal d2">拿一段自己写的德语或中文，先让它只挑刺，再挑一两条让它改。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：只挑刺</span>
+          <pre class="code">请你当一位严格的老师，检查下面这段我自己写的文字。
+先不要改写，只指出问题：
+- 从语法、逻辑、清晰、语气、专业术语五个角度看
+- 最多5条，按严重程度排序
+- 每条都引用原句，说明哪里有问题、为什么
+不要只夸，也不要客套。
+
+【我的文字】
+（贴一段你自己写的德语或中文）</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：我选，它改</span>
+          <pre class="code">只改第1和第3条，其他地方一个字都不要动。改完把改动的地方标出来。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">挑刺提示词生成器。</h2>
+          <p class="lead reveal d2">选好文字类型和挑刺的角度，贴上原文，就得到一段“只挑不改”的提示词。看完问题清单，再生成“只改这几条”的那一句。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="seg" id="kinds"></div>
+            <div class="field">
+              <label for="f-text"><span>我的文字</span><small id="text-count">0 字</small></label>
+              <textarea id="f-text" rows="5" placeholder="贴一段你自己写的德语或中文：一封邮件、一段报告、一条小红书都行。"></textarea>
+            </div>
+            <div class="field">
+              <label><span>从哪些角度挑（可多选）</span><small id="crit-count">0 个</small></label>
+              <div class="seg" id="crits"></div>
+            </div>
+            <div class="field">
+              <label><span>老师有多严</span></label>
+              <div class="seg" id="modes"></div>
+            </div>
+            <div class="field">
+              <label for="f-max"><span>最多挑几条</span></label>
+              <input type="number" id="f-max" min="1" max="10" value="5">
+            </div>
+            <label class="toggle"><span>只挑不改</span><input type="checkbox" id="f-only" checked></label>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>第一步：只挑刺</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="11" readonly placeholder="贴上原文，提示词会出现在这里。"></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制提示词</button>
+              <button class="btn ghost" id="clear">清空</button>
+            </div>
+            <h3 style="margin-top:24px">第二步：只改这几条</h3>
+            <div class="field">
+              <label><span>要改第几条</span></label>
+              <div class="seg" id="picks"></div>
+            </div>
+            <textarea id="out2" class="output" rows="2" readonly placeholder="点选要改的条目。"></textarea>
+            <div class="row">
+              <button class="btn" id="copy2">复制这一句</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-05.html"><small>上一课 · Day 5</small><b>‹ 一段话，五种改法</b></a>
+          <span class="next"><small>下一课 · Day 7</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 6 · 先让 AI 挑刺，再动手改</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const KINDS = {
+      "德语邮件": { what: "一封我写给教授或同学的德语邮件", extra: "德语的语法、格位和礼貌用语（Sie/du、开头结尾的格式）" },
+      "课程报告": { what: "一段我写的课程报告（Beleg/Bericht）", extra: "专业术语是否准确、表述是否客观" },
+      "中文文案": { what: "一段我写的中文文案", extra: "读起来是否自然、有没有啰嗦的地方" },
+      "课程笔记": { what: "一段我的课程笔记", extra: "概念有没有说错、有没有漏掉关键的一步" }
+    };
+    const CRITS = ["语法", "逻辑", "清晰", "语气", "专业术语", "长度"];
+    const MODES = {
+      "严格的老师": "请你当一位严格的老师",
+      "挑剔的读者": "请你当一个挑剔的读者，第一次读这段文字",
+      "温和的同学": "请你当一位温和但诚实的同学"
+    };
+    const $ = id => document.getElementById(id);
+    let kind = "德语邮件", crits = ["语法", "逻辑", "清晰", "语气", "专业术语"], mode = "严格的老师", picks = [];
+
+    const chips = (el, list, attr) => $(el).innerHTML = list.map(x => `<button class="chip" data-${attr}="${x}">${x}</button>`).join("");
+    chips("kinds", Object.keys(KINDS), "k"); chips("crits", CRITS, "c"); chips("modes", Object.keys(MODES), "m");
+
+    $("kinds").addEventListener("click", e => { if (e.target.dataset.k) { kind = e.target.dataset.k; build(); } });
+    $("modes").addEventListener("click", e => { if (e.target.dataset.m) { mode = e.target.dataset.m; build(); } });
+    $("crits").addEventListener("click", e => {
+      const c = e.target.dataset.c; if (!c) return;
+      crits = crits.includes(c) ? crits.filter(x => x !== c) : CRITS.filter(x => crits.includes(x) || x === c);
+      build();
+    });
+    $("picks").addEventListener("click", e => {
+      const n = +e.target.dataset.n; if (!n) return;
+      picks = picks.includes(n) ? picks.filter(x => x !== n) : [...picks, n].sort((a, b) => a - b);
+      build();
+    });
+
+    function build() {
+      document.querySelectorAll("#kinds .chip").forEach(c => c.classList.toggle("on", c.dataset.k === kind));
+      document.querySelectorAll("#modes .chip").forEach(c => c.classList.toggle("on", c.dataset.m === mode));
+      document.querySelectorAll("#crits .chip").forEach(c => c.classList.toggle("on", crits.includes(c.dataset.c)));
+      $("crit-count").textContent = crits.length + " 个";
+      const max = Math.min(10, Math.max(1, parseInt($("f-max").value, 10) || 5));
+      picks = picks.filter(n => n <= max);
+      $("picks").innerHTML = Array.from({ length: max }, (_, i) => i + 1)
+        .map(n => `<button class="chip${picks.includes(n) ? " on" : ""}" data-n="${n}">第 ${n} 条</button>`).join("");
+
+      const text = $("f-text").value.trim();
+      const n = text.replace(/\s/g, "").length;
+      $("text-count").textContent = n + " 字";
+      $("check").innerHTML = !text ? `<div class="hint warn">先在左边贴上你自己写的文字。</div>`
+        : !crits.length ? `<div class="hint warn">至少选一个挑刺的角度。</div>`
+        : `<div class="hint ok">${KINDS[kind].what.replace("我", "你")}，从 ${crits.length} 个角度挑，最多 ${max} 条。</div>`;
+
+      if (!text || !crits.length) $("out").value = "";
+      else {
+        const k = KINDS[kind];
+        const lines = [];
+        lines.push(`${MODES[mode]}，检查下面这段文字。它是${k.what}。`);
+        lines.push($("f-only").checked ? "先不要改写，只指出问题：" : "请指出问题，并给出修改建议：");
+        lines.push(`- 从${crits.join("、")}${crits.length > 1 ? "这几个" : "这个"}角度看，特别留意${k.extra}`);
+        lines.push(`- 最多${max}条，按严重程度排序`);
+        lines.push("- 每条都引用原句，说明哪里有问题、为什么");
+        lines.push("不要只夸，也不要客套。");
+        lines.push("", "【我的文字】", text);
+        $("out").value = lines.join("\n");
+      }
+      $("out2").value = picks.length
+        ? `只改第${picks.join("、")}条，其他地方一个字都不要动。改完把改动的地方标出来。`
+        : "";
+    }
+    $("f-text").addEventListener("input", build);
+    $("f-max").addEventListener("input", build);
+    $("f-only").addEventListener("change", build);
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    $("copy2").addEventListener("click", () => copyText($("out2").value));
+    $("clear").addEventListener("click", () => { $("f-text").value = ""; picks = []; build(); });
+    build();
+  </script>
+</body>
+</html>
