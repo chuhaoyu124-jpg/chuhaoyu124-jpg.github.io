@@ -83,7 +83,7 @@
         <div class="center">
           <span class="chapter-label reveal">我的练习</span>
           <h2 class="title reveal d1">请 AI 当一回严格的老师。</h2>
-          <p class="lead reveal d2">拿一段自己写的德语或中文，先让它只挑刺，再挑一两条让它改。练完后，结果会补在这里。</p>
+          <p class="lead reveal d2">我拿了一段自己写的德语：描述 Hubtisch（升降台）分类图的一段话。先让它只挑刺，再选两条让它改。</p>
         </div>
 
         <div class="result-card reveal" style="margin-top:56px">
@@ -96,11 +96,41 @@
 不要只夸，也不要客套。
 
 【我的文字】
-（贴一段你自己写的德语或中文）</pre>
+Dieses Bild zeigt eine Übersicht über den Hubtisch, der in zwei Hauptaspekte unterteilt ist: Antrieb und Konstruktion. Beim Antrieb gibt es drei Typen: den hydraulischen Hubtisch, den pneumatischen Hubtisch und den mechanischen Hubtisch. In Bezug auf die Konstruktion unterscheidet man zwei Hauptarten: die Scherenkonstruktion und die Schraubenkonstruktion. Die Scherenkonstruktion kann weiter in Einfachschere, Doppelschere und Mehrfachscher.</pre>
         </div>
+        <article class="result-card reveal">
+          <span class="label">严格老师的 5 条（只挑不改）</span>
+          <h4>1 · 最后一句没写完（语法）</h4>
+          <p>„…kann weiter in Einfachschere, Doppelschere und Mehrfachscher." 有 kann 却没有动词；Mehrfachscher 少了一个 e。</p>
+          <h4>2 · 分类的层级混了（逻辑）</h4>
+          <p>说“驱动有三种”，列出来的却是三种 Hubtisch。按驱动分的应是驱动方式本身。</p>
+          <h4>3 · 被分成两方面的不是升降台（逻辑、清晰）</h4>
+          <p>„den Hubtisch, der in zwei Hauptaspekte unterteilt ist" 里的 der 指向 Hubtisch，读起来像升降台本身被分开。</p>
+          <h4>4 · 同一个意思用了两个词（术语）</h4>
+          <p>Hauptaspekte 和 Hauptarten 混用，同一层级最好只用一个说法。</p>
+          <h4>5 · 可能不是课上的叫法（术语，推测）</h4>
+          <p>Schraubenkonstruktion 一般叫 Spindel，而且螺杆更像一种机械驱动，可能和第 2 条重叠。要对照课件确认。</p>
+        </article>
+
         <div class="result-card reveal">
           <span class="label">第二步：我选，它改</span>
           <pre class="code">只改第1和第3条，其他地方一个字都不要动。改完把改动的地方标出来。</pre>
+        </div>
+        <article class="result-card reveal">
+          <span class="label">只改第 1 和第 3 条之后</span>
+          <p>Dieses Bild zeigt eine Übersicht über den Hubtisch, <mark>die</mark> in zwei Hauptaspekte unterteilt ist: Antrieb und Konstruktion. Beim Antrieb gibt es drei Typen: den hydraulischen Hubtisch, den pneumatischen Hubtisch und den mechanischen Hubtisch. In Bezug auf die Konstruktion unterscheidet man zwei Hauptarten: die Scherenkonstruktion und die Schraubenkonstruktion. Die Scherenkonstruktion kann weiter in Einfachschere, Doppelschere und <mark>Mehrfachschere unterteilt werden</mark>.</p>
+          <p class="legend"><mark>高亮</mark> = 改动的地方：der → die；Mehrfachscher → Mehrfachschere；句末补上 unterteilt werden。其余一个字没动。</p>
+        </article>
+
+        <div class="qa reveal">
+          <div class="bubble ai"><span class="who">Claude 老师</span>der 换成 die，只差一个字母，从句就改为指 die Übersicht：被分成两方面的是这份概览，不是升降台本身。</div>
+          <div class="bubble ai"><span class="who">Claude 老师</span>改动越少，越能看清自己错在哪。这次真正的语法错误只有两处：一处指代、一处断句。</div>
+        </div>
+
+        <div class="note-grid reveal" style="margin-top:40px">
+          <div class="note"><span class="num gradient-text">01</span><h4>先诊断，再开药</h4><p>先看到 5 条问题和原因，再决定改哪条。直接重写的话，我连错在哪都不知道。</p></div>
+          <div class="note"><span class="num gradient-text">02</span><h4>一个字母的差别</h4><p>der 和 die 决定了从句指谁。德语的指代错误，读的人会理解成完全不同的意思。</p></div>
+          <div class="note"><span class="num gradient-text">03</span><h4>推测的那条要核对</h4><p>第 5 条它自己标了“推测”。术语对不对，最终以课件为准，不以 AI 为准。</p></div>
         </div>
       </div>
     </section>
