@@ -142,13 +142,16 @@
     set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (_) {} }
   };
 
-  // 课程数据：首页已经加载；其他页面按需加载
-  function loadDays(cb) {
-    if (window.DAYS) return cb();
-    let s = document.querySelector("script[data-days]");
-    if (!s) { s = document.createElement("script"); s.src = href("assets/days.js"); s.dataset.days = ""; document.head.appendChild(s); }
+  // 按需加载 assets/ 里的脚本：已经加载过就直接回调，同一个文件只插入一次
+  function loadScript(path, loaded, cb) {
+    if (loaded()) return cb();
+    let s = document.querySelector(`script[data-src="${path}"]`);
+    if (!s) { s = document.createElement("script"); s.src = href(path); s.dataset.src = path; document.head.appendChild(s); }
     s.addEventListener("load", cb, { once: true });
   }
+
+  // 课程数据：首页已经加载；其他页面按需加载
+  const loadDays = cb => loadScript("assets/days.js", () => window.DAYS, cb);
 
   // ---- 外观：跟随系统 / 浅色 / 深色 ----
   const THEMES = [["", "跟随系统"], ["light", "浅色"], ["dark", "深色"]];
@@ -355,6 +358,38 @@
     });
   }
 
+  // ---- 课程页：底部「标记为学完」（记录在 assets/xuewan.js，只存在这个浏览器里） ----
+  function mountXuewan() {
+    const pager = document.querySelector(".pager");
+    const m = location.pathname.match(/day-(\d+)\.html$/);
+    if (!pager || !m || document.querySelector(".xuewan")) return;
+    const day = Number(m[1]);
+    const box = document.createElement("div");
+    box.className = "xuewan";
+    box.hidden = true; // 读到记录后再显示，免得已学完的课先闪一下「标记为学完」
+    box.innerHTML = '<button type="button" class="btn-pill xuewan-btn"></button><small class="xuewan-note"></small>';
+    pager.before(box);
+    const btn = box.querySelector("button"), note = box.querySelector("small");
+    const paint = learned => {
+      btn.textContent = learned ? "✓ 已学完" : "标记为学完";
+      btn.classList.toggle("secondary", learned);
+      btn.setAttribute("aria-pressed", learned);
+      note.textContent = (learned ? "再点一次取消 · " : "") + "记录只保存在这个浏览器里";
+    };
+    loadScript("assets/xuewan.js", () => window.Xuewan, () => {
+      // 写入失败要让学完记录知道（它会撤回），所以这里不用会吞掉错误的 store.set
+      const xuewan = window.Xuewan.createXuewan({ get: store.get, set: (k, v) => localStorage.setItem(k, v) });
+      paint(xuewan.isLearned(day));
+      box.hidden = false;
+      btn.addEventListener("click", () => {
+        const before = xuewan.isLearned(day), learned = xuewan.toggle(day);
+        if (learned === before) return toast("没能保存，这个浏览器不允许记录");
+        paint(learned);
+        toast(learned ? `学完 Day ${day} 🎉` : "已取消学完");
+      });
+    });
+  }
+
   // ---- 键盘：⌘K 搜索，/ 搜索，← → 翻页 ----
   const typing = el => el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
   document.addEventListener("keydown", e => {
@@ -431,6 +466,6 @@
   document.addEventListener("focusin", e => { if (typing(e.target) && !e.target.closest(".palette")) document.body.classList.add("typing"); });
   document.addEventListener("focusout", () => document.body.classList.remove("typing"));
 
-  const init = () => { mountNavTools(); mountCodeCopy(); mountLessonMeta(); mountTabbar(); mountFabCopy(); };
+  const init = () => { mountNavTools(); mountCodeCopy(); mountLessonMeta(); mountXuewan(); mountTabbar(); mountFabCopy(); };
   document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", init) : init();
 })();

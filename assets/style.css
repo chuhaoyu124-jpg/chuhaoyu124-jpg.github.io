@@ -750,3 +750,8 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
 .me.me-photo.sleepy .me-card { filter: brightness(.92) saturate(.9); }
 .me.me-photo[data-face="shy"] .me-card { filter: saturate(1.2) sepia(.08); }
 .me.me-photo .me-card { transition: filter .4s var(--ease); }
+
+/* ---- 课程页：标记为学完 ---- */
+.xuewan { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 28px; text-align: center; }
+.xuewan-note { font-size: 13px; color: var(--text-3); }
+.xuewan[hidden] { display: none; }
