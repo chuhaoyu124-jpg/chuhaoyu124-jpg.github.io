@@ -54,3 +54,16 @@ test("规则不通过时（比如缺了标题）三个文件都不改", () => {
   assert.deepEqual(files.map(f => fs.readFileSync(f, "utf8")), before);
   assert.ok(!fs.existsSync(path.join(dir, "days", "day-08.html")));
 });
+
+test("写到一半失败时撤回：已写的文件恢复原样，草稿页面也删掉", () => {
+  const dir = tempRepo();
+  const files = ["assets/days.js", "days/day-07.html"].map(f => path.join(dir, f));
+  const before = files.map(f => fs.readFileSync(f, "utf8"));
+  fs.chmodSync(files[1], 0o444); // 上一课是最后写的，让它写不进去
+  const result = run(dir, ARGS);
+  fs.chmodSync(files[1], 0o644);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /已撤回/);
+  assert.deepEqual(files.map(f => fs.readFileSync(f, "utf8")), before);
+  assert.ok(!fs.existsSync(path.join(dir, "days", "day-08.html")));
+});

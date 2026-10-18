@@ -26,9 +26,19 @@ function main() {
   // 不覆盖写了一半的草稿；三个文件都算好之后才开始写
   if (fs.existsSync(path.join(root, draft.newFile))) throw new Error(`${draft.newFile} 已经存在，不会覆盖它`);
   const write = (rel, text) => fs.writeFileSync(path.join(root, rel), text);
-  write(draft.newFile, draft.newHtml);
-  write("assets/days.js", draft.daysJs);
-  write(draft.prevFile, draft.prevHtml);
+  // 三个文件要么都写上，要么都不改：中途写失败就把已写的恢复原样
+  const originals = { "assets/days.js": read("assets/days.js"), [draft.prevFile]: read(draft.prevFile) };
+  try {
+    write(draft.newFile, draft.newHtml);
+    write("assets/days.js", draft.daysJs);
+    write(draft.prevFile, draft.prevHtml);
+  } catch (err) {
+    fs.rmSync(path.join(root, draft.newFile), { force: true });
+    for (const [rel, text] of Object.entries(originals)) {
+      try { write(rel, text); } catch (_) { /* 本来就没写进去的文件，内容没变 */ }
+    }
+    throw new Error(`写文件时出错，已撤回，三个文件都没改（${err.message}）`);
+  }
 
   const todo = countTodo(draft.newHtml);
   console.log(`已生成草稿：
