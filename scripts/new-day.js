@@ -21,9 +21,7 @@ function main() {
       ["title", "summary", "glyph", "tool", "grad", "keywords", "day", "date"].map(k => [k, { type: "string" }])
     )
   });
-  const fields = { ...values, day: values.day && Number(values.day) };
-
-  const draft = createDraft({ daysJs: read("assets/days.js"), readLesson: read, fields, today: today() });
+  const draft = createDraft({ daysJs: read("assets/days.js"), readLesson: read, fields: values, today: today() });
 
   // 不覆盖写了一半的草稿；三个文件都算好之后才开始写
   if (fs.existsSync(path.join(root, draft.newFile))) throw new Error(`${draft.newFile} 已经存在，不会覆盖它`);
@@ -39,7 +37,7 @@ function main() {
   修改 ${draft.prevFile}（「明天见」改成了链接）
 
 ${draft.newFile} 里还剩 ${todo} 处【待写】。写完后跑 npm test，变绿了再推送。`);
-  if (!fields.keywords) console.log("没填 --keywords，搜索时可能搜不到这一课。");
+  if (!values.keywords) console.log("没填 --keywords，搜索时可能搜不到这一课。");
 }
 
 try {

@@ -114,6 +114,14 @@ function lessonMain({ day, week, theme, date, title, summary, glyph, grad, tool,
   `;
 }
 
+// 2026-10-19 这种格式，而且日历上真有这一天
+function isRealDate(date) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return false;
+  const [y, m, d] = date.split("-").map(Number);
+  const t = new Date(Date.UTC(y, m - 1, d));
+  return t.getUTCFullYear() === y && t.getUTCMonth() === m - 1 && t.getUTCDate() === d;
+}
+
 // 会把网站弄乱的输入一律拒绝：抛出带中文说明的错误，调用方据此什么文件都不写
 function check(fields, days, weeks) {
   for (const key of ["title", "summary", "glyph", "tool"]) {
@@ -121,8 +129,11 @@ function check(fields, days, weeks) {
   }
   if ([...fields.glyph.trim()].length !== 1) throw new Error(`--glyph 只能是一个字，现在是「${fields.glyph}」`);
 
+  if (fields.date !== undefined && !isRealDate(fields.date)) throw new Error(`--date 要写成真实的日期，比如 2026-10-19，现在是「${fields.date}」`);
+
   const next = days[0].day + 1;
-  const day = fields.day === undefined ? next : fields.day;
+  if (fields.day !== undefined && !/^[1-9]\d*$/.test(String(fields.day))) throw new Error(`--day 要写成正整数，现在是「${fields.day}」`);
+  const day = fields.day === undefined ? next : Number(fields.day);
   if (days.some(d => d.day === day)) throw new Error(`Day ${day} 已经在 days.js 里了`);
   if (day !== next) throw new Error(`最新一课是 Day ${days[0].day}，下一课应该是 Day ${next}，不能是 Day ${day}`);
   const planned = weeks.reduce((sum, w) => sum + w.days, 0);

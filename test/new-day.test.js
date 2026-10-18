@@ -165,3 +165,17 @@ test("上一课找不到「明天见」就拒绝", () => {
     /days\/day-07\.html.*明天见/
   );
 });
+
+test("日期不是真实的 YYYY-MM-DD 就拒绝", () => {
+  for (const date of ["2026/10/19", "2026-13-45", "2026-02-30", "明天", "2026-1-9"]) {
+    assert.throws(() => draft({ date }), /--date/, `${date} 没有拒绝`);
+  }
+  assert.doesNotThrow(() => draft({ date: "2026-10-20" }));
+});
+
+test("Day 编号不是正整数就拒绝", () => {
+  for (const day of ["abc", "8.0", "8.5", "-8", ""]) {
+    assert.throws(() => draft({ day }), /--day 要写成正整数/, `「${day}」没有拒绝`);
+  }
+  assert.doesNotThrow(() => draft({ day: "8" }));
+});
