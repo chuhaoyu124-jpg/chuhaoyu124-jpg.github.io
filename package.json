@@ -2,6 +2,7 @@
   "name": "haoyu-ai-toolbox",
   "private": true,
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "new-day": "node scripts/new-day.js"
   }
 }

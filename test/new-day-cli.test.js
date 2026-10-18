@@ -1,0 +1,35 @@
+// 「新课一键生成」命令行的冒烟测试：在临时文件夹里放一份仓库副本跑命令。运行：npm test
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
+const { spawnSync } = require("node:child_process");
+
+const ROOT = path.join(__dirname, "..");
+const CLI = path.join(ROOT, "scripts", "new-day.js");
+
+// 临时仓库副本：只需要 days.js 和全部课页面
+function tempRepo() {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "new-day-"));
+  fs.cpSync(path.join(ROOT, "assets", "days.js"), path.join(dir, "assets", "days.js"));
+  fs.cpSync(path.join(ROOT, "days"), path.join(dir, "days"), { recursive: true });
+  return dir;
+}
+
+const run = (dir, args) => spawnSync(process.execPath, [CLI, ...args], { cwd: dir, encoding: "utf8" });
+const ARGS = ["--title", "让 Claude Code 帮我建文件夹", "--summary", "一句话总结。", "--glyph", "建", "--tool", "文件夹提示词", "--date", "2026-10-19"];
+
+test("跑一次命令就生成草稿：新建新课页面，改 days.js 和上一课", () => {
+  const dir = tempRepo();
+  const result = run(dir, ARGS);
+  assert.equal(result.status, 0, result.stderr);
+  const page = fs.readFileSync(path.join(dir, "days", "day-08.html"), "utf8");
+  assert.ok(page.includes("<title>Day 8 · 让 Claude Code 帮我建文件夹 · Haoyu 的 AI 工具箱</title>"));
+  assert.ok(fs.readFileSync(path.join(dir, "assets", "days.js"), "utf8").includes('url: "days/day-08.html"'));
+  assert.ok(fs.readFileSync(path.join(dir, "days", "day-07.html"), "utf8").includes('<a class="next" href="day-08.html">'));
+  assert.match(result.stdout, /days\/day-08\.html/);
+  assert.match(result.stdout, /还剩 \d+ 处【待写】/);
+  assert.match(result.stdout, /keywords/);
+});
+
