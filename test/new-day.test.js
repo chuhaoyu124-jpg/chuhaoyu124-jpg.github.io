@@ -179,3 +179,10 @@ test("Day 编号不是正整数就拒绝", () => {
   }
   assert.doesNotThrow(() => draft({ day: "8" }));
 });
+
+test("带肤色或组合的 emoji 也算一个字", () => {
+  for (const glyph of ["👍🏽", "👨‍👩‍👧", "🇩🇪"]) {
+    assert.doesNotThrow(() => draft({ glyph }), `${glyph} 被拒绝了`);
+  }
+  assert.throws(() => draft({ glyph: "👍👍" }), /一个字/);
+});

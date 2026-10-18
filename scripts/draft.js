@@ -127,7 +127,8 @@ function check(fields, days, weeks) {
   for (const key of ["title", "summary", "glyph", "tool"]) {
     if (!fields[key] || !String(fields[key]).trim()) throw new Error(`缺少 --${key}`);
   }
-  if ([...fields.glyph.trim()].length !== 1) throw new Error(`--glyph 只能是一个字，现在是「${fields.glyph}」`);
+  // 按看到的字数算：带肤色、组合的 emoji 也只算一个字
+  if ([...new Intl.Segmenter("zh").segment(fields.glyph.trim())].length !== 1) throw new Error(`--glyph 只能是一个字，现在是「${fields.glyph}」`);
 
   if (fields.date !== undefined && !isRealDate(fields.date)) throw new Error(`--date 要写成真实的日期，比如 2026-10-19，现在是「${fields.date}」`);
 
