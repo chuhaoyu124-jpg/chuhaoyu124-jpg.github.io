@@ -72,7 +72,7 @@
 
 想放到别的页面：加 `<button type="button" class="me" data-avatar aria-label="Haoyu 的卡通形象，点一下打个招呼"></button>`（大号再加 `me-lg`），再引入 `assets/avatar.js`。肤色、发色、衣服颜色都在 `svg()` 开头的 `<defs>` 渐变里改。
 
-## 学完（读者自己的进度）
+## 学完（读者自己的记录）
 
 读者可以给每一课标记「学完」（术语见 `GLOSSARY.md`：「更新」是 Haoyu 发了一课，「学完」是读者读完了一课，两者不要混用）：
 

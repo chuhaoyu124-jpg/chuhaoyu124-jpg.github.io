@@ -383,7 +383,7 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 input:focus-visible, textarea:focus-visible, select:focus-visible { outline: none; }
 ::selection { background: var(--accent-soft); }
 
-/* 首页图标陈列：已完成的课程 + 本周待解锁 */
+/* 首页图标陈列：已更新的课 + 本周待解锁 */
 .dock { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 56px auto 0; max-width: 560px; }
 .dock a, .dock span { position: relative; display: block; border-radius: 16px; transition: transform .4s var(--ease-out); }
 .dock a:hover { transform: translateY(-6px) scale(1.06); text-decoration: none; }

@@ -46,7 +46,7 @@
         <div class="stats reveal d4">
           <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
           <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
-          <div class="stat"><b id="s-pct">0%</b><span>四周课程进度</span></div>
+          <div class="stat"><b id="s-pct">0%</b><span>已更新</span></div>
           <div class="stat"><b id="s-learned">0 / 0</b><span>已学完</span></div>
         </div>
         <nav class="dock reveal d4" id="dock" aria-label="我做过的工具"></nav>
@@ -114,7 +114,7 @@
           </a>`;
       }
 
-      // 图标陈列：按顺序排开已完成的课，本周剩下的天数留空位
+      // 图标陈列：按顺序排开已更新的课，本周剩下的天数留空位
       const asc = days.slice().reverse();
       const wk = weeks.find(w => w.n === (latest ? latest.week : 1));
       const left = wk ? Math.max(0, wk.days - days.filter(d => d.week === wk.n).length) : 0;
@@ -139,14 +139,14 @@
       let start = 0;
       const curWeek = latest ? latest.week : 1;
       document.getElementById("roadmap").innerHTML = weeks.map((w, i) => {
-        const done = days.filter(d => d.week === w.n).length;
-        const pct = Math.round(Math.min(done, w.days) / w.days * 100);
+        const updated = days.filter(d => d.week === w.n).length;
+        const pct = Math.round(Math.min(updated, w.days) / w.days * 100);
         start += w.days;
         return `<div class="week reveal d${i} ${w.n === curWeek ? "now" : ""}">
           <div class="n">第 ${w.n} 周</div>
           <h4>${esc(w.title)}</h4>
           <div class="bar"><i style="--w:${pct}%"></i></div>
-          <div class="p">${done ? `已完成 ${done} / ${w.days} 天` : "即将解锁"}</div>
+          <div class="p">${updated ? `已更新 ${updated} / ${w.days} 天` : "即将解锁"}</div>
         </div>`;
       }).join("");
 
