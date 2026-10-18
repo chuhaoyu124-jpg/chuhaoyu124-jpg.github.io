@@ -89,3 +89,9 @@ npm test
 ```
 
 测试文件在 `test/` 里。术语见 `GLOSSARY.md`。
+
+推送前会自动跑一遍 `npm test`，红了就不让推（`.githooks/pre-push`）。新 clone 下来后执行一次：
+
+```bash
+git config core.hooksPath .githooks
+```
