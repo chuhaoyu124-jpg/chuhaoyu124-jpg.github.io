@@ -377,8 +377,7 @@
       note.textContent = (learned ? "再点一次取消 · " : "") + "记录只保存在这个浏览器里";
     };
     loadScript("assets/xuewan.js", () => window.Xuewan, () => {
-      // 写入失败要让学完记录知道（它会撤回），所以这里不用会吞掉错误的 store.set
-      const xuewan = window.Xuewan.createXuewan({ get: store.get, set: (k, v) => localStorage.setItem(k, v) });
+      const xuewan = window.Xuewan.createXuewan(window.Xuewan.browserStore);
       paint(xuewan.isLearned(day));
       box.hidden = false;
       btn.addEventListener("click", () => {

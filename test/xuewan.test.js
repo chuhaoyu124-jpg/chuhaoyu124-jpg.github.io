@@ -69,3 +69,22 @@ test("写不进浏览器时撤回这次标记，不假装学完了", () => {
   assert.equal(xuewan.toggle(7), false);
   assert.equal(xuewan.isLearned(7), false);
 });
+
+test("还没学完任何一课时计数是 0 / 已更新课数", () => {
+  const xuewan = createXuewan(memoryStore());
+  assert.deepEqual(xuewan.count([1, 2, 3, 4, 5, 6, 7]), { learned: 0, total: 7 });
+});
+
+test("学完几课，计数就是几", () => {
+  const xuewan = createXuewan(memoryStore());
+  xuewan.toggle(2);
+  xuewan.toggle(5);
+  assert.deepEqual(xuewan.count([1, 2, 3, 4, 5, 6, 7]), { learned: 2, total: 7 });
+});
+
+test("不在已更新课里的 Day 不计入学完数", () => {
+  const xuewan = createXuewan(memoryStore());
+  xuewan.toggle(3);
+  xuewan.toggle(9); // 比如这一课后来被撤下或改了号
+  assert.deepEqual(xuewan.count([1, 2, 3, 4, 5, 6, 7]), { learned: 1, total: 7 });
+});

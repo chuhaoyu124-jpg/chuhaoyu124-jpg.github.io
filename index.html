@@ -47,6 +47,7 @@
           <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
           <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
           <div class="stat"><b id="s-pct">0%</b><span>四周课程进度</span></div>
+          <div class="stat"><b id="s-learned">0 / 0</b><span>已学完</span></div>
         </div>
         <nav class="dock reveal d4" id="dock" aria-label="我做过的工具"></nav>
       </div>
@@ -89,6 +90,7 @@
 
   <script src="assets/days.js"></script>
   <script src="assets/site.js"></script>
+  <script src="assets/xuewan.js"></script>
   <script>
     (function () {
       const days = (window.DAYS || []).slice().sort((a, b) => b.day - a.day);
@@ -96,6 +98,8 @@
       const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
       const glyph = (d, cls) => `<div class="glyph ${cls || ""}" style="${d.grad ? `--g:${esc(d.grad)}` : ""}">${esc(d.glyph || d.day)}</div>`;
       const weekName = n => (weeks.find(w => w.n === n) || {}).title || "";
+      // 读者自己的学完记录（只存在这个浏览器里）；xuewan.js 没加载到时就不显示学完，首页照常
+      const xuewan = window.Xuewan ? window.Xuewan.createXuewan(window.Xuewan.browserStore) : null;
 
       // 最新一课
       const latest = days[0];
@@ -122,6 +126,7 @@
       // 全部课程
       document.getElementById("tiles").innerHTML = days.map((d, i) => `
         <a class="tile reveal d${Math.min(i, 3)}" href="${esc(d.url)}">
+          ${xuewan && xuewan.isLearned(d.day) ? '<span class="xuewan-mark" title="已学完"><span aria-hidden="true">✓</span><span class="sr-only">已学完</span></span>' : ""}
           ${glyph(d, "sm")}
           <span class="meta">Day ${d.day} · 第${d.week}周 · ${esc(weekName(d.week))}</span>
           <h3>${esc(d.title)}</h3>
@@ -148,6 +153,12 @@
       document.getElementById("s-days").textContent = days.length;
       document.getElementById("s-tools").textContent = days.filter(d => d.tool).length;
       document.getElementById("s-pct").textContent = Math.round(days.length / total * 100) + "%";
+      if (xuewan) {
+        const progress = xuewan.count(days.map(d => d.day));
+        document.getElementById("s-learned").textContent = `${progress.learned} / ${progress.total}`;
+      } else {
+        document.getElementById("s-learned").parentElement.remove();
+      }
       window.observeReveal && window.observeReveal();
     })();
   </script>

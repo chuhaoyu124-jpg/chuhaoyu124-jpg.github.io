@@ -755,3 +755,14 @@ html.theme-switching::view-transition-new(root) { animation: theme-fade .4s var(
 .xuewan { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 28px; text-align: center; }
 .xuewan-note { font-size: 13px; color: var(--text-3); }
 .xuewan[hidden] { display: none; }
+
+/* ---- 首页：学完的课在课程卡右上角打 ✓ ---- */
+.tile > .xuewan-mark {
+  position: absolute; top: 16px; right: 16px; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 15px; font-weight: 700;
+  background: var(--accent-soft); color: var(--accent-text);
+}
+.tile:has(> .xuewan-mark) .meta { padding-right: 36px; } /* 给 ✓ 留位置，手机列表里 meta 和它在同一行 */
+
+/* ---- 通用：只给读屏软件读的文字 ---- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
