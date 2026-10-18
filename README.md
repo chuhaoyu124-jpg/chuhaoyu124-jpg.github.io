@@ -107,3 +107,9 @@ npm test
 测试文件在 `test/` 里。术语见 `GLOSSARY.md`。
 
 `npm test` 也会测「新课一键生成」（`scripts/`），并检查 `assets/days.js` 里列出的每一课都没有【待写】。所以写草稿期间测试是红的，这是正常的：红色就是在提醒你草稿还没写完，先别推送。
+
+推送前会自动跑一遍 `npm test`，红了就不让推（`.githooks/pre-push`），所以没写完的草稿推不上去。新 clone 下来后执行一次：
+
+```bash
+git config core.hooksPath .githooks
+```

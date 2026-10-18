@@ -11,3 +11,7 @@ Issues 和 specs 以本地 Markdown 文件存放在 `.scratch/<feature-slug>/` �
 ### Domain docs
 
 Single-context：根目录 `GLOSSARY.md` + `docs/adr/`（用到时再创建）。See `docs/agents/domain.md`.
+
+### 工作方式
+
+试跑会改文件的命令、派审查 sub-agent、做完一个 ticket、本地预览或检查线上页面之前，先读 `docs/agents/agent-workflow.md`.
