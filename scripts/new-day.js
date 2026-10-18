@@ -25,6 +25,8 @@ function main() {
 
   const draft = createDraft({ daysJs: read("assets/days.js"), readLesson: read, fields, today: today() });
 
+  // 不覆盖写了一半的草稿；三个文件都算好之后才开始写
+  if (fs.existsSync(path.join(root, draft.newFile))) throw new Error(`${draft.newFile} 已经存在，不会覆盖它`);
   const write = (rel, text) => fs.writeFileSync(path.join(root, rel), text);
   write(draft.newFile, draft.newHtml);
   write("assets/days.js", draft.daysJs);

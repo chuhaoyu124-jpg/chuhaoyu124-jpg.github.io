@@ -127,3 +127,41 @@ test("标题里有特殊字符时，页面和 days.js 都正确", () => {
   assert.equal(runDays(daysJs).DAYS[0].title, title);
 });
 
+// ---- 出错时拒绝（ticket 02）----
+
+test("缺了必填项就拒绝，并说出缺哪一项", () => {
+  for (const key of ["title", "summary", "glyph", "tool"]) {
+    assert.throws(() => draft({ [key]: undefined }), new RegExp(`--${key}`), `缺 ${key} 没有拒绝`);
+    assert.throws(() => draft({ [key]: "  " }), new RegExp(`--${key}`), `${key} 只有空格没有拒绝`);
+  }
+});
+
+test("图标不是一个字就拒绝", () => {
+  assert.throws(() => draft({ glyph: "建文" }), /一个字/);
+  assert.doesNotThrow(() => draft({ glyph: "🗂" }));
+});
+
+test("days.js 里已经有这一课就拒绝", () => {
+  assert.throws(() => draft({ day: 7 }), /Day 7 已经在 days\.js 里/);
+});
+
+test("Day 编号跳号就拒绝", () => {
+  assert.throws(() => draft({ day: 9 }), /应该是 Day 8/);
+});
+
+test("超出四周计划就拒绝，提示先在路线图里加一周", () => {
+  const js = read("assets/days.js").replace(/day: 7,/, "day: 28,");
+  const readLesson = rel => read(rel).replace("下一课 · Day 8", "下一课 · Day 29");
+  assert.throws(
+    () => createDraft({ daysJs: js, readLesson, fields: { title: "t", summary: "s", glyph: "字", tool: "x" }, today: "2026-11-08" }),
+    /Day 29 超出了路线图.*WEEKS/
+  );
+});
+
+test("上一课找不到「明天见」就拒绝", () => {
+  const readLesson = rel => read(rel).replace("<b>明天见</b>", "<b>后天见</b>");
+  assert.throws(
+    () => createDraft({ daysJs: read("assets/days.js"), readLesson, fields: { title: "t", summary: "s", glyph: "字", tool: "x" }, today: "2026-10-19" }),
+    /days\/day-07\.html.*明天见/
+  );
+});

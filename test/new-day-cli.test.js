@@ -33,3 +33,24 @@ test("跑一次命令就生成草稿：新建新课页面，改 days.js 和上�
   assert.match(result.stdout, /keywords/);
 });
 
+test("新课页面已经存在时拒绝，三个文件都不改", () => {
+  const dir = tempRepo();
+  const files = ["days/day-08.html", "assets/days.js", "days/day-07.html"].map(f => path.join(dir, f));
+  fs.writeFileSync(files[0], "写了一半的草稿");
+  const before = files.map(f => fs.readFileSync(f, "utf8"));
+  const result = run(dir, ARGS);
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /days\/day-08\.html 已经存在/);
+  assert.deepEqual(files.map(f => fs.readFileSync(f, "utf8")), before);
+});
+
+test("规则不通过时（比如缺了标题）三个文件都不改", () => {
+  const dir = tempRepo();
+  const files = ["assets/days.js", "days/day-07.html"].map(f => path.join(dir, f));
+  const before = files.map(f => fs.readFileSync(f, "utf8"));
+  const result = run(dir, ARGS.slice(2));
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /--title/);
+  assert.deepEqual(files.map(f => fs.readFileSync(f, "utf8")), before);
+  assert.ok(!fs.existsSync(path.join(dir, "days", "day-08.html")));
+});

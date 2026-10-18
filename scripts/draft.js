@@ -114,10 +114,27 @@ function lessonMain({ day, week, theme, date, title, summary, glyph, grad, tool,
   `;
 }
 
-function createDraft({ daysJs, readLesson, fields, today }) {
+// 会把网站弄乱的输入一律拒绝：抛出带中文说明的错误，调用方据此什么文件都不写
+function check(fields, days, weeks) {
+  for (const key of ["title", "summary", "glyph", "tool"]) {
+    if (!fields[key] || !String(fields[key]).trim()) throw new Error(`缺少 --${key}`);
+  }
+  if ([...fields.glyph.trim()].length !== 1) throw new Error(`--glyph 只能是一个字，现在是「${fields.glyph}」`);
+
+  const next = days[0].day + 1;
+  const day = fields.day === undefined ? next : fields.day;
+  if (days.some(d => d.day === day)) throw new Error(`Day ${day} 已经在 days.js 里了`);
+  if (day !== next) throw new Error(`最新一课是 Day ${days[0].day}，下一课应该是 Day ${next}，不能是 Day ${day}`);
+  const planned = weeks.reduce((sum, w) => sum + w.days, 0);
+  if (day > planned) throw new Error(`Day ${day} 超出了路线图（共 ${planned} 课），先在 days.js 的 WEEKS 里加一周`);
+  return day;
+}
+
+function createDraft({ daysJs, readLesson, fields: raw, today }) {
   const { days, weeks } = loadDays(daysJs);
   const latest = days[0];
-  const day = latest.day + 1;
+  const day = check(raw, days, weeks);
+  const fields = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, typeof v === "string" ? v.trim() : v]));
   const week = Math.ceil(day / 7);
   const date = fields.date || today;
   const file = `day-${pad(day)}.html`;
@@ -145,6 +162,7 @@ function createDraft({ daysJs, readLesson, fields, today }) {
   const newHtml = steps.reduce((html, step) => step(html), latestHtml);
 
   const tomorrow = `<span class="next"><small>下一课 · Day ${day}</small><b>明天见</b></span>`;
+  if (!latestHtml.includes(tomorrow)) throw new Error(`${latest.url} 的 pager 里找不到「下一课 · Day ${day} 明天见」`);
   const prevHtml = latestHtml.replace(
     tomorrow,
     () => `<a class="next" href="${file}"><small>下一课 · Day ${day}</small><b>${esc(title)} ›</b></a>`
