@@ -9,17 +9,33 @@
 - `days/day-NN.html` 每天一页
 - `about.html` 关于页
 - `assets/style.css` 设计系统；`assets/site.js` 导航、淡入动效、`copyText()` 复制
-- `assets/xuewan.js` 学完记录（读者给哪几课标了「学完」），`test/` 是它的测试，`package.json` 只用来跑 `npm test`
+- `assets/xuewan.js` 学完记录（读者给哪几课标了「学完」）
+- `scripts/` 新课一键生成（`npm run new-day`，见下面「每天新增一课」）；`test/` 是测试，`package.json` 只用来跑这两个命令
 
 ## 每天新增一课
-以最新一课的页面为模板（Day 1 是"三次尝试对比"写法，Day 2 是"采访对话"写法），复制成 `days/day-NN.html`，保留四个版块：
+
+先用一条命令生成这一课的**草稿**（术语见 `GLOSSARY.md`）：
+
+```bash
+npm run new-day -- --title "让 Claude Code 帮我建文件夹" --summary "一句话说清要什么，它替你建好整套文件夹。" --glyph 建 --tool "文件夹提示词" --keywords "文件夹 终端"
+```
+
+- 必填 `--title`（标题）、`--summary`（一句话总结）、`--glyph`（图标上的一个字）、`--tool`（小工具名）；选填 `--grad`（图标渐变，不填用默认暖橙）、`--keywords`（搜索词）
+- Day 编号自动取最新一课 +1，日期取今天，第几周和当周主题按路线图算；需要时可以用 `--day`、`--date` 改
+- 它会：以最新一课为底新建 `days/day-NN.html`（head、标题区、pager、页脚都填好，三个版块只留骨架和【待写】），在 `assets/days.js` 最前面加一条，把上一课 pager 的「明天见」改成链接
+- 页面已存在、跳号、超出路线图、上一课找不到「明天见」时会拒绝，一个文件都不改
+- 它不提交也不推送
+
+然后把页面里的【待写】全部写完（大标题的换行、lead 也可以顺手改），跑 `npm test` 变绿，再推送到 main。推送了才算更新。
+
+页面一共五块（手写的三个版块可以参考 Day 1 的"三次尝试对比"写法和 Day 2 的"采访对话"写法）：
 1. `lesson-hero`：渐变图标（一个字）、eyebrow「Day N · 第几周主题」、大标题、一句话总结
 2. `section alt #learn` 今天学了什么：`statement` 大字 + `features` 要点格子（最关键的一格用 `hl`）+ `pull` 金句 / `note-grid`
 3. `section #practice` 我的练习：Haoyu 的真实提示词、AI 输出、提问和收获。截图一律转写成文字，不贴原图。AI 自己补的句子用 `<mark>` 标出
 4. `section alt #tool` 小工具：`studio` 两栏，左边 `panel-card` 表单（`seg` 场景切换、`toggle` 开关），右边 `preview` 输出 + 复制按钮。纯前端，不调任何 API
 5. 底部 `pager` 指向上一课和下一课
 
-然后在 `assets/days.js` 最前面加一条（含 `week`、`glyph`、`grad`），把上一课的 pager「明天见」改成链接，推送到 main。
+其中 1 和 5 由命令生成，2、3、4 是你手写的部分。
 
 链接一律写成 `index.html` / `../index.html`，不要写 `./` 或 `../`：在电脑上直接双击打开文件时，`./` 会打开文件夹列表而不是首页。
 
@@ -89,3 +105,5 @@ npm test
 ```
 
 测试文件在 `test/` 里。术语见 `GLOSSARY.md`。
+
+`npm test` 也会测「新课一键生成」（`scripts/`），并检查 `assets/days.js` 里列出的每一课都没有【待写】。所以写草稿期间测试是红的，这是正常的：红色就是在提醒你草稿还没写完，先别推送。
