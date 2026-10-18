@@ -47,7 +47,7 @@
           <div class="stat"><b id="s-days">0</b><span>学习天数</span></div>
           <div class="stat"><b id="s-tools">0</b><span>小工具</span></div>
           <div class="stat"><b id="s-pct">0%</b><span>已更新</span></div>
-          <div class="stat"><b id="s-learned">0 / 0</b><span>已学完</span></div>
+          <div class="stat"><b id="s-xuewan">0 / 0</b><span>已学完</span></div>
         </div>
         <nav class="dock reveal d4" id="dock" aria-label="我做过的工具"></nav>
       </div>
@@ -126,7 +126,7 @@
       // 全部课程
       document.getElementById("tiles").innerHTML = days.map((d, i) => `
         <a class="tile reveal d${Math.min(i, 3)}" href="${esc(d.url)}">
-          ${xuewan && xuewan.isLearned(d.day) ? '<span class="xuewan-mark" title="已学完"><span aria-hidden="true">✓</span><span class="sr-only">已学完</span></span>' : ""}
+          ${xuewan && xuewan.has(d.day) ? '<span class="xuewan-mark" title="已学完"><span aria-hidden="true">✓</span><span class="sr-only">已学完</span></span>' : ""}
           ${glyph(d, "sm")}
           <span class="meta">Day ${d.day} · 第${d.week}周 · ${esc(weekName(d.week))}</span>
           <h3>${esc(d.title)}</h3>
@@ -155,9 +155,9 @@
       document.getElementById("s-pct").textContent = Math.round(days.length / total * 100) + "%";
       if (xuewan) {
         const progress = xuewan.count(days.map(d => d.day));
-        document.getElementById("s-learned").textContent = `${progress.learned} / ${progress.total}`;
+        document.getElementById("s-xuewan").textContent = `${progress.xuewan} / ${progress.total}`;
       } else {
-        document.getElementById("s-learned").parentElement.remove();
+        document.getElementById("s-xuewan").parentElement.remove();
       }
       window.observeReveal && window.observeReveal();
     })();

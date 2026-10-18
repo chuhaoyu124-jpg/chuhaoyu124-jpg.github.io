@@ -370,21 +370,21 @@
     box.innerHTML = '<button type="button" class="btn-pill xuewan-btn"></button><small class="xuewan-note"></small>';
     pager.before(box);
     const btn = box.querySelector("button"), note = box.querySelector("small");
-    const paint = learned => {
-      btn.textContent = learned ? "✓ 已学完" : "标记为学完";
-      btn.classList.toggle("secondary", learned);
-      btn.setAttribute("aria-pressed", learned);
-      note.textContent = (learned ? "再点一次取消 · " : "") + "记录只保存在这个浏览器里";
+    const paint = isXuewan => {
+      btn.textContent = isXuewan ? "✓ 已学完" : "标记为学完";
+      btn.classList.toggle("secondary", isXuewan);
+      btn.setAttribute("aria-pressed", isXuewan);
+      note.textContent = (isXuewan ? "再点一次取消 · " : "") + "记录只保存在这个浏览器里";
     };
     loadScript("assets/xuewan.js", () => window.Xuewan, () => {
       const xuewan = window.Xuewan.createXuewan(window.Xuewan.browserStore);
-      paint(xuewan.isLearned(day));
+      paint(xuewan.has(day));
       box.hidden = false;
       btn.addEventListener("click", () => {
-        const before = xuewan.isLearned(day), learned = xuewan.toggle(day);
-        if (learned === before) return toast("没能保存，这个浏览器不允许记录");
-        paint(learned);
-        toast(learned ? `学完 Day ${day} 🎉` : "已取消学完");
+        const before = xuewan.has(day), isXuewan = xuewan.toggle(day);
+        if (isXuewan === before) return toast("没能保存，这个浏览器不允许记录");
+        paint(isXuewan);
+        toast(isXuewan ? `学完 Day ${day} 🎉` : "已取消学完");
       });
     });
   }

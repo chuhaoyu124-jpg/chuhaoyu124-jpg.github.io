@@ -11,17 +11,17 @@
   }
 
   function createXuewan(store) {
-    const learned = new Set(load(store));
+    const xuewanDays = new Set(load(store));
     return {
-      isLearned: day => learned.has(day),
+      has: day => xuewanDays.has(day),
       // 学完数只算已更新的课，所以不会超过已更新数
-      count: updatedDays => ({ learned: updatedDays.filter(d => learned.has(d)).length, total: updatedDays.length }),
+      count: updatedDays => ({ xuewan: updatedDays.filter(d => xuewanDays.has(d)).length, total: updatedDays.length }),
       // 返回切换后的状态；存不进去就撤回，返回值和切换前一样
       toggle(day) {
-        const flip = () => learned.has(day) ? learned.delete(day) : learned.add(day);
+        const flip = () => xuewanDays.has(day) ? xuewanDays.delete(day) : xuewanDays.add(day);
         flip();
-        try { store.set(KEY, JSON.stringify([...learned])); } catch (_) { flip(); }
-        return learned.has(day);
+        try { store.set(KEY, JSON.stringify([...xuewanDays])); } catch (_) { flip(); }
+        return xuewanDays.has(day);
       }
     };
   }
