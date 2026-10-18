@@ -10,6 +10,9 @@ function loadDays(daysJs) {
   return { days: window.DAYS, weeks: window.WEEKS };
 }
 
+// 页面里还剩几处【待写】：草稿写完的唯一标准
+const countTodo = html => html.split(TODO).length - 1;
+
 const pad = n => String(n).padStart(2, "0");
 const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -183,4 +186,4 @@ function createDraft({ daysJs, readLesson, fields: raw, today }) {
   return { daysJs: newDaysJs, newHtml, prevHtml, newFile: `days/${file}`, prevFile: latest.url };
 }
 
-module.exports = { createDraft };
+module.exports = { createDraft, countTodo };

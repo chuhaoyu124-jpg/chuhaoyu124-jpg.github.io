@@ -4,7 +4,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { parseArgs } = require("node:util");
-const { createDraft } = require("./draft.js");
+const { createDraft, countTodo } = require("./draft.js");
 
 const root = process.cwd();
 const read = rel => fs.readFileSync(path.join(root, rel), "utf8");
@@ -30,7 +30,7 @@ function main() {
   write("assets/days.js", draft.daysJs);
   write(draft.prevFile, draft.prevHtml);
 
-  const todo = draft.newHtml.split("【待写】").length - 1;
+  const todo = countTodo(draft.newHtml);
   console.log(`已生成草稿：
   新建 ${draft.newFile}
   修改 assets/days.js（最前面加了一条）
