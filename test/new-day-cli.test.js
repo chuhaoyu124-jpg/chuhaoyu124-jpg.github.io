@@ -20,7 +20,7 @@ function tempRepo() {
 const run = (dir, args) => spawnSync(process.execPath, [CLI, ...args], { cwd: dir, encoding: "utf8" });
 const ARGS = ["--title", "让 Claude Code 帮我建文件夹", "--summary", "一句话总结。", "--glyph", "建", "--tool", "文件夹提示词", "--date", "2026-10-19"];
 
-test("跑一次命令就生成草稿：新建新课页面，改 days.js 和上一课", () => {
+test("跑一次命令就生成草稿：新建草稿页面，改 days.js 和上一课", () => {
   const dir = tempRepo();
   const result = run(dir, ARGS);
   assert.equal(result.status, 0, result.stderr);
@@ -33,7 +33,7 @@ test("跑一次命令就生成草稿：新建新课页面，改 days.js 和上�
   assert.match(result.stdout, /keywords/);
 });
 
-test("新课页面已经存在时拒绝，三个文件都不改", () => {
+test("草稿页面已经存在时拒绝，三个文件都不改", () => {
   const dir = tempRepo();
   const files = ["days/day-08.html", "assets/days.js", "days/day-07.html"].map(f => path.join(dir, f));
   fs.writeFileSync(files[0], "写了一半的草稿");

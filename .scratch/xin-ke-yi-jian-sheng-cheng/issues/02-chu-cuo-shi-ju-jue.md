@@ -4,7 +4,7 @@
 
 **Blocked by:** 01（一条命令生成草稿）
 
-**Status:** done
+**Status:** resolved
 
 - [x] 新课页面已存在 → 拒绝（不覆盖写了一半的草稿）
 - [x] days.js 里已有这一课 → 拒绝

@@ -26,7 +26,7 @@ function runDays(js) {
   return JSON.parse(JSON.stringify(window));
 }
 
-test("草稿让 days.js 最前面多一条新课，原有的课不变", () => {
+test("草稿让 days.js 最前面多一课，原有的课不变", () => {
   const before = runDays(read("assets/days.js")).DAYS;
   const { DAYS } = runDays(draft({ keywords: "文件夹 终端" }).daysJs);
   assert.deepEqual(DAYS[0], {
@@ -43,7 +43,7 @@ test("草稿让 days.js 最前面多一条新课，原有的课不变", () => {
   assert.deepEqual(DAYS.slice(1), before);
 });
 
-test("上一课的「明天见」变成指向新课的链接，其余一字不动", () => {
+test("上一课的「明天见」变成指向这一课草稿的链接，其余一字不动", () => {
   const before = read("days/day-07.html");
   const { prevHtml } = draft();
   assert.equal(
@@ -56,7 +56,7 @@ test("上一课的「明天见」变成指向新课的链接，其余一字不�
   assert.notEqual(prevHtml, before);
 });
 
-test("新课页面的标题和分享卡片是新课的，安全设置原样保留", () => {
+test("草稿页面的标题和分享卡片是这一课的，安全设置原样保留", () => {
   const { newHtml } = draft();
   const full = "Day 8 · 让 Claude Code 帮我建文件夹 · Haoyu 的 AI 工具箱";
   assert.match(newHtml, new RegExp(`<title>${full}</title>`));
@@ -68,7 +68,7 @@ test("新课页面的标题和分享卡片是新课的，安全设置原样保�
   assert.ok(newHtml.includes(`<meta name="referrer" content="strict-origin-when-cross-origin">`));
 });
 
-test("新课页面不残留上一课的正文和小工具脚本", () => {
+test("草稿页面不残留上一课的正文和小工具脚本", () => {
   const { newHtml } = draft();
   // Day 7 的标题只应出现在 pager 的「上一课」里
   assert.equal(newHtml.split("拼出我的第一个 skill").length - 1, 1, "Day 7 的标题出现在 pager 以外");
@@ -78,7 +78,7 @@ test("新课页面不残留上一课的正文和小工具脚本", () => {
   assert.ok(newHtml.includes(`<script src="../assets/site.js"></script>\n</body>`));
 });
 
-test("新课的 hero 填好了：第几周按 Day 编号算，主题来自路线图", () => {
+test("草稿的 hero 填好了：第几周按 Day 编号算，主题来自路线图", () => {
   const { newHtml } = draft();
   assert.ok(newHtml.includes(`<div class="glyph reveal">建</div>`));
   assert.ok(newHtml.includes(`<span class="eyebrow reveal d1">Day 8 · Claude Code 与图片</span>`));
@@ -110,7 +110,7 @@ test("三个手写版块只留骨架和【待写】", () => {
   assert.ok(newHtml.includes(`<h2 class="title reveal d1">文件夹提示词。</h2>`));
 });
 
-test("新课的 pager 指向上一课，下一课是「明天见」；面包屑是新课", () => {
+test("草稿的 pager 指向上一课，下一课是「明天见」；面包屑是这一课", () => {
   const { newHtml } = draft();
   assert.ok(newHtml.includes(`<a href="day-07.html"><small>上一课 · Day 7</small><b>‹ 拼出我的第一个 skill</b></a>`));
   assert.ok(newHtml.includes(`<span class="next"><small>下一课 · Day 9</small><b>明天见</b></span>`));

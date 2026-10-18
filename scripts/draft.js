@@ -27,7 +27,7 @@ function daysEntry(entry) {
   return `  {\n${lines.join(",\n")}\n  },\n`;
 }
 
-// 新课页面 <main> 里的内容：hero 填好，三个版块是骨架 + 【待写】，最后是 pager
+// 草稿页面 <main> 里的内容：hero 填好，三个版块是骨架 + 【待写】，最后是 pager
 function lessonMain({ day, week, theme, date, title, summary, glyph, grad, tool, prev }) {
   const style = grad ? ` style="--g:${esc(grad)}"` : "";
   return `

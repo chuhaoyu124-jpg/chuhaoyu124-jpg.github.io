@@ -4,7 +4,7 @@
 
 **Blocked by:** None（can start immediately）
 
-**Status:** done
+**Status:** resolved
 
 - [x] 纯函数模块对外只有一个函数：输入最新一课页面、days.js 文本、字段、今天日期，返回新页面、新 days.js、改好的上一课页面三段字符串
 - [x] 很薄的命令行入口：解析参数、读文件、调用模块、三段都成功后才写入，零依赖 CommonJS；`package.json` 加 `new-day` 脚本
