@@ -186,3 +186,20 @@ test("带肤色或组合的 emoji 也算一个字", () => {
   }
   assert.throws(() => draft({ glyph: "👍👍" }), /一个字/);
 });
+
+test("某一周不是 7 课时，按路线图算这一课属于第几周", () => {
+  // 第一周 10 课、第二周 5 课：Day 8 还在第一周
+  const daysJs = read("assets/days.js").replace(
+    /window\.WEEKS = \[[\s\S]*?\];/,
+    'window.WEEKS = [\n  { n: 1, title: "用 AI 写字", days: 10 },\n  { n: 2, title: "Claude Code 与图片", days: 5 }\n];'
+  );
+  const result = createDraft({
+    daysJs,
+    readLesson: read,
+    fields: { title: "第八课", summary: "一句话总结。", glyph: "八", tool: "小工具" },
+    today: "2026-10-19"
+  });
+  assert.equal(runDays(result.daysJs).DAYS[0].week, 1);
+  assert.match(result.newHtml, /Day 8 · 用 AI 写字/);
+  assert.match(result.newHtml, /· 第 1 周<\/p>/);
+});

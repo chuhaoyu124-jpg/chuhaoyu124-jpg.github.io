@@ -150,7 +150,9 @@ function createDraft({ daysJs, readLesson, fields: raw, today }) {
   const latest = days[0];
   const day = check(raw, days, weeks);
   const fields = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, typeof v === "string" ? v.trim() : v]));
-  const week = Math.ceil(day / 7);
+  // 按路线图每周的课数往后数（check 已保证 day 不超出路线图）
+  let seen = 0;
+  const { n: week, title: theme } = weeks.find(w => (seen += w.days) >= day);
   const date = fields.date || today;
   const file = `day-${pad(day)}.html`;
   const { title, summary, glyph, tool, grad, keywords } = fields;
@@ -161,7 +163,6 @@ function createDraft({ daysJs, readLesson, fields: raw, today }) {
 
   const latestHtml = readLesson(latest.url);
   const fullTitle = `Day ${day} · ${esc(title)} · Haoyu 的 AI 工具箱`;
-  const theme = weeks.find(w => w.n === week).title;
   // 用函数做替换，标题里有 $ 也不会被当成替换模式
   const put = (re, value) => html => html.replace(re, (_, a, b) => a + value + b);
   const steps = [
