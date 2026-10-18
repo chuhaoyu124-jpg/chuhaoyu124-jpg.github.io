@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 7,
+    keywords: "skill SKILL.md 复盘 写作助手 规则 说明书 第一周",
+    date: "2026-10-18",
+    week: 1,
+    title: "拼出我的第一个 skill",
+    summary: "一周攒下的六条规则，拼成一份 SKILL.md。从此不用每次重复交代，AI 一开口就懂我的习惯。",
+    tool: "skill 拼装台",
+    glyph: "拼",
+    grad: "linear-gradient(135deg, #d6ccff 0%, #9b8cff 50%, #4f7cf7 100%)",
+    url: "days/day-07.html"
+  },
+  {
     day: 6,
     keywords: "挑刺 批评 自查 检查 德语 邮件 语法 报告 修改",
     date: "2026-10-17",
