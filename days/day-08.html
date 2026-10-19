@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 8 · 会动手的 Claude · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="聊天里的 Claude 只会说，Claude Code 会动手：建文件夹、写文件、改网页。第一次，先让它建一个文件夹、写一个 txt。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 8 · 会动手的 Claude · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="聊天里的 Claude 只会说，Claude Code 会动手：建文件夹、写文件、改网页。第一次，先让它建一个文件夹、写一个 txt。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-08.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #a7e9ff 0%, #22b8cf 50%, #2f6fd6 100%)">动</div>
+        <span class="eyebrow reveal d1">Day 8 · Claude Code 与图片</span>
+        <h1 class="headline reveal d1">会动手的<br>Claude。</h1>
+        <p class="lead reveal d2">问路的人告诉你怎么走，Claude Code 直接带你过去。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 19 日 · 第 2 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">聊天里的 Claude 给我一段代码，我还得自己复制、新建文件、保存。<br><span class="dim">Claude Code 直接在文件夹里动手：建文件、写内容、改网页，做完告诉我。</span></p>
+        <p class="pull reveal">从“告诉我怎么做”，<br>变成“替我做好”。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>它在一个文件夹里干活</h4><p>Claude Code 只能动它被打开的那个文件夹（或仓库）。先想清楚：这次的东西放在哪。</p></div>
+          <div class="feature reveal d1"><span class="k">02</span><h4>权限要看清再点</h4><p>它要建文件、跑命令时会先问“可以吗”。看一眼它要做什么，再点允许。</p></div>
+          <div class="feature hl reveal d2"><span class="k">03</span><h4>先说计划，再动手</h4><p>让它动手前先用一两句话讲清楚打算做什么、会碰哪些文件。说错了，还来得及拦。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>做完列出改动</h4><p>“列出你新建和修改了哪些文件。”它说做好了，我得亲眼看到。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>云端环境要多一步</h4>
+            <p>如果用的是云端的 Claude Code（左边写着“云端”），会话结束后，没提交的文件会消失。做完记得说一句“提交并推送”，东西才真的留下。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：动手前后</h4>
+            <pre class="code" style="margin-top:12px">【动手前后】
+动手改文件前，先用一两句话说清楚你打算做什么、会新建或修改哪些文件。
+做完后列出所有新建和修改的文件，以及每个文件里放了什么。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">第一次让 Claude 动手。</h2>
+          <p class="lead reveal d2">在 Claude Code 里，让它建一个文件夹、写一个 txt，把第一周学到的东西记下来。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">我对 Claude Code 说</span>
+          <pre class="code">请先用一两句话告诉我你打算怎么做，等我说“好”再动手：
+1. 新建一个文件夹，叫“我的AI练习”
+2. 在里面新建一个文件“第一周.txt”
+3. 文件里写上今天的日期，再写我第一周学到的6件事：
+   素材、先问我、语气样本、多版本挑选、改写五方向、先挑刺再改
+   每件事一行，后面用一句话说明
+做完后，列出你新建了哪些文件，并把“第一周.txt”的内容给我看。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">如果用的是云端环境，最后再说</span>
+          <pre class="code">把这个文件夹提交并推送，提交说明写“第一周学习记录”。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">Claude Code 任务卡。</h2>
+          <p class="lead reveal d2">选一种要它做的事，填上文件夹和文件名，勾上“先说计划”“做完列改动”，就得到一张可以直接发给 Claude Code 的任务卡。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="seg" id="kinds"></div>
+            <div class="field">
+              <label for="f-folder"><span>文件夹</span></label>
+              <input type="text" id="f-folder" value="我的AI练习">
+            </div>
+            <div class="field">
+              <label for="f-file"><span>文件名</span></label>
+              <input type="text" id="f-file" value="第一周.txt">
+            </div>
+            <div class="field">
+              <label for="f-what"><span>要做的事 / 内容</span></label>
+              <textarea id="f-what" rows="4"></textarea>
+            </div>
+            <label class="toggle"><span>先说计划，等我说“好”再动手</span><input type="checkbox" id="f-plan" checked></label>
+            <label class="toggle"><span>做完列出新建和修改的文件</span><input type="checkbox" id="f-list" checked></label>
+            <label class="toggle"><span>云端环境：最后提交并推送</span><input type="checkbox" id="f-push"></label>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>任务卡</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="13" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制任务卡</button>
+              <button class="btn ghost" id="clear">清空</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-07.html"><small>上一课 · Day 7</small><b>‹ 拼出我的第一个 skill</b></a>
+          <span class="next"><small>下一课 · Day 9</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 8 · 会动手的 Claude</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const KINDS = {
+      "建文件": { folder: "我的AI练习", file: "第一周.txt", what: "写上今天的日期，再写我第一周学到的6件事：素材、先问我、语气样本、多版本挑选、改写五方向、先挑刺再改。每件事一行，后面用一句话说明。",
+        build: (f, n, w) => [`新建一个文件夹，叫“${f}”`, `在里面新建一个文件“${n}”`, w ? `文件里写：${w}` : ""] },
+      "整理文件": { folder: "下载", file: "", what: "按类型分到“PDF”“图片”“其他”三个子文件夹里，不要删除任何文件。",
+        build: (f, n, w) => [`看一下“${f}”文件夹里有哪些文件`, w || "按类型整理好"] },
+      "改文件": { folder: "我的AI练习", file: "第一周.txt", what: "在最后加一行：第二周开始学 Claude Code 和图片。其他内容不要动。",
+        build: (f, n, w) => [`打开“${f}”里的“${n}”`, w || "按我的要求修改"] },
+      "做网页": { folder: "我的AI练习", file: "poster.html", what: "做一张简单的海报：白底，中间一行大字“第一周完成”，下面一行小字写今天的日期。",
+        build: (f, n, w) => [`在“${f}”里新建一个网页文件“${n}”`, w || "做一个简单的页面", "做完告诉我怎么在浏览器里打开它"] }
+    };
+    const $ = id => document.getElementById(id);
+    let kind = "建文件";
+    $("kinds").innerHTML = Object.keys(KINDS).map(k => `<button class="chip" data-k="${k}">${k}</button>`).join("");
+    function load() {
+      const k = KINDS[kind];
+      $("f-folder").value = k.folder; $("f-file").value = k.file; $("f-what").value = k.what;
+      build();
+    }
+    $("kinds").addEventListener("click", e => { if (e.target.dataset.k) { kind = e.target.dataset.k; load(); } });
+
+    function build() {
+      document.querySelectorAll("#kinds .chip").forEach(c => c.classList.toggle("on", c.dataset.k === kind));
+      const f = $("f-folder").value.trim(), n = $("f-file").value.trim(), w = $("f-what").value.trim();
+      const needFile = kind !== "整理文件";
+      const warn = !f ? "先填文件夹的名字。" : (needFile && !n) ? "这一类任务要写清文件名。" : "";
+      $("check").innerHTML = warn ? `<div class="hint warn">${warn}</div>` : `<div class="hint ok">任务卡已生成，复制后发给 Claude Code。</div>`;
+      if (warn) { $("out").value = ""; return; }
+      const steps = KINDS[kind].build(f, n, w).filter(Boolean);
+      const lines = [];
+      if ($("f-plan").checked) lines.push("请先用一两句话告诉我你打算怎么做、会新建或修改哪些文件，等我说“好”再动手：");
+      steps.forEach((s, i) => lines.push(`${i + 1}. ${s}`));
+      if ($("f-list").checked) lines.push("做完后，列出你新建和修改了哪些文件，并告诉我每个文件里放了什么。");
+      if ($("f-push").checked) lines.push(`最后把改动提交并推送，提交说明写“${kind}：${n || f}”。`);
+      $("out").value = lines.join("\n");
+    }
+    ["f-folder", "f-file", "f-what"].forEach(id => $(id).addEventListener("input", build));
+    ["f-plan", "f-list", "f-push"].forEach(id => $(id).addEventListener("change", build));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    $("clear").addEventListener("click", () => { ["f-folder", "f-file", "f-what"].forEach(id => $(id).value = ""); build(); });
+    load();
+  </script>
+</body>
+</html>

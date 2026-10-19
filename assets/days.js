@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 8,
+    keywords: "Claude Code 动手 文件夹 txt 权限 计划 提交 推送 云端",
+    date: "2026-10-19",
+    week: 2,
+    title: "会动手的 Claude",
+    summary: "聊天里的 Claude 只会说，Claude Code 会动手：建文件夹、写文件、改网页。第一次，先让它建一个文件夹、写一个 txt。",
+    tool: "Claude Code 任务卡",
+    glyph: "动",
+    grad: "linear-gradient(135deg, #a7e9ff 0%, #22b8cf 50%, #2f6fd6 100%)",
+    url: "days/day-08.html"
+  },
+  {
     day: 7,
     keywords: "skill SKILL.md 复盘 写作助手 规则 说明书 第一周",
     date: "2026-10-18",
