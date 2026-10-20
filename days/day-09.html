@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 9 · 用代码画一张海报 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="不会用设计软件也能做图：让 Claude 写一个 HTML/SVG 文件，浏览器一打开就是一张海报。说清尺寸、背景、文字、图形和配色，再一句一句地改。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 9 · 用代码画一张海报 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="不会用设计软件也能做图：让 Claude 写一个 HTML/SVG 文件，浏览器一打开就是一张海报。说清尺寸、背景、文字、图形和配色，再一句一句地改。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-09.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #c9f7e6 0%, #5fd4c4 50%, #2a9fd6 100%)">画</div>
+        <span class="eyebrow reveal d1">Day 9 · Claude Code 与图片</span>
+        <h1 class="headline reveal d1">用代码<br>画一张海报。</h1>
+        <p class="lead reveal d2">一张图，也可以是一段写给浏览器的说明书。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 20 日 · 第 2 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">Claude 不会直接“画”图，但它会写代码。<br><span class="dim">HTML 和 SVG 就是写给浏览器的画图说明：哪里放一个圆、什么颜色、字多大。浏览器一打开，就是一张海报。</span></p>
+        <p class="pull reveal">先说清楚，<br>再一句一句地改。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>尺寸先定</h4><p>小红书竖图 1080×1440（3:4），朋友圈方图 1080×1080，手机壁纸 1080×1920（9:16）。</p></div>
+          <div class="feature reveal d1"><span class="k">02</span><h4>五个要素</h4><p>尺寸、背景、主文字、一个图形、配色。说清这五样，第一版就不会离谱。</p></div>
+          <div class="feature hl reveal d2"><span class="k">03</span><h4>一次只改一处</h4><p>“标题放大一倍”“圆往右下挪”。一次改一处，哪一步改坏了一眼就能看出来。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>让它截图给我看</h4><p>改完让 Claude 截一张图发过来，不用自己找文件、开浏览器。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>为什么用代码，不用 AI 生图</h4>
+            <p>代码画出来的字一个不错，颜色、位置都能精确地改。AI 生图适合画照片和插画，但里面的文字常常写错。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：海报五要素</h4>
+            <pre class="code" style="margin-top:12px">【海报五要素】
+帮我做图时，先确认：尺寸、背景、主文字、一个图形、配色（不超过3种）。
+我没说的，先给默认值并告诉我。
+用 HTML/SVG 写，文字要清楚可读；改图时一次只改我说的那一处。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">我的第一张代码海报。</h2>
+          <p class="lead reveal d2">先说五要素做出第一版，再改两轮，每轮只改一处。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：说清五要素</span>
+          <pre class="code">请先用一两句话说你的计划，等我说“好”再动手。
+在“我的AI练习”文件夹里新建 poster.html，做一张小红书竖版海报：
+- 尺寸：1080×1440
+- 背景：很浅的天蓝色
+- 主文字：“第一周完成”，大字居中；下面一行小字写今天的日期
+- 图形：右上角一个半透明的圆
+- 配色：天蓝 + 深灰 + 白，不超过3种
+用 HTML/SVG 写，不要用外部图片和字体。做完截一张图给我看。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步、第三步：一次只改一处</span>
+          <pre class="code">把主标题放大一倍，其他地方不要动，改完再截图给我看。</pre>
+          <pre class="code">把右上角的圆换成底部的一条波浪，其他地方不要动，改完再截图给我看。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">海报小画板。</h2>
+          <p class="lead reveal d2">选尺寸、配色和图形，写上标题，马上就能看到预览。可以复制 SVG 代码，也可以复制一段写好五要素的提示词，发给 Claude 接着改。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="seg" id="sizes"></div>
+            <div class="field">
+              <label for="f-title"><span>主文字</span></label>
+              <input type="text" id="f-title" value="第一周完成">
+            </div>
+            <div class="field">
+              <label for="f-sub"><span>小字</span></label>
+              <input type="text" id="f-sub" value="2026.10.20">
+            </div>
+            <div class="seg" id="palettes"></div>
+            <div class="seg" id="shapes"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>预览</h3>
+            <div id="canvas" style="display:flex;justify-content:center"></div>
+            <div class="row">
+              <button class="btn" id="copy-prompt">复制提示词</button>
+              <button class="btn ghost" id="copy-svg">复制 SVG 代码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-08.html"><small>上一课 · Day 8</small><b>‹ 会动手的 Claude</b></a>
+          <span class="next"><small>下一课 · Day 10</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 9 · 用代码画一张海报</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const SIZES = { "小红书 3:4": [1080, 1440], "方图 1:1": [1080, 1080], "壁纸 9:16": [1080, 1920] };
+    const PALETTES = {
+      "天蓝": { name: "很浅的天蓝色背景，深灰文字，天蓝点缀", bg: "#e8f6ff", ink: "#1f2a37", accent: "#38bdf8" },
+      "薄荷": { name: "很浅的薄荷绿背景，深灰文字，青绿点缀", bg: "#eafaf4", ink: "#1f2a37", accent: "#34d1a8" },
+      "夜空": { name: "深蓝背景，白色文字，天蓝点缀", bg: "#0f1b33", ink: "#ffffff", accent: "#4f7cf7" }
+    };
+    const SHAPES = { "圆": "右上角一个半透明的圆", "波浪": "底部一条波浪", "无": "" };
+    const $ = id => document.getElementById(id);
+    const st = { size: "小红书 3:4", pal: "天蓝", shape: "圆" };
+    function chips(id, obj, key) {
+      $(id).innerHTML = Object.keys(obj).map(k => `<button class="chip" data-v="${k}">${k}</button>`).join("");
+      $(id).addEventListener("click", e => { if (e.target.dataset.v) { st[key] = e.target.dataset.v; draw(); } });
+    }
+    chips("sizes", SIZES, "size"); chips("palettes", PALETTES, "pal"); chips("shapes", SHAPES, "shape");
+    const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    function svg() {
+      const [w, h] = SIZES[st.size], p = PALETTES[st.pal];
+      const t = esc($("f-title").value.trim() || "标题"), s = esc($("f-sub").value.trim());
+      let shape = "";
+      if (st.shape === "圆") shape = `<circle cx="${w * 0.82}" cy="${h * 0.14}" r="${w * 0.3}" fill="${p.accent}" opacity="0.35"/>`;
+      if (st.shape === "波浪") shape = `<path d="M0 ${h * 0.82} C ${w * 0.25} ${h * 0.76}, ${w * 0.5} ${h * 0.9}, ${w} ${h * 0.8} L ${w} ${h} L 0 ${h} Z" fill="${p.accent}" opacity="0.5"/>`;
+      const fs = Math.min(140, Math.floor(w * 0.85 / Math.max(1, [...t].length)));
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">
+  <rect width="${w}" height="${h}" fill="${p.bg}"/>
+  ${shape}
+  <text x="${w / 2}" y="${h / 2}" text-anchor="middle" font-size="${fs}" font-weight="700" fill="${p.ink}" font-family="sans-serif">${t}</text>
+  <text x="${w / 2}" y="${h / 2 + 90}" text-anchor="middle" font-size="44" fill="${p.ink}" opacity="0.7" font-family="sans-serif">${s}</text>
+</svg>`;
+    }
+    function draw() {
+      ["sizes", "palettes", "shapes"].forEach((id, i) => {
+        const v = [st.size, st.pal, st.shape][i];
+        document.querySelectorAll(`#${id} .chip`).forEach(c => c.classList.toggle("on", c.dataset.v === v));
+      });
+      $("canvas").innerHTML = svg().replace(/width="\d+" height="\d+"/, 'style="width:100%;max-width:300px;height:auto;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12)"');
+    }
+    function prompt() {
+      const [w, h] = SIZES[st.size], p = PALETTES[st.pal];
+      return ["请先用一两句话说你的计划，等我说“好”再动手。",
+        "在“我的AI练习”文件夹里新建 poster.html，做一张海报：",
+        `- 尺寸：${w}×${h}`,
+        `- 配色：${p.name}，不超过3种颜色`,
+        `- 主文字：“${$("f-title").value.trim()}”，大字居中` + ($("f-sub").value.trim() ? `；下面一行小字写“${$("f-sub").value.trim()}”` : ""),
+        `- 图形：${SHAPES[st.shape] || "不要图形，只留文字"}`,
+        "用 HTML/SVG 写，不要用外部图片和字体。做完截一张图给我看。"].join("\n");
+    }
+    ["f-title", "f-sub"].forEach(id => $(id).addEventListener("input", draw));
+    $("copy-prompt").addEventListener("click", () => copyText(prompt()));
+    $("copy-svg").addEventListener("click", () => copyText(svg()));
+    draw();
+  </script>
+</body>
+</html>

@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 9,
+    keywords: "海报 HTML SVG 代码画图 尺寸 配色 小红书 预览",
+    date: "2026-10-20",
+    week: 2,
+    title: "用代码画一张海报",
+    summary: "不会用设计软件也能做图：让 Claude 写一个 HTML/SVG 文件，浏览器一打开就是一张海报。说清尺寸、背景、文字、图形和配色，再一句一句地改。",
+    tool: "海报小画板",
+    glyph: "画",
+    grad: "linear-gradient(135deg, #c9f7e6 0%, #5fd4c4 50%, #2a9fd6 100%)",
+    url: "days/day-09.html"
+  },
+  {
     day: 8,
     keywords: "Claude Code 动手 文件夹 txt 权限 计划 提交 推送 云端",
     date: "2026-10-19",
