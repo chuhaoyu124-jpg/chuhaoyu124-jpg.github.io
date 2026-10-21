@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 10,
+    keywords: "配色 排版 对比 对齐 留白 60-30-10 对比度 体检",
+    date: "2026-10-21",
+    week: 2,
+    title: "配色排版三铁律",
+    summary: "好看的图不靠灵感，靠三条规矩：对比要够、对齐留白、颜色不超过三种。学会用这三条给自己的海报体检，再请 Claude 一条一条地改。",
+    tool: "排版体检表",
+    glyph: "排",
+    grad: "linear-gradient(135deg, #e0dcff 0%, #a5b4fc 50%, #4f7cf7 100%)",
+    url: "days/day-10.html"
+  },
+  {
     day: 9,
     keywords: "海报 HTML SVG 代码画图 尺寸 配色 小红书 预览",
     date: "2026-10-20",

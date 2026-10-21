@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 10 · 配色排版三铁律 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="好看的图不靠灵感，靠三条规矩：对比要够、对齐留白、颜色不超过三种。学会用这三条给自己的海报体检，再请 Claude 一条一条地改。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 10 · 配色排版三铁律 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="好看的图不靠灵感，靠三条规矩：对比要够、对齐留白、颜色不超过三种。学会用这三条给自己的海报体检，再请 Claude 一条一条地改。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-10.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #e0dcff 0%, #a5b4fc 50%, #4f7cf7 100%)">排</div>
+        <span class="eyebrow reveal d1">Day 10 · Claude Code 与图片</span>
+        <h1 class="headline reveal d1">配色排版<br>三铁律。</h1>
+        <p class="lead reveal d2">好看的图不靠灵感，靠三条规矩。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 21 日 · 第 2 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">一张图看着“有点乱”，十有八九是犯了这三条里的一条。<br><span class="dim">记住它们，就能说清楚哪里不对，让 Claude 改得准。</span></p>
+        <p class="pull reveal">对比、对齐、少色。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>对比要够</h4><p>主标题至少是小字的 3 倍大。文字和背景一深一浅，站远了也能看清。</p></div>
+          <div class="feature reveal d1"><span class="k">02</span><h4>对齐和留白</h4><p>所有东西沿同一条线排：都居中，或者都靠左。四边至少留出画面宽度的 6%，别让字贴着边。</p></div>
+          <div class="feature hl reveal d2"><span class="k">03</span><h4>颜色不超过三种</h4><p>60-30-10：背景色占六成，主色占三成，点缀色只用一成。点缀色就一个，用在最想让人看到的地方。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>先体检，再动手</h4><p>和 Day 6 一样：先让 Claude 按三条规矩挑问题，我选好要改哪条，再只改那一条。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>对比，怎么才算“够”</h4>
+            <p>网页设计里有个对比度的标准：大字至少 3:1，正文至少 4.5:1。不用背数字，下面的小工具会帮你算。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：排版三铁律</h4>
+            <pre class="code" style="margin-top:12px">【排版三铁律】
+做图和改图时遵守：
+1 对比：主标题至少是小字的3倍，文字和背景对比度至少 4.5:1
+2 对齐留白：所有元素沿同一条线对齐，四边留白至少画面宽度的6%
+3 少色：最多3种颜色，按 60-30-10 分配
+我说“帮我看看这张图”时，先按这三条列问题，不要直接改。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">给我的海报做一次体检。</h2>
+          <p class="lead reveal d2">拿昨天的“第一周完成”海报，先按三铁律挑问题，再只改一条，最后做一个靠左对齐的版本来对比。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：只挑问题，不改</span>
+          <pre class="code">打开“我的AI练习”里的 poster.html，按这三条规矩给它做个体检：
+1 对比：主标题是不是小字的3倍以上？文字和背景的对比够不够？
+2 对齐留白：东西是不是沿同一条线？四边留白有没有画面宽度的6%？
+3 少色：是不是不超过3种颜色？有没有按 60-30-10 分配？
+每条给“通过”或“不通过”，不通过的说清楚原因。先不要改。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：只改一条</span>
+          <pre class="code">只改第＿条，其他地方不要动。改之前先说你打算怎么改，等我说“好”。改完截图给我看。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第三步：换一种对齐来对比</span>
+          <pre class="code">在同一个文件夹里另存一份 poster-left.html：标题和日期都改成靠左对齐，左边留白 80 像素，其他不变。两张截图并排给我看。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">排版体检表。</h2>
+          <p class="lead reveal d2">填上画面宽度、字号和颜色，它按三铁律逐条打分：标题放不放得下、主次分不分明、对比够不够。不通过的几条，会自动写成一段改图提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-w"><span>画面宽度（像素）</span></label><input type="text" inputmode="numeric" id="f-w" value="1080"></div>
+            <div class="field"><label for="f-title"><span>主标题</span></label><input type="text" id="f-title" value="第一周完成"></div>
+            <div class="field"><label for="f-ts"><span>主标题字号</span></label><input type="text" inputmode="numeric" id="f-ts" value="190"></div>
+            <div class="field"><label for="f-ss"><span>小字字号</span></label><input type="text" inputmode="numeric" id="f-ss" value="44"></div>
+            <div class="field"><label for="f-m"><span>左右最小留白（像素）</span></label><input type="text" inputmode="numeric" id="f-m" value="65"></div>
+            <div class="field"><label for="f-fg"><span>文字颜色</span></label><input type="color" id="f-fg" value="#1f2a37"></div>
+            <div class="field"><label for="f-bg"><span>背景颜色</span></label><input type="color" id="f-bg" value="#e8f6ff"></div>
+            <div class="field"><label for="f-n"><span>一共用了几种颜色</span></label><input type="text" inputmode="numeric" id="f-n" value="3"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>体检结果</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="8" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制改图提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-09.html"><small>上一课 · Day 9</small><b>‹ 用代码画一张海报</b></a>
+          <span class="next"><small>下一课 · Day 11</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 10 · 配色排版三铁律</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const num = id => Number($(id).value) || 0;
+    function lum(hex) {
+      const c = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+        .map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    }
+    function contrast(a, b) {
+      const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+      return (x + 0.05) / (y + 0.05);
+    }
+    function run() {
+      const w = num("f-w"), ts = num("f-ts"), ss = num("f-ss"), m = num("f-m"), n = num("f-n");
+      const chars = [...$("f-title").value.trim()].length;
+      const tw = ts * chars, room = w - 2 * Math.max(m, w * 0.06);
+      const cr = contrast($("f-fg").value, $("f-bg").value);
+      const checks = [
+        { ok: tw <= room, good: `标题约 ${tw} 像素宽，放得下（可用 ${Math.round(room)}）。`,
+          bad: `标题约 ${tw} 像素宽，超出可用宽度 ${Math.round(room)}。`,
+          fix: `主标题字号改到 ${Math.floor(room / Math.max(1, chars))} 左右，或者分成两行` },
+        { ok: ss > 0 && ts / ss >= 3, good: `主标题是小字的 ${(ts / ss).toFixed(1)} 倍，主次分明。`,
+          bad: `主标题只是小字的 ${(ts / ss || 0).toFixed(1)} 倍，主次不够分明。`,
+          fix: `把主标题放大到至少 ${ss * 3}，或者把小字缩小` },
+        { ok: cr >= 4.5, good: `文字和背景的对比度 ${cr.toFixed(1)}:1，看得清。`,
+          bad: `文字和背景的对比度只有 ${cr.toFixed(1)}:1，低于 4.5:1。`,
+          fix: `加深文字颜色或调浅背景，让对比度到 4.5:1 以上` },
+        { ok: m >= w * 0.06, good: `留白 ${m} 像素，够画面宽度的 6%。`,
+          bad: `留白 ${m} 像素，少于画面宽度的 6%（${Math.ceil(w * 0.06)}）。`,
+          fix: `四边留白加到至少 ${Math.ceil(w * 0.06)} 像素` },
+        { ok: n <= 3, good: `用了 ${n} 种颜色，没超过 3 种。`,
+          bad: `用了 ${n} 种颜色，超过 3 种。`,
+          fix: `颜色减到 3 种以内，按 60-30-10 分配` }
+      ];
+      $("check").innerHTML = checks.map(c => `<div class="hint ${c.ok ? "ok" : "warn"}">${c.ok ? c.good : c.bad}</div>`).join("");
+      const bad = checks.filter(c => !c.ok);
+      $("out").value = bad.length
+        ? ["请先说你打算怎么改，等我说“好”再动手。", "按排版三铁律修改 poster.html，只改下面这几处，其他地方不要动：",
+           ...bad.map((c, i) => `${i + 1}. ${c.fix}`), "改完截图给我看，并告诉我每一处改了什么。"].join("\n")
+        : "五项都通过了，这张图暂时不用改。";
+    }
+    document.querySelectorAll("#tool input").forEach(el => el.addEventListener("input", run));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>
