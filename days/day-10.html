@@ -87,7 +87,7 @@
         <div class="center">
           <span class="chapter-label reveal">我的练习</span>
           <h2 class="title reveal d1">给我的海报做一次体检。</h2>
-          <p class="lead reveal d2">拿昨天的“第一周完成”海报，先按三铁律挑问题，再只改一条，最后做一个靠左对齐的版本来对比。练完后，结果会补在这里。</p>
+          <p class="lead reveal d2">拿昨天的“第一周完成”海报，先按三铁律挑问题，再只改一条，最后做一个靠左对齐的版本来对比。体检发现，大字离边只差 1 像素就不合格了。</p>
         </div>
 
         <div class="result-card reveal" style="margin-top:56px">
@@ -105,6 +105,45 @@
         <div class="result-card reveal">
           <span class="label">第三步：换一种对齐来对比</span>
           <pre class="code">在同一个文件夹里另存一份 poster-left.html：标题和日期都改成靠左对齐，左边留白 80 像素，其他不变。两张截图并排给我看。</pre>
+        </div>
+
+        <article class="result-card reveal">
+          <h4>体检结果（Claude 量过每个元素后给的）</h4>
+          <p><b>1 对比：通过。</b>主标题 190，小字 44，是 4.3 倍；大字和背景对比度 13.2:1，日期 5.2:1。</p>
+          <p><b>2 对齐留白：不通过，只差一点。</b>标题和日期都居中对齐，但标题宽 951 像素，左边只剩 64 像素，6% 的标准是 65 像素，差了 1 像素，看上去大字快贴边了。</p>
+          <p><b>3 少色：不通过。</b>只用了 3 种颜色，但比例是背景约 78%、波浪约 18%、文字约 2%，离 60-30-10 很远，也没有点缀色。对极简海报影响不大。</p>
+        </article>
+
+        <div class="qa reveal">
+          <div class="bubble me"><span class="who">我</span>只改第2条，其他地方不要动。改之前先说你打算怎么改，等我说“好”。</div>
+          <div class="bubble ai"><span class="who">Claude 先说计划</span>只改一个数：主标题字号 190 改成 170。标题会变成 850 像素左右宽，左右各留约 115 像素；标题仍是小字的 3.9 倍，第 1 条照样通过。</div>
+          <div class="bubble me"><span class="who">我</span>好。</div>
+        </div>
+
+        <div class="note-grid">
+          <div class="note reveal">
+            <img src="../assets/day-10/before.png" alt="改之前：标题字号 190，几乎贴着左右两边" width="1080" height="1440" loading="lazy" style="width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+            <h4>改之前：190 号</h4>
+            <p>左边留白 64 像素，右边 65 像素。</p>
+          </div>
+          <div class="note reveal d1">
+            <img src="../assets/day-10/after.png" alt="改之后：标题字号 170，两边留出更多空白" width="1080" height="1440" loading="lazy" style="width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+            <h4>改之后：170 号</h4>
+            <p>左边 114 像素，右边 115 像素，第 2 条通过。改动前后比对过，只有这一个数字不同。</p>
+          </div>
+        </div>
+
+        <div class="result-card reveal">
+          <span class="label">第三步：居中和靠左，并排比一比</span>
+          <img src="../assets/day-10/compare.png" alt="左边是居中版，右边是靠左对齐版" width="1200" height="900" loading="lazy" style="width:100%;height:auto;border-radius:12px;margin-bottom:14px">
+          <p>标题本身很宽，靠左以后只挪了 35 像素，最大的区别在日期上。居中版对称、安静；靠左版更像杂志，但右边有点空。标题字少的时候，靠左才更好看。</p>
+        </div>
+
+        <div class="note-grid">
+          <div class="note reveal">
+            <h4>我的选择</h4>
+            <p>我更喜欢居中版。</p>
+          </div>
         </div>
       </div>
     </section>
