@@ -86,7 +86,7 @@
         <div class="center">
           <span class="chapter-label reveal">我的练习</span>
           <h2 class="title reveal d1">让“第一周完成”动起来。</h2>
-          <p class="lead reveal d2">拿居中版海报另存一份，加两段入场动画和一段循环动画。动画截图看不出来，就让 Claude 在几个时间点各截一张。练完后，结果会补在这里。</p>
+          <p class="lead reveal d2">拿居中版海报另存一份，加两段入场动画和一段循环动画。截图看不出动画，就让 Claude 在三个时间点各拍一张，像翻连环画。</p>
         </div>
 
         <div class="result-card reveal" style="margin-top:56px">
@@ -98,6 +98,26 @@
 3. 波浪：左右慢慢来回移动 30 像素，6 秒一轮，一直循环
 加上 prefers-reduced-motion，减弱动态时什么都不动。
 做完在 0 秒、0.5 秒、1.5 秒各截一张图，并排给我看。</pre>
+        </div>
+
+        <div class="qa reveal">
+          <div class="bubble ai"><span class="who">Claude 先说计划</span>新建 poster-anim.html，加三段动画和减弱动态时静止的规则。有一处得先问：波浪刚好和画面一样宽，左右一动边上会露出空缝，所以想把波浪左右各加宽 30 像素，藏在画面外面。这不完全是“只加动画”，所以先问你。</div>
+          <div class="bubble me"><span class="who">我</span>好。</div>
+        </div>
+
+        <article class="result-card reveal">
+          <h4>三个时间点（截图转写）</h4>
+          <p><b>0 秒：</b>只有浅天蓝背景和底部的波浪，标题和日期都还看不见。</p>
+          <p><b>0.5 秒：</b>标题正从下往上升，已经显出大半，颜色还偏浅；日期刚开始淡入。</p>
+          <p><b>1.5 秒：</b>标题和日期都到位了，和静态版一样。</p>
+          <p class="legend">波浪 6 秒才走一轮，三张图只隔 1.5 秒，几乎看不出它在动；要看到起伏，得等明天导出 GIF。开着“减弱动态效果”时，三段动画都不播。</p>
+        </article>
+
+        <div class="note-grid">
+          <div class="note reveal">
+            <h4>这次练习看到的</h4>
+            <p>让东西动起来，会冒出静态时没有的问题：波浪一移动，边就露了。好在 Claude 动手前先说了出来，我同意了才改。我的评价是“还可以，就这样吧”。</p>
+          </div>
         </div>
       </div>
     </section>
