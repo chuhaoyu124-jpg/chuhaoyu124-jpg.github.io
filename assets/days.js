@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 11,
+    keywords: "CSS 动画 keyframes 淡入 上浮 循环 节奏 reduced-motion",
+    date: "2026-10-22",
+    week: 2,
+    title: "让海报动起来",
+    summary: "CSS 动画就是告诉浏览器：什么东西、从什么样变成什么样、用多久、重复几次。让“第一周完成”从下往上淡入，让波浪慢慢起伏。",
+    tool: "动画试衣间",
+    glyph: "跃",
+    grad: "linear-gradient(135deg, #b9f5ff 0%, #5ad1e6 50%, #3b82f6 100%)",
+    url: "days/day-11.html"
+  },
+  {
     day: 10,
     keywords: "配色 排版 对比 对齐 留白 60-30-10 对比度 体检",
     date: "2026-10-21",
