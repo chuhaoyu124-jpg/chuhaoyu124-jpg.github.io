@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 12,
+    keywords: "导出 GIF PNG MP4 JPG 帧数 文件大小 循环 格式",
+    date: "2026-10-23",
+    week: 2,
+    title: "导出 GIF 和 PNG",
+    summary: "网页里的海报，要变成能发出去的文件：静图导出 PNG，会动的导出 GIF 或 MP4。记住一条：尺寸 × 帧数 = 文件大小。",
+    tool: "导出参数计算器",
+    glyph: "存",
+    grad: "linear-gradient(135deg, #c7f9e9 0%, #4fd1c5 50%, #2b7fd9 100%)",
+    url: "days/day-12.html"
+  },
+  {
     day: 11,
     keywords: "CSS 动画 keyframes 淡入 上浮 循环 节奏 reduced-motion",
     date: "2026-10-22",

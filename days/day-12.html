@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 12 · 导出 GIF 和 PNG · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="网页里的海报，要变成能发出去的文件：静图导出 PNG，会动的导出 GIF 或 MP4。记住一条：尺寸 × 帧数 = 文件大小。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 12 · 导出 GIF 和 PNG · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="网页里的海报，要变成能发出去的文件：静图导出 PNG，会动的导出 GIF 或 MP4。记住一条：尺寸 × 帧数 = 文件大小。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-12.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #c7f9e9 0%, #4fd1c5 50%, #2b7fd9 100%)">存</div>
+        <span class="eyebrow reveal d1">Day 12 · Claude Code 与图片</span>
+        <h1 class="headline reveal d1">导出<br>GIF 和 PNG。</h1>
+        <p class="lead reveal d2">做好的图，要变成能发出去的文件才算完成。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 23 日 · 第 2 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">HTML 海报只有在浏览器里才看得到。<br><span class="dim">要发到小红书、放进 PPT、发给朋友，得先把它“拍”成一个图片或视频文件。</span></p>
+        <p class="pull reveal">尺寸 × 帧数 = 文件大小。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">PNG</span><h4>静图首选</h4><p>文字和线条清清楚楚，不糊边。海报、截图、带字的图，都用 PNG。</p></div>
+          <div class="feature reveal d1"><span class="k">JPG</span><h4>照片用</h4><p>文件小，但文字边缘会有点糊。适合照片，不适合带字的海报。</p></div>
+          <div class="feature hl reveal d2"><span class="k">GIF</span><h4>会动、但会变大</h4><p>每一帧都是一张图，最多 256 种颜色。宽度减半、每秒 12 到 15 帧，文件就能小很多。</p></div>
+          <div class="feature reveal d3"><span class="k">MP4</span><h4>会动、体积小</h4><p>同样的动画，MP4 往往比 GIF 小好几倍，颜色也更顺。很多平台的图片里 GIF 不一定会动，发视频更稳妥。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>让 GIF 首尾接得上</h4>
+            <p>循环动画录一整轮就好：波浪 6 秒一轮，就录 6 秒。录多录少，播到结尾都会“跳”一下。入场动画只播一次，所以 GIF 里要么从头录，要么只录循环的部分。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：导出清单</h4>
+            <pre class="code" style="margin-top:12px">【导出清单】
+导出前先问我：发到哪里、要静图还是动图。
+静图默认 PNG，原尺寸；动图默认同时给 GIF 和 MP4。
+GIF 宽度减半、每秒 12–15 帧，循环动画只录完整的一轮。
+导出后告诉我每个文件的尺寸和大小，超过 5MB 先提醒我。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">把会动的海报导出来。</h2>
+          <p class="lead reveal d2">一张 PNG 静图，一个 GIF，一个 MP4，比一比三个文件有多大。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">发给 Claude</span>
+          <pre class="code">请先说你的计划，等我说“好”再动手。
+把“我的AI练习”里的 poster-anim.html 导出成三个文件，放在同一个文件夹：
+1. poster-final.png：动画播完后的样子，原尺寸 1080×1440
+2. poster-anim.gif：宽 540，每秒 15 帧，从头录 6 秒，一直循环
+3. poster-anim.mp4：原尺寸，从头录 6 秒
+做完告诉我每个文件的尺寸和大小，哪个最大、为什么。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">导出参数计算器。</h2>
+          <p class="lead reveal d2">先选要发到哪里，它给出推荐的格式和尺寸；再调宽度、帧数和时长，看看一共多少帧、GIF 大概多大。最后复制一句导出提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="seg" id="uses"></div>
+            <div class="field"><label for="f-w"><span>宽度（像素）</span></label><input type="text" inputmode="numeric" id="f-w" value="540"></div>
+            <div class="field"><label for="f-h"><span>高度（像素）</span></label><input type="text" inputmode="numeric" id="f-h" value="720"></div>
+            <div class="field"><label for="f-fps"><span>每秒帧数</span></label><input type="text" inputmode="numeric" id="f-fps" value="15"></div>
+            <div class="field"><label for="f-sec"><span>时长（秒）</span></label><input type="text" inputmode="numeric" id="f-sec" value="6"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>估算</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="7" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制导出提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-11.html"><small>上一课 · Day 11</small><b>‹ 让海报动起来</b></a>
+          <span class="next"><small>下一课 · Day 13</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 12 · 导出 GIF 和 PNG</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const USES = {
+      "小红书": { tip: "静图用 PNG，1080×1440；想让它动，导出 MP4 短视频更稳妥。", fmt: "PNG 静图 1080×1440，再导出一个 MP4", w: 540, h: 720 },
+      "发给朋友": { tip: "GIF 在聊天里直接会动，宽度 400 左右就够，尽量控制在 2MB 以内。", fmt: "GIF，宽 400", w: 400, h: 533 },
+      "放进 PPT": { tip: "PPT 里 GIF 和 MP4 都能放；要清楚就用 MP4 原尺寸。", fmt: "MP4 原尺寸，备一个 PNG 静图", w: 1080, h: 1440 },
+      "放到网页": { tip: "网页上 GIF 方便，宽度和网页里显示的一样就行，不必原尺寸。", fmt: "GIF，宽 540", w: 540, h: 720 }
+    };
+    const $ = id => document.getElementById(id);
+    const num = id => Math.max(0, Number($(id).value) || 0);
+    let use = "放到网页";
+    $("uses").innerHTML = Object.keys(USES).map(k => `<button class="chip" data-v="${k}">${k}</button>`).join("");
+    $("uses").addEventListener("click", e => {
+      const b = e.target.closest(".chip"); if (!b) return;
+      use = b.dataset.v; $("f-w").value = USES[use].w; $("f-h").value = USES[use].h; run();
+    });
+    const mb = x => x >= 1 ? x.toFixed(1) + " MB" : Math.round(x * 1024) + " KB";
+    function run() {
+      document.querySelectorAll("#uses .chip").forEach(c => c.classList.toggle("on", c.dataset.v === use));
+      const w = num("f-w"), h = num("f-h"), fps = num("f-fps"), sec = num("f-sec");
+      const frames = Math.round(fps * sec), px = w * h * frames;
+      const lo = px * 0.02 / 1048576, hi = px * 0.1 / 1048576;
+      const hints = [
+        `<div class="hint ok">${USES[use].tip}</div>`,
+        `<div class="hint ok">一共 ${frames} 帧，每帧 ${w}×${h}。</div>`,
+        `<div class="hint ${hi > 5 ? "warn" : "ok"}">GIF 粗略估计 ${mb(lo)} 到 ${mb(hi)}（画面越简单越小）。${hi > 5 ? "可能超过 5MB，试试减小宽度或帧数。" : ""}</div>`
+      ];
+      if (fps > 20) hints.push(`<div class="hint warn">每秒 ${fps} 帧偏多，GIF 用 12 到 15 帧就很顺。</div>`);
+      $("check").innerHTML = hints.join("");
+      $("out").value = ["请先说你的计划，等我说“好”再动手。",
+        `把 poster-anim.html 导出给“${use}”用：${USES[use].fmt}。`,
+        `动图宽 ${w}、高 ${h}，每秒 ${fps} 帧，录 ${sec} 秒，循环动画只录完整的一轮。`,
+        "做完告诉我每个文件的尺寸和大小，超过 5MB 先提醒我。"].join("\n");
+    }
+    ["f-w", "f-h", "f-fps", "f-sec"].forEach(id => $(id).addEventListener("input", run));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>
