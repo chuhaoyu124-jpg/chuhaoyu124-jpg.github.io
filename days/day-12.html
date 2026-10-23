@@ -86,7 +86,7 @@ GIF 宽度减半、每秒 12–15 帧，循环动画只录完整的一轮。
         <div class="center">
           <span class="chapter-label reveal">我的练习</span>
           <h2 class="title reveal d1">把会动的海报导出来。</h2>
-          <p class="lead reveal d2">一张 PNG 静图，一个 GIF，一个 MP4，比一比三个文件有多大。练完后，结果会补在这里。</p>
+          <p class="lead reveal d2">一张 PNG 静图，一个 GIF，一个 MP4，比一比三个文件有多大。尺寸最小的 GIF，反而是最大的那个。</p>
         </div>
 
         <div class="result-card reveal" style="margin-top:56px">
@@ -97,6 +97,26 @@ GIF 宽度减半、每秒 12–15 帧，循环动画只录完整的一轮。
 2. poster-anim.gif：宽 540，每秒 15 帧，从头录 6 秒，一直循环
 3. poster-anim.mp4：原尺寸，从头录 6 秒
 做完告诉我每个文件的尺寸和大小，哪个最大、为什么。</pre>
+        </div>
+
+        <div class="qa reveal">
+          <div class="bubble ai"><span class="who">Claude 先说计划</span>让动画一格一格往前走，每格截一张图，再拼成文件。有一处你可能会在意：从 0 秒录的话，波浪刚好一轮、接得很顺，可标题每到 6 秒都会消失、再升上来一次。想要标题一直在，可以改录第 1 到第 7 秒。</div>
+          <div class="bubble me"><span class="who">我</span>好。（照原来的写法，从 0 秒录。）</div>
+        </div>
+
+        <article class="result-card reveal">
+          <h4>三个文件</h4>
+          <p><b>poster-final.png：</b>1080×1440，一张图，42 KB。</p>
+          <p><b>poster-anim.gif：</b>540×720，每秒 15 帧，共 90 帧，无限循环，165 KB。</p>
+          <p><b>poster-anim.mp4：</b>1080×1440，每秒 30 帧，共 180 帧，6 秒，62 KB。</p>
+          <p class="legend">GIF 的尺寸只有 MP4 的四分之一、帧数只有一半，却是 MP4 的 2.7 倍大。GIF 把 90 张图一张张都存下来；MP4 只记“哪里变了”，这张海报大部分时间只有波浪在轻轻动，所以特别省地方。GIF 用了 64 种颜色、不加抖动，边缘更干净。</p>
+        </article>
+
+        <div class="note-grid">
+          <div class="note reveal">
+            <h4>我的评价</h4>
+            <p>很好。</p>
+          </div>
         </div>
       </div>
     </section>
