@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 13,
+    keywords: "skill 海报风格 SKILL.md 复盘 五要素 三铁律 动画 导出 默认风格",
+    date: "2026-10-24",
+    week: 2,
+    title: "拼出我的海报风格",
+    summary: "第二周攒下的五块规则，再加上练习里选出来的默认风格，拼成第二个 skill。以后说一句“做张海报”，它就知道怎么做、做成什么样。",
+    tool: "海报风格拼装台",
+    glyph: "风",
+    grad: "linear-gradient(135deg, #e3dcff 0%, #8fa8ff 50%, #2f6fd6 100%)",
+    url: "days/day-13.html"
+  },
+  {
     day: 12,
     keywords: "导出 GIF PNG MP4 JPG 帧数 文件大小 循环 格式",
     date: "2026-10-23",

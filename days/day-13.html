@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 13 · 拼出我的海报风格 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="第二周攒下的五块规则，再加上练习里选出来的默认风格，拼成第二个 skill。以后说一句“做张海报”，它就知道怎么做、做成什么样。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 13 · 拼出我的海报风格 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="第二周攒下的五块规则，再加上练习里选出来的默认风格，拼成第二个 skill。以后说一句“做张海报”，它就知道怎么做、做成什么样。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-13.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #e3dcff 0%, #8fa8ff 50%, #2f6fd6 100%)">风</div>
+        <span class="eyebrow reveal d1">Day 13 · Claude Code 与图片 · 第二周复盘</span>
+        <h1 class="headline reveal d1">拼出我的<br>海报风格。</h1>
+        <p class="lead reveal d2">一周的规则，加上我自己选出来的样子。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 24 日 · 第 2 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">第一个 skill 管“怎么写字”，第二个 skill 管“怎么做图”。<br><span class="dim">分开放，AI 才知道什么时候该打开哪一个。</span></p>
+        <p class="pull reveal">规则说怎么做，<br>风格说做成什么样。</p>
+
+        <div class="features"><div class="feature reveal"><span class="k">01</span><h4>动手前后</h4><p>Day 8 · 动手改文件前，先用一两句话说清楚你打算做什么、会新建或修改哪些文件。</p></div><div class="feature reveal d1"><span class="k">02</span><h4>海报五要素</h4><p>Day 9 · 做图前先确认：尺寸、背景、主文字、一个图形、配色（不超过3种）。</p></div><div class="feature reveal d2"><span class="k">03</span><h4>排版三铁律</h4><p>Day 10 · 对比：主标题至少是小字的3倍，文字和背景对比度至少 4.5:1</p></div><div class="feature reveal d3"><span class="k">04</span><h4>动画三问</h4><p>Day 11 · 加动画前先确认：动什么、用多久、重复几次。</p></div><div class="feature reveal"><span class="k">05</span><h4>导出清单</h4><p>Day 12 · 导出前先问我：发到哪里、要静图还是动图。</p></div><div class="feature hl reveal d1"><span class="k">06</span><h4>我的风格</h4><p>Day 13 · 尺寸：小红书竖图 1080×1440</p></div></div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>为什么分成两个 skill</h4>
+            <p>skill 最上面那句“什么时候用”决定它什么时候被打开。写字和做图的规则混在一起，写朋友圈时也会冒出“对比度 4.5:1”。一个 skill 只管一件事，描述写清楚，就不会串。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的最后一块：我的风格</h4>
+            <pre class="code" style="margin-top:12px">## 我的风格（默认值）
+- 尺寸：小红书竖图 1080×1440
+- 配色：很浅的天蓝底 #e8f6ff、深灰字 #1f2a37、天蓝点缀 #38bdf8
+- 排版：居中对齐，粗体无衬线大标题，下面一行小字
+- 装饰：一个简单的半透明图形，比如底部波浪或角上的圆
+- 文件放在“我的AI练习”文件夹，不提交、不推送；要公开之前先问我</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">保存它，再用它做一张。</h2>
+          <p class="lead reveal d2">先把拼好的 SKILL.md 从头读一遍，删掉不想要的、改掉不像我的；保存以后，只说一句话，看它会不会照着规则来。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：读一遍，说要改哪里</span>
+          <pre class="code">把第二周的五块规则和「我的风格」拼成一个 skill，叫 haoyu-poster-style，先给我看完整的 SKILL.md，不要保存。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：保存</span>
+          <pre class="code">可以了，帮我把它保存成 skill。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第三步：用一句话试试</span>
+          <pre class="code">用我的海报风格 skill，做一张“第二周完成”的海报。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">海报风格拼装台。</h2>
+          <p class="lead reveal d2">勾选想放进去的规则，每一块都能直接改字，下面实时拼出完整的 SKILL.md。复制下来，发给 Claude 说“帮我把这个保存成 skill”就行。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field">
+              <label for="f-name"><span>skill 名字（英文小写和短横线）</span></label>
+              <input type="text" id="f-name" value="haoyu-poster-style">
+            </div>
+            <div class="field">
+              <label for="f-desc"><span>什么时候用（一句话）</span></label>
+              <textarea id="f-desc" rows="3"></textarea>
+            </div>
+            <div id="blocks"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>拼好的 SKILL.md</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="18" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制 SKILL.md</button>
+              <button class="btn ghost" id="reset">恢复默认</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-12.html"><small>上一课 · Day 12</small><b>‹ 导出 GIF 和 PNG</b></a>
+          <span class="next"><small>下一课 · Day 14</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 13 · 拼出我的海报风格</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const BLOCKS = [{"id": "d8", "title": "动手前后", "day": "Day 8", "text": "## 动手前后\n- 动手改文件前，先用一两句话说清楚你打算做什么、会新建或修改哪些文件。\n- 计划中途要变（换位置、换范围、要公开），先说变在哪、为什么，等我同意再做。\n- 做完后列出所有新建和修改的文件，以及每个文件里放了什么。"}, {"id": "d9", "title": "海报五要素", "day": "Day 9", "text": "## 海报五要素\n- 做图前先确认：尺寸、背景、主文字、一个图形、配色（不超过3种）。\n- 我没说的，用下面「我的风格」里的默认值，并告诉我用了哪些。\n- 用 HTML/SVG 写，不用外部图片和字体；改图时一次只改我说的那一处。\n- 改完检查有没有超出画面、有没有压到别的东西；有的话先告诉我，给我几个办法选。\n- 放大前先算一算：中文一个字大约和字号一样宽。"}, {"id": "d10", "title": "排版三铁律", "day": "Day 10", "text": "## 排版三铁律\n1 对比：主标题至少是小字的3倍，文字和背景对比度至少 4.5:1\n2 对齐留白：所有元素沿同一条线对齐，四边留白至少画面宽度的6%\n3 少色：最多3种颜色，按 60-30-10 分配\n我说“帮我看看这张图”时，先按这三条逐条给“通过/不通过”和原因，不要直接改。"}, {"id": "d11", "title": "动画三问", "day": "Day 11", "text": "## 动画三问\n- 加动画前先确认：动什么、用多久、重复几次。\n- 入场动画不超过1秒；循环动画要慢，4到6秒一轮。\n- 同一时间最多两样东西在动，文字先于装饰。\n- 会移动的装饰要比画面宽一点，移动时边上不露缝。\n- 都要加 prefers-reduced-motion，减弱动态时保持静止。"}, {"id": "d12", "title": "导出清单", "day": "Day 12", "text": "## 导出清单\n- 导出前先问我：发到哪里、要静图还是动图。\n- 静图默认 PNG，原尺寸；动图默认同时给 GIF 和 MP4。\n- GIF 宽度减半、每秒 12–15 帧，循环动画只录完整的一轮；入场动画会让 GIF 每轮重新出场，先提醒我。\n- 导出后告诉我每个文件的尺寸和大小，超过 5MB 先提醒我。"}, {"id": "d13", "title": "我的风格", "day": "Day 13", "text": "## 我的风格（默认值）\n- 尺寸：小红书竖图 1080×1440\n- 配色：很浅的天蓝底 #e8f6ff、深灰字 #1f2a37、天蓝点缀 #38bdf8\n- 排版：居中对齐，粗体无衬线大标题，下面一行小字\n- 装饰：一个简单的半透明图形，比如底部波浪或角上的圆\n- 文件放在“我的AI练习”文件夹，不提交、不推送；要公开之前先问我"}];
+    const DESC = "帮 Haoyu 用 HTML/SVG 做海报、社媒配图和小动画并导出时使用：先说计划再动手、海报五要素、排版三铁律、动画三问、导出清单，默认浅天蓝居中风格。";
+    const INTRO = "我在学用 Claude 做图。下面是第二周攒下的规则和我选出来的默认风格，做图、改图、加动画、导出时都照着来。";
+    const $ = id => document.getElementById(id);
+    const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+
+    function render() {
+      $("f-desc").value = DESC;
+      $("blocks").innerHTML = BLOCKS.map(b => `
+        <label class="toggle"><span>${b.day} · ${b.title}</span><input type="checkbox" data-on="${b.id}" checked></label>
+        <div class="field" data-for="${b.id}"><textarea rows="5" data-text="${b.id}">${esc(b.text)}</textarea></div>`).join("");
+      build();
+    }
+
+    function build() {
+      const name = $("f-name").value.trim().toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "");
+      const desc = $("f-desc").value.trim().replace(/\s+/g, " ");
+      const parts = [];
+      BLOCKS.forEach(b => {
+        const on = document.querySelector(`[data-on="${b.id}"]`).checked;
+        document.querySelector(`[data-for="${b.id}"]`).hidden = !on;
+        if (on) parts.push(document.querySelector(`[data-text="${b.id}"]`).value.trim());
+      });
+      const warn = !name ? "skill 名字不能为空。" : !desc ? "写一句“什么时候用”，AI 靠它判断要不要打开这个 skill。" : !parts.length ? "至少勾选一块规则。" : "";
+      $("check").innerHTML = warn ? `<div class="hint warn">${warn}</div>` : `<div class="hint ok">已放入 ${parts.length} 块规则。</div>`;
+      $("out").value = warn ? "" : `---\nname: ${name}\ndescription: ${desc}\n---\n\n# Haoyu 的海报风格\n\n${INTRO}\n\n${parts.join("\n\n")}\n`;
+    }
+
+    $("blocks").addEventListener("input", build);
+    $("blocks").addEventListener("change", build);
+    ["f-name", "f-desc"].forEach(id => $(id).addEventListener("input", build));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    $("reset").addEventListener("click", () => { $("f-name").value = "haoyu-poster-style"; render(); });
+    render();
+  </script>
+</body>
+</html>
