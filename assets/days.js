@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 14,
+    keywords: "一组图 社媒配图 小红书 封面 模板 角标 分镜 第二周",
+    date: "2026-10-25",
+    week: 2,
+    title: "一组 3 张社媒配图",
+    summary: "一组图要像一套：先做一个模板，三张共用尺寸、配色和边距，只换内容。封面让人点开，内容页每页最多三条，结尾一句话收住。",
+    tool: "一组图分镜板",
+    glyph: "组",
+    grad: "linear-gradient(135deg, #bff3ff 0%, #38bdf8 50%, #6d5df6 100%)",
+    url: "days/day-14.html"
+  },
+  {
     day: 13,
     keywords: "skill 海报风格 SKILL.md 复盘 五要素 三铁律 动画 导出 默认风格",
     date: "2026-10-24",
