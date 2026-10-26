@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 15,
+    keywords: "PPT 大纲 一页一个观点 结论式标题 标题串讲 机械课 传动比",
+    date: "2026-10-26",
+    week: 3,
+    title: "先写大纲，再做 PPT",
+    summary: "好 PPT 不是从挑模板开始的，是从大纲开始的：一页一个观点，标题写成一句结论，只读标题也能把整件事讲通。",
+    tool: "大纲标题体检",
+    glyph: "纲",
+    grad: "linear-gradient(135deg, #c9f7e6 0%, #34d1a8 50%, #1f8fd6 100%)",
+    url: "days/day-15.html"
+  },
+  {
     day: 14,
     keywords: "一组图 社媒配图 小红书 封面 模板 角标 分镜 第二周",
     date: "2026-10-25",
