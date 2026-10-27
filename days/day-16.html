@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 16 · 把一篇文章变成大纲 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="文章变 PPT 不是压缩，是重排：文章先铺垫后结论，PPT 先结论后证据。先让 AI 一句话说出主旨，再写大纲，每条标出处。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 16 · 把一篇文章变成大纲 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="文章变 PPT 不是压缩，是重排：文章先铺垫后结论，PPT 先结论后证据。先让 AI 一句话说出主旨，再写大纲，每条标出处。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-16.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #e3dcff 0%, #8f8cf2 50%, #2f7fd8 100%)">转</div>
+        <span class="eyebrow reveal d1">Day 16 · PPT 与短视频</span>
+        <h1 class="headline reveal d1">把一篇文章，<br>变成一份大纲。</h1>
+        <p class="lead reveal d2">不是压缩，是把顺序倒过来。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 27 日 · 第 3 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">文章是写给慢慢读的人，先铺垫，最后才给结论。<br><span class="dim">PPT 是讲给坐在下面的人，第一页就要让他们知道你想说什么。</span></p>
+        <p class="pull reveal">文章：铺垫 → 结论。<br>PPT：结论 → 证据。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>先要一句话主旨</h4><p>让 AI 先用一句话说出全文想说什么。这句话不对，后面的大纲都会歪。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>再按结论排页</h4><p>主旨放第一页，后面每页是支撑它的一个理由，顺序可以和原文不一样。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>每条标出处</h4><p>要点后面写上来自第几段。原文没说的，AI 就不能往里加，核对起来也快。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>舍得删</h4><p>文章里的例子、背景、过渡，不是每一段都要上 PPT。一页放不下的，留给口头讲。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>和昨天连起来</h4>
+            <p>Day 15 是从脑子里写大纲；今天是从一篇现成的文章里提大纲。规则不变：一页一个观点，标题写成结论，最后串讲一遍。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>「我的PPT助手」第二块：文章转大纲</h4>
+            <pre class="code" style="margin-top:12px">## 文章转大纲
+- 先用一句话说出全文主旨，等我确认。
+- 大纲按“结论 → 证据”排，不必照原文顺序。
+- 每个要点后面标出处（第几段）；原文没有的不加。
+- 原文里放不进 PPT 的内容，列在最后“口头补充”里。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">从一篇文章里提大纲。</h2>
+          <p class="lead reveal d2">找一篇最近读过的文章，比如讲义里的一节或一篇新闻，先要主旨，再要大纲。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：一句话主旨</span>
+          <pre class="code">下面是一篇文章。先不要做大纲，只用一句话告诉我：这篇文章最想让读者记住什么？
+
+（把文章粘在这里）</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：按结论排大纲</span>
+          <pre class="code">主旨没问题。现在把它变成 5 页中文 PPT 的大纲：
+- 第 1 页标题就是这句主旨
+- 后面每页一个支撑它的理由，标题写成一句结论，不超过 25 个字
+- 每页最多 3 个要点，每个要点后面标出处（第几段）
+- 原文没有的内容不要加；放不进去的，列在最后“口头补充”里</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">文章转大纲提示词。</h2>
+          <p class="lead reveal d2">把文章贴进来，它数一数有几段、多少字，建议做几页，再生成一段“先主旨、后大纲、标出处”的提示词。文章只在你的浏览器里，不会发到任何地方。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-text"><span>文章（可选，只用来数段落和字数）</span></label><textarea id="f-text" rows="6" placeholder="把文章粘在这里"></textarea></div>
+            <div class="field"><label for="f-n"><span>页数</span></label><input type="text" inputmode="numeric" id="f-n" value="5"></div>
+            <div class="field"><label for="f-aud"><span>听众</span></label><input type="text" id="f-aud" value="同班同学"></div>
+            <div class="seg" id="langs"></div>
+            <label class="toggle"><span>先要一句话主旨，确认后再写大纲</span><input type="checkbox" id="f-gist" checked></label>
+            <label class="toggle"><span>每个要点标出处（第几段）</span><input type="checkbox" id="f-src" checked></label>
+            <label class="toggle"><span>放不进的内容列成“口头补充”</span><input type="checkbox" id="f-oral" checked></label>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>提示词</h3>
+            <div id="stat"></div>
+            <textarea id="out" class="output" rows="10" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制提示词</button>
+              <button class="btn ghost" id="use">用建议页数</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-15.html"><small>上一课 · Day 15</small><b>‹ 先写大纲，再做 PPT</b></a>
+          <span class="next"><small>下一课 · Day 17</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 16 · 把一篇文章变成大纲</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const LANGS = ["中文", "德语", "英语"];
+    let lang = "中文", suggest = 0;
+    $("langs").innerHTML = LANGS.map(k => `<button class="chip" data-v="${k}">${k} PPT</button>`).join("");
+    $("langs").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { lang = b.dataset.v; run(); } });
+    function run() {
+      document.querySelectorAll("#langs .chip").forEach(c => c.classList.toggle("on", c.dataset.v === lang));
+      const text = $("f-text").value.trim();
+      const paras = text ? text.split(/\n\s*\n|\n/).map(s => s.trim()).filter(Boolean).length : 0;
+      const chars = text.replace(/\s/g, "").length;
+      suggest = chars ? Math.min(10, Math.max(3, Math.round(chars / 400) + 2)) : 0;
+      $("stat").innerHTML = chars
+        ? `<div class="hint ok">${paras} 段，约 ${chars} 字。建议做 ${suggest} 页：1 页主旨，其余每页一个理由。</div>`
+        : `<div class="hint warn">没贴文章也能用：提示词里会留出粘贴的位置。</div>`;
+      const n = Math.max(2, Number($("f-n").value) || 5);
+      const lines = [];
+      if ($("f-gist").checked) lines.push("下面是一篇文章。先不要做大纲，只用一句话告诉我：这篇文章最想让读者记住什么？等我确认后，再按下面的要求写大纲。", "");
+      lines.push(`把这篇文章变成 ${n} 页${lang} PPT 的大纲，听众是${$("f-aud").value.trim() || "同学"}：`,
+        "- 第 1 页标题就是全文主旨",
+        "- 后面每页一个支撑主旨的理由，按“结论 → 证据”排，不必照原文顺序",
+        "- 标题写成一句完整的结论，不超过 25 个字；每页最多 3 个要点");
+      if ($("f-src").checked) lines.push("- 每个要点后面标出处（第几段）；原文没有的内容不要加");
+      if ($("f-oral").checked) lines.push("- 放不进 PPT 的内容，列在最后“口头补充”里");
+      lines.push("", "（把文章粘在这里）");
+      $("out").value = lines.join("\n");
+      $("use").disabled = !suggest;
+    }
+    document.querySelectorAll("#tool input, #f-text").forEach(el => el.addEventListener("input", run));
+    $("use").addEventListener("click", () => { if (suggest) { $("f-n").value = suggest; run(); } });
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>

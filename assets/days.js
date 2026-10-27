@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 16,
+    keywords: "PPT 大纲 文章转大纲 主旨 结论先行 标出处 口头补充",
+    date: "2026-10-27",
+    week: 3,
+    title: "把一篇文章变成大纲",
+    summary: "文章变 PPT 不是压缩，是重排：文章先铺垫后结论，PPT 先结论后证据。先让 AI 一句话说出主旨，再写大纲，每条标出处。",
+    tool: "文章转大纲提示词",
+    glyph: "转",
+    grad: "linear-gradient(135deg, #e3dcff 0%, #8f8cf2 50%, #2f7fd8 100%)",
+    url: "days/day-16.html"
+  },
+  {
     day: 15,
     keywords: "PPT 大纲 一页一个观点 结论式标题 标题串讲 机械课 传动比",
     date: "2026-10-26",
