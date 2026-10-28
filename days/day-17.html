@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 17 · 让 AI 做出真的 PPT · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="大纲定了，就可以让 Claude 直接生成 .pptx 文件。交给它的不只是主题，而是大纲加风格；做完让它把每页转成图片，先检查再打开。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 17 · 让 AI 做出真的 PPT · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="大纲定了，就可以让 Claude 直接生成 .pptx 文件。交给它的不只是主题，而是大纲加风格；做完让它把每页转成图片，先检查再打开。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-17.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #d6f5ff 0%, #38bdf8 50%, #2f6fd6 100%)">页</div>
+        <span class="eyebrow reveal d1">Day 17 · PPT 与短视频</span>
+        <h1 class="headline reveal d1">让 AI 做出<br>真的 PPT。</h1>
+        <p class="lead reveal d2">大纲加风格，交出去的是一个能打开的文件。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 28 日 · 第 3 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">只说“帮我做个 PPT”，得到的是它想象中的 PPT。<br><span class="dim">把大纲和风格一起交给它，得到的才是你要讲的那一份。</span></p>
+        <p class="pull reveal">大纲管内容，<br>风格管样子。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>交大纲，不交主题</h4><p>把前两课写好的大纲整段贴过去：每页标题、每页要点都已经定了，它只负责排版。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>风格写成数字</h4><p>“好看一点”没法执行；“浅天蓝底 #e8f6ff、深灰字、标题 40 号粗体”可以。海报风格 skill 里的颜色直接拿来用。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>先看图，再打开</h4><p>让它把每页转成图片并排给你看。字有没有超出、哪页太挤，一眼就知道，比打开文件一页页翻快。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>文件是起点</h4><p>.pptx 能在 PowerPoint、Keynote、Google 幻灯片里打开继续改。AI 做八成，最后两成你自己顺手调。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>封面居中，内容页靠左</h4>
+            <p>海报一张只有一句话，居中最好看；PPT 内容页有标题加三条要点，靠左对齐读起来更顺。封面和结尾页仍然居中，和海报风格一脉相承。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>「我的PPT助手」第三块：生成 PPT</h4>
+            <pre class="code" style="margin-top:12px">## 生成 PPT
+- 用 .pptx 格式，16:9；每页标题就是大纲里的标题。
+- 配色用我的风格：浅天蓝底 #e8f6ff、深灰字 #1f2a37、天蓝点缀 #38bdf8。
+- 封面和结尾居中；内容页靠左，每页最多 3 条要点。
+- 做完把每页转成图片并排给我看，先检查有没有超出、太挤。
+- 文件放在“我的AI练习”，不提交、不推送。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">把机械课大纲做成 PPT。</h2>
+          <p class="lead reveal d2">用 Day 15 改好的“为什么汽车需要好几个挡”6 页大纲，生成一个真的 .pptx，先看预览图，再挑一处改。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：大纲加风格</span>
+          <pre class="code">用 Day 15 改好的那份 6 页大纲（为什么汽车需要好几个挡），做一个中文 .pptx：
+- 16:9，每页标题就是大纲标题，要点照抄，“待核对”的地方保留
+- 配色用我的海报风格：浅天蓝底、深灰字、天蓝点缀
+- 封面和结尾居中，内容页靠左
+先说计划，等我说“好”再做。做完把 6 页转成图片并排给我看，文件放在“我的AI练习”。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：挑一处改</span>
+          <pre class="code">只改第＿页：＿＿＿＿。其他页不要动，改完再给我看这一页。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">PPT 预览台。</h2>
+          <p class="lead reveal d2">按格式贴进大纲：数字开头是标题，“-”开头是要点。它用我的风格把每页画成 16:9 预览，标出太长、太挤的页，再生成一段“做成 .pptx”的提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-outline"><span>大纲</span></label><textarea id="f-outline" rows="12">1 好 PPT 从大纲开始
+- 先想清楚要讲什么，再动手做页面
+2 一页只说一个观点
+- 想说两件事，就拆成两页
+- 标题写成一句完整的结论
+3 每页最多三条要点
+- 要点只用来支撑标题
+- 一个例子、一个数字、一张图
+4 只读标题也能讲通
+- 连起来读一遍，卡住的地方就是没想清楚</textarea></div>
+            <div class="seg" id="fmt"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>预览</h3>
+            <div id="check"></div>
+            <div id="slides"></div>
+            <textarea id="out" class="output" rows="7" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制做 PPT 的提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-16.html"><small>上一课 · Day 16</small><b>‹ 把一篇文章变成大纲</b></a>
+          <span class="next"><small>下一课 · Day 18</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 17 · 让 AI 做出真的 PPT</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const FMTS = ["16:9", "4:3"];
+    let fmt = "16:9";
+    $("fmt").innerHTML = FMTS.map(k => `<button class="chip" data-v="${k}">${k}</button>`).join("");
+    $("fmt").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { fmt = b.dataset.v; run(); } });
+    const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    // 估算文字宽度：中文约等于字号，英文数字约半个字号
+    const textW = (t, size) => [...t].reduce((w, c) => w + (/[\x00-\xff]/.test(c) ? 0.55 : 1) * size, 0);
+    function parse(txt) {
+      const pages = [];
+      txt.split("\n").map(s => s.trim()).filter(Boolean).forEach(line => {
+        const m = line.match(/^(?:\d+[.、)）]?|#+)\s*(.+)$/);
+        if (m) pages.push({ title: m[1], points: [] });
+        else if (/^[-•·*]/.test(line) && pages.length) pages[pages.length - 1].points.push(line.replace(/^[-•·*]\s*/, ""));
+      });
+      return pages;
+    }
+    function slide(p, i, n) {
+      const W = fmt === "16:9" ? 1280 : 960, H = 720, pad = 80;
+      const first = i === 0, last = i === n - 1 && n > 1, center = first || last;
+      const tSize = center ? 60 : 44;
+      let body = "";
+      if (center) {
+        body += `<text x="${W / 2}" y="${H / 2 - (p.points.length ? 20 : -20)}" text-anchor="middle" font-size="${tSize}" font-weight="700" fill="#1f2a37" font-family="sans-serif">${esc(p.title)}</text>`;
+        p.points.slice(0, 1).forEach(t => body += `<text x="${W / 2}" y="${H / 2 + 50}" text-anchor="middle" font-size="28" fill="#1f2a37" opacity="0.7" font-family="sans-serif">${esc(t)}</text>`);
+      } else {
+        body += `<text x="${pad}" y="170" font-size="${tSize}" font-weight="700" fill="#1f2a37" font-family="sans-serif">${esc(p.title)}</text>`;
+        p.points.forEach((t, k) => {
+          const y = 290 + k * 90;
+          body += `<circle cx="${pad + 8}" cy="${y - 10}" r="7" fill="#38bdf8"/><text x="${pad + 34}" y="${y}" font-size="30" fill="#1f2a37" font-family="sans-serif">${esc(t)}</text>`;
+        });
+      }
+      return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="第 ${i + 1} 页：${esc(p.title)}" style="width:100%;height:auto;border-radius:12px;margin-bottom:14px;display:block">
+        <rect width="${W}" height="${H}" fill="#e8f6ff"/>
+        <path d="M0 ${H - 90} C ${W * 0.25} ${H - 140}, ${W * 0.5} ${H - 40}, ${W * 0.75} ${H - 90} S ${W} ${H - 120}, ${W} ${H - 105} L ${W} ${H} L 0 ${H} Z" fill="#38bdf8" opacity="0.35"/>
+        <text x="${W - pad}" y="80" text-anchor="end" font-size="24" fill="#1f2a37" opacity="0.6" font-family="sans-serif">${i + 1}/${n}</text>
+        ${body}</svg>`;
+    }
+    function run() {
+      document.querySelectorAll("#fmt .chip").forEach(c => c.classList.toggle("on", c.dataset.v === fmt));
+      const pages = parse($("f-outline").value);
+      const W = fmt === "16:9" ? 1280 : 960, room = W - 160;
+      const warns = [];
+      pages.forEach((p, i) => {
+        const center = i === 0 || (i === pages.length - 1 && pages.length > 1);
+        if ([...p.title].length > 25) warns.push(`第 ${i + 1} 页标题 ${[...p.title].length} 个字，超过 25 个字。`);
+        else if (textW(p.title, center ? 60 : 44) > room) warns.push(`第 ${i + 1} 页标题放不下一行，会超出画面。`);
+        if (p.points.length > 3) warns.push(`第 ${i + 1} 页有 ${p.points.length} 条要点，超过 3 条，拆成两页吧。`);
+        p.points.forEach(t => { if (textW(t, 30) > room - 34) warns.push(`第 ${i + 1} 页有一条要点太长：“${t.slice(0, 10)}…”`); });
+      });
+      $("check").innerHTML = pages.length
+        ? (warns.length ? warns.map(w => `<div class="hint warn">${esc(w)}</div>`).join("") : `<div class="hint ok">${pages.length} 页都放得下，每页不超过 3 条。</div>`)
+        : `<div class="hint warn">还没有识别到标题：标题行用数字开头，比如“1 标题”。</div>`;
+      $("slides").innerHTML = pages.map((p, i) => slide(p, i, pages.length)).join("");
+      $("out").value = [`把下面这份 ${pages.length} 页大纲做成一个中文 .pptx：`,
+        `- ${fmt}，每页标题就是大纲标题，要点照抄`,
+        "- 配色：浅天蓝底 #e8f6ff、深灰字 #1f2a37、天蓝点缀 #38bdf8",
+        "- 封面和结尾居中，内容页靠左，每页最多 3 条要点",
+        "先说计划，等我说“好”再做。做完把每页转成图片并排给我看。",
+        "", ...pages.flatMap((p, i) => [`${i + 1} ${p.title}`, ...p.points.map(t => `- ${t}`)])].join("\n");
+    }
+    $("f-outline").addEventListener("input", run);
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>

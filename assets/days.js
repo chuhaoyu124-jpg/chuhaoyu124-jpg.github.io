@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 17,
+    keywords: "PPT pptx 生成 大纲 风格 预览 16:9 PowerPoint Keynote",
+    date: "2026-10-28",
+    week: 3,
+    title: "让 AI 做出真的 PPT",
+    summary: "大纲定了，就可以让 Claude 直接生成 .pptx 文件。交给它的不只是主题，而是大纲加风格；做完让它把每页转成图片，先检查再打开。",
+    tool: "PPT 预览台",
+    glyph: "页",
+    grad: "linear-gradient(135deg, #d6f5ff 0%, #38bdf8 50%, #2f6fd6 100%)",
+    url: "days/day-17.html"
+  },
+  {
     day: 16,
     keywords: "PPT 大纲 文章转大纲 主旨 结论先行 标出处 口头补充",
     date: "2026-10-27",
