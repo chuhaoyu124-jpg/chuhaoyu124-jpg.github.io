@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 18 · 对齐、留白、图标 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="PPT 看着乱，多半不是颜色的问题，而是没对齐、太挤、图标东一个西一个。每页用同一个网格，四边留白，图标用同一套风格。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 18 · 对齐、留白、图标 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="PPT 看着乱，多半不是颜色的问题，而是没对齐、太挤、图标东一个西一个。每页用同一个网格，四边留白，图标用同一套风格。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-18.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #dff7ef 0%, #5fd4c4 50%, #2f7fd8 100%)">齐</div>
+        <span class="eyebrow reveal d1">Day 18 · PPT 与短视频</span>
+        <h1 class="headline reveal d1">对齐、留白、<br>图标。</h1>
+        <p class="lead reveal d2">每页都站在同一张网格上。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 29 日 · 第 3 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">一份 PPT 看着乱，多半不是颜色选错了，<br><span class="dim">而是每页的标题跳来跳去、四边太挤、图标东一个西一个。</span></p>
+        <p class="pull reveal">翻页时，<br>标题不该跳。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>同一个网格</h4><p>所有内容页的标题位置、字号、左边距都一样。翻页时只有内容在变，眼睛不用重新找。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>留白是给眼睛的</h4><p>四边至少留出画面宽度的 6%，要点之间空出一行。和海报的排版三铁律是同一条。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>图标同一套</h4><p>线性就都线性，同一个颜色、同样大小。每条要点最多一个，用来帮人认，不是用来装饰。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>先体检，再动手</h4><p>和海报一样：先让它按三件事逐页打分，看完再挑一处改，不让它一口气全改。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>图标不用找图片</h4>
+            <p>对勾、箭头、齿轮这类简单图标，Claude 可以直接用形状画出来，不用下载外部图片，颜色和粗细也能统一。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>「我的PPT助手」第四块：版式</h4>
+            <pre class="code" style="margin-top:12px">## 版式
+- 所有内容页用同一个网格：标题位置、字号、左边距每页都一样。
+- 四边留白至少画面宽度的 6%；要点之间空出一行。
+- 图标用同一套线性风格、同一颜色，每条要点最多一个；用形状画，不用外部图片。
+- 我说“检查版式”时，按对齐、留白、图标逐页给通过/不通过，先不要改。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">给机械课 PPT 做版式体检。</h2>
+          <p class="lead reveal d2">还没做 Day 17 的话，先用那段提示词把 PPT 做出来；做好了，就接着体检、加图标。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：版式体检</span>
+          <pre class="code">打开“我的AI练习”里那份机械课 PPT，按版式三件事做个体检：
+1 对齐：每页标题的位置、字号、左边距是不是一样？
+2 留白：四边有没有画面宽度的 6%？要点之间挤不挤？
+3 图标：有没有图标？风格、颜色是不是统一？
+每页每条给“通过”或“不通过”，不通过的说清楚原因。先不要改。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：加一套图标</span>
+          <pre class="code">给第 2 到第 5 页的每条要点前面加一个简单的线性图标：同一风格、天蓝色、大小一样，用形状画，不用外部图片。其他地方不要动。先说你打算给每条配什么图标，等我说“好”再做，做完把这几页并排给我看。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">版式网格台。</h2>
+          <p class="lead reveal d2">调一调边距、对齐和图标，看同一页 PPT 怎么从乱变整齐；打开参考线，能看到它站在哪张网格上。下面还有一段“版式体检”的提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-m"><span>四边留白（占画面宽度的 %）</span></label><input type="text" inputmode="numeric" id="f-m" value="7"></div>
+            <div class="seg" id="align"></div>
+            <div class="seg" id="icons"></div>
+            <label class="toggle"><span>显示参考线</span><input type="checkbox" id="f-grid" checked></label>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>预览</h3>
+            <div id="slide"></div>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="6" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制版式体检提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-17.html"><small>上一课 · Day 17</small><b>‹ 让 AI 做出真的 PPT</b></a>
+          <span class="next"><small>下一课 · Day 19</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 18 · 对齐、留白、图标</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const ALIGN = { neat: "统一对齐", messy: "对齐乱一点" };
+    const ICONS = { none: "不加图标", line: "线性图标", mixed: "混搭图标" };
+    let align = "neat", icons = "line";
+    const segs = (id, map, get, set) => {
+      $(id).innerHTML = Object.entries(map).map(([k, v]) => `<button class="chip" data-v="${k}">${v}</button>`).join("");
+      $(id).addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { set(b.dataset.v); run(); } });
+    };
+    segs("align", ALIGN, () => align, v => align = v);
+    segs("icons", ICONS, () => icons, v => icons = v);
+    const TITLE = "一页只说一个观点";
+    const POINTS = ["想说两件事，就拆成两页", "标题写成一句完整的结论", "要点只用来支撑标题"];
+    const C = "#38bdf8", INK = "#1f2a37";
+    // 三个线性图标：对勾、箭头、灯泡；同一粗细、同一颜色
+    const ICON = [
+      (x, y, c, w) => `<circle cx="${x}" cy="${y}" r="16" fill="none" stroke="${c}" stroke-width="${w}"/><polyline points="${x - 7},${y} ${x - 2},${y + 6} ${x + 8},${y - 6}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`,
+      (x, y, c, w) => `<line x1="${x - 14}" y1="${y}" x2="${x + 12}" y2="${y}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/><polyline points="${x + 3},${y - 9} ${x + 13},${y} ${x + 3},${y + 9}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`,
+      (x, y, c, w) => `<circle cx="${x}" cy="${y - 4}" r="11" fill="none" stroke="${c}" stroke-width="${w}"/><line x1="${x - 5}" y1="${y + 12}" x2="${x + 5}" y2="${y + 12}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>`
+    ];
+    const MIXED = [
+      (x, y) => `<rect x="${x - 15}" y="${y - 15}" width="30" height="30" rx="4" fill="#f59e0b"/>`,
+      (x, y) => ICON[1](x, y, "#a855f7", 5),
+      (x, y) => `<circle cx="${x}" cy="${y}" r="10" fill="#ef4444"/>`
+    ];
+    function run() {
+      document.querySelectorAll("#align .chip").forEach(c => c.classList.toggle("on", c.dataset.v === align));
+      document.querySelectorAll("#icons .chip").forEach(c => c.classList.toggle("on", c.dataset.v === icons));
+      const W = 1280, H = 720;
+      const pct = Math.min(20, Math.max(0, Number($("f-m").value) || 0));
+      const m = Math.round(W * pct / 100);
+      const off = align === "messy" ? [34, -18, 22, 0] : [0, 0, 0, 0];
+      let b = `<rect width="${W}" height="${H}" fill="#e8f6ff"/>`;
+      if ($("f-grid").checked) b += `<rect x="${m}" y="${m}" width="${W - 2 * m}" height="${H - 2 * m}" fill="none" stroke="${C}" stroke-width="2" stroke-dasharray="10 8" opacity="0.7"/>`;
+      b += `<text x="${W - m}" y="${m + 24}" text-anchor="end" font-size="24" fill="${INK}" opacity="0.6" font-family="sans-serif">2/6</text>`;
+      b += `<text x="${m + off[0]}" y="${m + 90}" font-size="48" font-weight="700" fill="${INK}" font-family="sans-serif">${TITLE}</text>`;
+      POINTS.forEach((t, k) => {
+        const y = m + 200 + k * 96, x = m + off[k + 1];
+        if (icons === "none") b += `<circle cx="${x + 8}" cy="${y - 10}" r="6" fill="${C}"/>`;
+        else if (icons === "line") b += ICON[k](x + 16, y - 10, C, 4);
+        else b += MIXED[k](x + 16, y - 10);
+        b += `<text x="${x + (icons === "none" ? 30 : 52)}" y="${y}" font-size="32" fill="${INK}" font-family="sans-serif">${t}</text>`;
+      });
+      $("slide").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="一页 PPT 预览：${TITLE}" style="width:100%;height:auto;border-radius:12px;margin-bottom:14px;display:block">${b}</svg>`;
+      const hints = [];
+      hints.push(pct >= 6 ? `<div class="hint ok">留白 ${pct}%：四边各 ${m} 像素，通过。</div>` : `<div class="hint warn">留白 ${pct}%：不到 6%，字快贴到边了。</div>`);
+      hints.push(align === "neat" ? `<div class="hint ok">对齐：标题和要点站在同一条线上，通过。</div>` : `<div class="hint warn">对齐：标题和要点左边各差一点，翻页时会“跳”。</div>`);
+      hints.push(icons === "line" ? `<div class="hint ok">图标：同一套线性风格、同一颜色，通过。</div>`
+        : icons === "mixed" ? `<div class="hint warn">图标：方块、箭头、圆点混用，还是三种颜色，抢了标题的风头。</div>`
+        : `<div class="hint ok">不加图标也可以，圆点保持同一颜色就好。</div>`);
+      $("check").innerHTML = hints.join("");
+      $("out").value = ["打开“我的AI练习”里那份 PPT，按版式三件事做个体检：",
+        "1 对齐：每页标题的位置、字号、左边距是不是一样？",
+        `2 留白：四边有没有画面宽度的 ${Math.max(pct, 6)}%？要点之间挤不挤？`,
+        "3 图标：有没有图标？风格、颜色是不是统一？",
+        "每页每条给“通过”或“不通过”，不通过的说清楚原因。先不要改。"].join("\n");
+    }
+    $("f-m").addEventListener("input", run);
+    $("f-grid").addEventListener("change", run);
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>

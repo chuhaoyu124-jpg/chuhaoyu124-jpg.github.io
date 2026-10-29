@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 18,
+    keywords: "PPT 版式 对齐 留白 图标 网格 参考线 体检",
+    date: "2026-10-29",
+    week: 3,
+    title: "对齐、留白、图标",
+    summary: "PPT 看着乱，多半不是颜色的问题，而是没对齐、太挤、图标东一个西一个。每页用同一个网格，四边留白，图标用同一套风格。",
+    tool: "版式网格台",
+    glyph: "齐",
+    grad: "linear-gradient(135deg, #dff7ef 0%, #5fd4c4 50%, #2f7fd8 100%)",
+    url: "days/day-18.html"
+  },
+  {
     day: 17,
     keywords: "PPT pptx 生成 大纲 风格 预览 16:9 PowerPoint Keynote",
     date: "2026-10-28",
