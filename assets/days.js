@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 19,
+    keywords: "skill PPT 助手 SKILL.md 大纲 版式 习惯 haoyu-ppt-helper 复盘",
+    date: "2026-10-30",
+    week: 3,
+    title: "拼出我的 PPT 助手",
+    summary: "这一周攒下的四块 PPT 规则，加上练习里养成的习惯，拼成第三个 skill。以后说一句“做个 PPT”，它就从大纲开始，一路做到版式检查。",
+    tool: "PPT 助手拼装台",
+    glyph: "助",
+    grad: "linear-gradient(135deg, #e6e0ff 0%, #9b8cff 50%, #3b6fe0 100%)",
+    url: "days/day-19.html"
+  },
+  {
     day: 18,
     keywords: "PPT 版式 对齐 留白 图标 网格 参考线 体检",
     date: "2026-10-29",
