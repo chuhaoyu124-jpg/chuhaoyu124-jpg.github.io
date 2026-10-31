@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 20 · 短视频脚本：分镜加旁白 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="短视频脚本就是一张分镜表：每一镜写画面、旁白和秒数。先定总时长，旁白按每秒 4 个字算，前 3 秒留给一个问题。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 20 · 短视频脚本：分镜加旁白 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="短视频脚本就是一张分镜表：每一镜写画面、旁白和秒数。先定总时长，旁白按每秒 4 个字算，前 3 秒留给一个问题。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-20.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #d9f3ff 0%, #6fb7ff 50%, #4f5fe0 100%)">镜</div>
+        <span class="eyebrow reveal d1">Day 20 · PPT 与短视频</span>
+        <h1 class="headline reveal d1">短视频脚本：<br>分镜加旁白。</h1>
+        <p class="lead reveal d2">每一镜：看什么、说什么、几秒。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 10 月 31 日 · 第 3 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">PPT 是你站在前面讲，讲多久都行；<br><span class="dim">短视频是别人拇指一划就走，每一秒都要算好。</span></p>
+        <p class="pull reveal">先定秒数，<br>再写字数。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>分镜表三列</h4><p>每一镜一行：画面（看到什么）、旁白（听到什么）、秒数。三列都写清楚，做视频时照着拼就行。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>每秒 4 个字</h4><p>中文旁白正常语速大约每秒 4 个字。一镜 5 秒，旁白就别超过 20 个字；超了就删字，不加秒。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>前 3 秒是钩子</h4><p>开头不自我介绍，直接抛一个问题或一个反常识的结论，让人愿意看第 4 秒。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>画面用现成的</h4><p>做过的 PPT 页、配图都能当画面。一镜只讲一件事，和“一页一个观点”是同一个道理。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>从 PPT 到短视频</h4>
+            <p>6 页 PPT 讲 5 分钟，做成短视频只有 30 秒：不是每页都要，挑能撑起主旨的两三页，旁白只留结论那一句。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：短视频脚本</h4>
+            <pre class="code" style="margin-top:12px">## 短视频脚本
+- 先问我：总时长多少秒，竖屏 9:16 还是横屏 16:9。
+- 写成分镜表：每镜一行，画面 / 旁白 / 秒数。
+- 旁白按每秒 4 个字算，超了就删字，不加秒。
+- 前 3 秒是钩子：一个问题，或一个反常识的结论。
+- 一镜只讲一件事；画面能用我做过的 PPT 页或配图，就不新做。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">把机械课 PPT 变成 30 秒脚本。</h2>
+          <p class="lead reveal d2">用做好的“为什么汽车需要好几个挡”PPT 当素材，写一张 30 秒的分镜表，再按字数核一遍时长。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：写分镜表</span>
+          <pre class="code">用“我的AI练习”里那份机械课 PPT 当素材，写一个 30 秒的竖屏短视频脚本，主题还是“为什么汽车需要好几个挡”：
+- 写成分镜表，每镜一行：画面 / 旁白 / 秒数
+- 画面尽量用 PPT 里现成的页，写清楚用第几页
+- 旁白按每秒 4 个字算，总时长不超过 30 秒
+- 前 3 秒抛一个问题
+先不要做视频，只写脚本。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：核时长</span>
+          <pre class="code">逐镜数一下旁白有几个字，按每秒 4 个字算要几秒，和写的秒数对一对。哪一镜超了，只删字、不加秒，改完把整张表再给我看。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">分镜计时器。</h2>
+          <p class="lead reveal d2">一行一镜，按“秒数 | 画面 | 旁白”写。它数旁白字数，按语速算出需要几秒，标出哪一镜说不完，再加总看看超没超时。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-total"><span>总时长（秒）</span></label><input type="text" inputmode="numeric" id="f-total" value="30"></div>
+            <div class="seg" id="speed"></div>
+            <div class="field"><label for="f-shots"><span>分镜（一行一镜：秒数 | 画面 | 旁白）</span></label><textarea id="f-shots" rows="8">3 | 大字：做 PPT 第一步是什么？ | 做 PPT，第一步真的是挑模板吗？
+6 | 一页一页翻模板的画面 | 很多人先挑模板，做到第五页才发现，自己也说不清想讲什么。
+6 | 大纲：六行标题 | 先写大纲：一页一个观点，标题写成一句结论。
+5 | 六个标题连成一段 | 把标题连起来读一遍，读得通，大纲就立住了。
+4 | 结尾大字：先写大纲 | 先写大纲，再做 PPT。</textarea></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>计时结果</h3>
+            <div id="check"></div>
+            <textarea id="out" class="output" rows="7" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制写脚本的提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-19.html"><small>上一课 · Day 19</small><b>‹ 拼出我的 PPT 助手</b></a>
+          <span class="next"><small>下一课 · Day 21</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 20 · 短视频脚本：分镜加旁白</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const SPEEDS = { 3: "慢 · 每秒 3 字", 4: "正常 · 每秒 4 字", 5: "快 · 每秒 5 字" };
+    let speed = 4;
+    $("speed").innerHTML = Object.entries(SPEEDS).map(([k, v]) => `<button class="chip" data-v="${k}">${v}</button>`).join("");
+    $("speed").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { speed = Number(b.dataset.v); run(); } });
+    const esc = t => t.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    // 只数会读出来的字：汉字、字母、数字；标点不算
+    const count = t => (t.match(/[\u4e00-\u9fff]|[A-Za-z]+|\d+/g) || []).length;
+    function run() {
+      document.querySelectorAll("#speed .chip").forEach(c => c.classList.toggle("on", Number(c.dataset.v) === speed));
+      const total = Math.max(1, Number($("f-total").value) || 30);
+      const shots = $("f-shots").value.split("\n").map(s => s.trim()).filter(Boolean).map(line => {
+        const [sec, pic, ...rest] = line.split("|").map(s => s.trim());
+        return { sec: Number(sec) || 0, pic: pic || "", vo: rest.join("|") };
+      });
+      const rows = shots.map((s, i) => {
+        const n = count(s.vo), need = Math.ceil(n / speed * 10) / 10;
+        const head = `第 ${i + 1} 镜 · ${s.sec} 秒 · 旁白 ${n} 字，需要约 ${need} 秒`;
+        if (!s.sec) return `<div class="hint warn">第 ${i + 1} 镜没写秒数，格式是“秒数 | 画面 | 旁白”。</div>`;
+        if (need > s.sec) return `<div class="hint warn">${head}：说不完，删到 ${s.sec * speed} 字以内。</div>`;
+        return `<div class="hint ok">${head}：来得及。</div>`;
+      });
+      const sum = shots.reduce((a, s) => a + s.sec, 0);
+      if (shots.length) {
+        rows.unshift(sum > total ? `<div class="hint warn">一共 ${shots.length} 镜、${sum} 秒，比 ${total} 秒多了 ${sum - total} 秒。</div>`
+          : `<div class="hint ok">一共 ${shots.length} 镜、${sum} 秒，在 ${total} 秒以内。</div>`);
+        if (shots[0].sec > 3) rows.splice(1, 0, `<div class="hint warn">第 1 镜 ${shots[0].sec} 秒，钩子最好压在 3 秒以内。</div>`);
+      }
+      $("check").innerHTML = rows.join("") || `<div class="hint warn">先写几镜进来。</div>`;
+      $("out").value = [`帮我写一个 ${total} 秒的竖屏短视频脚本，主题是“＿＿＿＿”：`,
+        "- 写成分镜表，每镜一行：画面 / 旁白 / 秒数",
+        `- 旁白按每秒 ${speed} 个字算，总时长不超过 ${total} 秒`,
+        "- 前 3 秒抛一个问题，或一个反常识的结论",
+        "- 一镜只讲一件事；画面尽量用我做过的 PPT 页或配图",
+        "先不要做视频，只写脚本。"].join("\n");
+    }
+    ["f-total", "f-shots"].forEach(id => $(id).addEventListener("input", run));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  </script>
+</body>
+</html>

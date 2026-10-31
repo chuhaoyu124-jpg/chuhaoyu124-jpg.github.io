@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 20,
+    keywords: "短视频 脚本 分镜 旁白 时长 语速 钩子 竖屏",
+    date: "2026-10-31",
+    week: 3,
+    title: "短视频脚本：分镜加旁白",
+    summary: "短视频脚本就是一张分镜表：每一镜写画面、旁白和秒数。先定总时长，旁白按每秒 4 个字算，前 3 秒留给一个问题。",
+    tool: "分镜计时器",
+    glyph: "镜",
+    grad: "linear-gradient(135deg, #d9f3ff 0%, #6fb7ff 50%, #4f5fe0 100%)",
+    url: "days/day-20.html"
+  },
+  {
     day: 19,
     keywords: "skill PPT 助手 SKILL.md 大纲 版式 习惯 haoyu-ppt-helper 复盘",
     date: "2026-10-30",
