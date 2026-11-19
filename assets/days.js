@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 21,
+    keywords: "短视频 合成 字幕 竖屏 剪辑 抽帧 复盘 第三周",
+    date: "2026-11-19",
+    week: 3,
+    title: "把脚本合成一段短视频",
+    summary: "分镜表就是剪辑单：画面照秒数排，旁白原样变字幕，先做一版无声的，再每镜抽一帧检查。顺手给第三周做个复盘。",
+    tool: "分镜放映机",
+    glyph: "映",
+    grad: "linear-gradient(135deg, #e0f7f1 0%, #5ccfe0 50%, #3b6fe0 100%)",
+    url: "days/day-21.html"
+  },
+  {
     day: 20,
     keywords: "短视频 脚本 分镜 旁白 时长 语速 钩子 竖屏",
     date: "2026-10-31",

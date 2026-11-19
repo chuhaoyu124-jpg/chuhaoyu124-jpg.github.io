@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 21 · 把脚本合成一段短视频 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="分镜表就是剪辑单：画面照秒数排，旁白原样变字幕，先做一版无声的，再每镜抽一帧检查。顺手给第三周做个复盘。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 21 · 把脚本合成一段短视频 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="分镜表就是剪辑单：画面照秒数排，旁白原样变字幕，先做一版无声的，再每镜抽一帧检查。顺手给第三周做个复盘。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-21.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #e0f7f1 0%, #5ccfe0 50%, #3b6fe0 100%)">映</div>
+        <span class="eyebrow reveal d1">Day 21 · PPT 与短视频</span>
+        <h1 class="headline reveal d1">把脚本合成<br>一段短视频。</h1>
+        <p class="lead reveal d2">分镜表就是剪辑单：照着秒数排画面，照着旁白配字幕。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 11 月 19 日 · 第 3 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">写好的分镜表，已经是一张剪辑单；<br><span class="dim">合成视频，就是让 AI 照着它一镜一镜排。</span></p>
+        <p class="pull reveal">先做无声版，<br>再配声音。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>画面照秒数排</h4><p>每一镜的画面停留多久，就照表里的秒数。PPT 页是横的，放进竖屏时占中间一条，上下的空正好放字幕。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>字幕就是旁白</h4><p>旁白一字不改地变成字幕，放在画面下方。没人开声音也能看懂，这在短视频里很常见。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>先无声，后配音</h4><p>第一版只要画面和字幕。节奏对了，再考虑配音和音乐；一开始就全加上，哪里不对很难找。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>抽帧来检查</h4><p>视频不方便在聊天里看，就让 AI 每镜抽一帧并排给你：哪一镜字幕太长、画面被挡，一眼就看出来。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>第三周复盘</h4>
+            <p>这一周从大纲走到 PPT，再走到短视频：同一份内容换了三种样子。每一步都是先说计划、再动手、最后并排看结果，这个顺序本身就值得留下来。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：合成短视频</h4>
+            <pre class="code" style="margin-top:12px">## 合成短视频
+- 照分镜表做：每镜的画面停留时间就是表里的秒数。
+- 竖屏 1080×1920；横的 PPT 页放在中间，上下留给字幕。
+- 旁白原样做成字幕，放在画面下方，一屏最多两行。
+- 第一版只要画面和字幕，不配音、不配乐。
+- 做完每镜抽一帧并排给我看，文件放“我的AI练习”，不提交、不推送。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">把 30 秒脚本做成视频。</h2>
+          <p class="lead reveal d2">用 Day 20 核好时长的分镜表和机械课 PPT，合成一段无声的竖屏短视频，再给第三周做个复盘。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：合成视频</span>
+          <pre class="code">用 Day 20 核好时长的那张分镜表，把“我的AI练习”里的机械课 PPT 合成一段竖屏短视频：
+- 1080×1920，每镜的画面就是表里写的那一页，停留时间就是表里的秒数
+- PPT 页放在画面中间，旁白原样做成字幕放在下方
+- 先不配音、不配乐
+先说计划，等我说“好”再做。做完每镜抽一帧并排给我看，文件放在“我的AI练习”。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：第三周复盘</span>
+          <pre class="code">回顾第三周（Day 14 到 Day 21），帮我用三句话写个复盘：我学会了什么、哪一步最费劲、下周想多练什么。先列出你看到的事实，再让我挑哪些写进去。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">分镜放映机。</h2>
+          <p class="lead reveal d2">把分镜表贴进来，按“秒数 | 画面 | 旁白”一行一镜。它在竖屏框里按秒数一镜一镜放给你看，字幕跟着旁白走：真做视频之前，先看看节奏对不对。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-shots"><span>分镜（一行一镜：秒数 | 画面 | 旁白）</span></label><textarea id="f-shots" rows="8">3 | 大字：做 PPT 第一步是什么？ | 做 PPT，第一步真的是挑模板吗？
+6 | 一页一页翻模板的画面 | 很多人先挑模板，做到第五页才发现，自己也说不清想讲什么。
+6 | 大纲：六行标题 | 先写大纲：一页一个观点，标题写成一句结论。
+5 | 六个标题连成一段 | 把标题连起来读一遍，读得通，大纲就立住了。
+4 | 结尾大字：先写大纲 | 先写大纲，再做 PPT。</textarea></div>
+            <div class="row">
+              <button class="btn" id="play">播放</button>
+              <button class="btn ghost" id="reset">从头开始</button>
+            </div>
+            <textarea id="out" class="output" rows="7" readonly style="margin-top:16px"></textarea>
+            <div class="row">
+              <button class="btn ghost" id="copy">复制合成视频的提示词</button>
+            </div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>竖屏预览</h3>
+            <div class="progress"><div class="dots" id="dots"></div><span id="clock">0.0 / 0 秒</span></div>
+            <div id="screen" style="aspect-ratio:9/16;max-width:280px;margin:0 auto;border-radius:22px;background:var(--bg-alt);display:flex;flex-direction:column;justify-content:space-between;padding:18px;overflow:hidden">
+              <div class="muted" style="font-size:12px;text-align:right" id="shotno">第 1 镜</div>
+              <div style="aspect-ratio:16/9;border-radius:10px;background:var(--surface);display:flex;align-items:center;justify-content:center;padding:12px;text-align:center;font-size:15px;font-weight:600;line-height:1.4" id="pic"></div>
+              <div style="font-size:15px;line-height:1.5;text-align:center;min-height:4.5em" id="sub"></div>
+            </div>
+            <div class="bar" style="margin-top:14px"><i id="fill" style="transition:none"></i></div>
+            <div id="check" style="margin-top:14px"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-20.html"><small>上一课 · Day 20</small><b>‹ 短视频脚本：分镜加旁白</b></a>
+          <span class="next"><small>下一课 · Day 22</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 21 · 把脚本合成一段短视频</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+  (() => {
+    const $ = id => document.getElementById(id);
+    let shots = [], t = 0, timer = null, last = 0;
+    const total = () => shots.reduce((a, s) => a + s.sec, 0);
+    function parse() {
+      shots = $("f-shots").value.split("\n").map(s => s.trim()).filter(Boolean).map(line => {
+        const [sec, pic, ...rest] = line.split("|").map(s => s.trim());
+        return { sec: Math.max(0, Number(sec) || 0), pic: pic || "", vo: rest.join("|") };
+      }).filter(s => s.sec > 0);
+      $("dots").innerHTML = shots.map(() => "<i></i>").join("");
+      const sum = total();
+      $("check").innerHTML = shots.length
+        ? `<div class="hint ${sum > 30 ? "warn" : "ok"}">一共 ${shots.length} 镜、${sum} 秒${sum > 30 ? "，超过 30 秒了" : ""}。</div>`
+        : `<div class="hint warn">先写几镜进来，格式是“秒数 | 画面 | 旁白”。</div>`;
+      $("out").value = ["用这张分镜表，把我做好的 PPT 合成一段竖屏短视频：",
+        ...shots.map((s, i) => `${i + 1}. ${s.sec} 秒 | ${s.pic} | ${s.vo}`),
+        "- 1080×1920，每镜的画面停留时间就是表里的秒数",
+        "- PPT 页放在画面中间，旁白原样做成字幕放在下方",
+        "- 先不配音、不配乐",
+        "先说计划，等我说“好”再做。做完每镜抽一帧并排给我看。"].join("\n");
+      t = Math.min(t, sum); draw();
+    }
+    function draw() {
+      const sum = total();
+      let acc = 0, idx = 0;
+      for (let i = 0; i < shots.length; i++) { if (t < acc + shots[i].sec || i === shots.length - 1) { idx = i; break; } acc += shots[i].sec; }
+      const s = shots[idx] || { pic: "", vo: "" };
+      $("pic").textContent = s.pic || "（画面）";
+      $("sub").textContent = s.vo;
+      $("shotno").textContent = shots.length ? `第 ${idx + 1} 镜` : "";
+      document.querySelectorAll("#dots i").forEach((d, i) => d.classList.toggle("on", i === idx));
+      $("clock").textContent = `${t.toFixed(1)} / ${sum} 秒`;
+      $("fill").style.width = sum ? `${Math.min(100, t / sum * 100)}%` : "0";
+    }
+    function tick(now) {
+      t += (now - last) / 1000; last = now;
+      if (t >= total()) { t = total(); stop(); draw(); return; }
+      draw(); timer = requestAnimationFrame(tick);
+    }
+    function stop() { cancelAnimationFrame(timer); timer = null; $("play").textContent = "播放"; }
+    $("play").addEventListener("click", () => {
+      if (timer) return stop();
+      if (!shots.length) return;
+      if (t >= total()) t = 0;
+      last = performance.now(); $("play").textContent = "暂停"; timer = requestAnimationFrame(tick);
+    });
+    $("reset").addEventListener("click", () => { stop(); t = 0; draw(); });
+    $("f-shots").addEventListener("input", () => { stop(); parse(); });
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    parse();
+  })();
+  </script>
+</body>
+</html>
