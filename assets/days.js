@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 22,
+    keywords: "值钱 信息 付费 知识 经历 采访 打分 选题 产品",
+    date: "2026-11-20",
+    week: 4,
+    title: "什么信息值钱",
+    summary: "值钱的信息是：别人急着要、自己找很费劲、你恰好有。让 AI 采访你，从踩过的坑和做出过的结果里挑候选主题，再三项打分选一个。",
+    tool: "值钱信息打分卡",
+    glyph: "值",
+    grad: "linear-gradient(135deg, #fff1d6 0%, #7fd3c2 50%, #3b7fe0 100%)",
+    url: "days/day-22.html"
+  },
+  {
     day: 21,
     keywords: "短视频 合成 字幕 竖屏 剪辑 抽帧 复盘 第三周",
     date: "2026-11-19",
