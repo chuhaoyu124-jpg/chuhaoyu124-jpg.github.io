@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 23,
+    keywords: "产品 方案 商业计划 定价 预售 验证 副业 一页纸",
+    date: "2026-11-21",
+    week: 4,
+    title: "一页产品小方案",
+    summary: "把选好的主题写成一页方案：卖给谁、解决什么痛、做成什么形态、卖多少钱、怎么先验证。先卖出去一份，再动手做完。",
+    tool: "一页方案速写本",
+    glyph: "案",
+    grad: "linear-gradient(135deg, #eef6ff 0%, #8fd8c8 50%, #4a74e0 100%)",
+    url: "days/day-23.html"
+  },
+  {
     day: 22,
     keywords: "值钱 信息 付费 知识 经历 采访 打分 选题 产品",
     date: "2026-11-20",
