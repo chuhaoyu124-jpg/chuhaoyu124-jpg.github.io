@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 24 · 做一本电子小手册 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="把一页方案变成一本小手册：一句话承诺开头，每章回答一个问题，给步骤也给模板，最后一页清单收尾。先定骨架，再一章一章写，最后排成 PDF。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 24 · 做一本电子小手册 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="把一页方案变成一本小手册：一句话承诺开头，每章回答一个问题，给步骤也给模板，最后一页清单收尾。先定骨架，再一章一章写，最后排成 PDF。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-24.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #f3f0ff 0%, #9ad9e8 50%, #3f7ae0 100%)">册</div>
+        <span class="eyebrow reveal d1">Day 24 · 把信息做成产品</span>
+        <h1 class="headline reveal d1">做一本<br>电子小手册。</h1>
+        <p class="lead reveal d2">把你知道的，排成别人拿到就能照着做的样子。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 11 月 22 日 · 第 4 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">手册不是把知道的全倒出来，<br><span class="dim">而是让读者照着做，就能走到终点。</span></p>
+        <p class="pull reveal">先定骨架，<br>再写血肉，<br>最后排版。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>一句话承诺</h4><p>封面下面写清：读完这本，你能做成什么。比如“一周内把录音整理成能复习的笔记”。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>一章回答一个问题</h4><p>章节标题用读者会问的话来写，3 到 6 章就够。第一版十来页，比五十页更容易卖出去。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>步骤加模板</h4><p>每章先给步骤，再给一份拿来就能改的模板或提示词。模板是读者最舍不得删的那一页。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>一页清单收尾</h4><p>最后一页把全书压成一张清单，读者打印出来贴在桌上。这一页常常最先被转发。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>分三步让 AI 写</h4>
+            <p>一口气让它写完整本，内容会又空又长。先让它出骨架，你改顺了再一章一章写，每章写完你核对一遍，最后再让它排成 PDF。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：做电子手册</h4>
+            <pre class="code" style="margin-top:12px">## 做电子手册
+- 先出骨架：书名、一句话承诺、3–6 章，每章标题是读者会问的一个问题。
+- 我确认骨架后，一次只写一章：先步骤，再给一份可以直接改的模板。
+- 只写我做过的；不确定的地方标“待核对”，不要编。
+- 最后一页做成一张清单；排版用 A5 竖版、留白多、一页只讲一件事。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">把一页方案，写成一本小手册。</h2>
+          <p class="lead reveal d2">先定骨架，再写一章，最后排成 PDF。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：定骨架</span>
+          <pre class="code">根据我昨天的一页产品方案，给这本电子小手册列一个骨架：书名、一句话承诺（读完能做成什么）、3 到 6 章。每章标题写成读者会问的一个问题，下面列三行要点。先别写正文。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：写一章</span>
+          <pre class="code">骨架我确认了。现在只写第 1 章：先用编号步骤讲怎么做，再给一份读者拿来就能改的模板。只写我做过的，不确定的地方标“待核对”。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第三步：排成 PDF</span>
+          <pre class="code">把封面、目录和第 1 章排成一份 A5 竖版 PDF：留白多，一页只讲一件事，模板放在单独一页。文件放进“我的AI练习”。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">手册骨架排页器。</h2>
+          <p class="lead reveal d2">填书名、承诺和章节问题，它帮你排出每一页放什么、一共几页，再生成一段让 AI 照着骨架写第一章的提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-title"><span>书名</span></label><input type="text" id="f-title" value="录音变笔记：留学生的 AI 复习法"></div>
+            <div class="field"><label for="f-promise"><span>一句话承诺（读完能做成什么）</span></label><input type="text" id="f-promise" value="一周内，把每节课的录音变成能复习的笔记"></div>
+            <div class="field"><label for="f-chapters"><span>章节（一行一个，写成读者会问的问题）</span></label><textarea id="f-chapters" rows="6">上课怎么录，才方便后面整理？
+录音怎么快速转成文字？
+怎么让 AI 把文字整理成笔记？
+专业词翻错了怎么办？
+怎么用笔记复习、准备考试？</textarea></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>排页结果</h3>
+            <div id="calc"></div>
+            <textarea id="out" class="output" rows="14" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制骨架和第一章提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-23.html"><small>上一课 · Day 23</small><b>‹ 一页产品小方案</b></a>
+          <span class="next"><small>下一课 · Day 25</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 24 · 做一本电子小手册</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+  (() => {
+    const $ = id => document.getElementById(id);
+    function run() {
+      const title = $("f-title").value.trim() || "（书名）";
+      const promise = $("f-promise").value.trim() || "（读完能做成什么）";
+      const chs = $("f-chapters").value.split("\n").map(s => s.trim()).filter(Boolean);
+      const pages = ["封面：" + title, "承诺与目录：" + promise];
+      chs.forEach((c, i) => { pages.push(`第 ${i + 1} 章 · 步骤：${c}`); pages.push(`第 ${i + 1} 章 · 模板`); });
+      pages.push("最后一页：一张清单");
+      let note;
+      if (!chs.length) note = `<div class="hint warn">先写几章进来，一行一章。</div>`;
+      else if (chs.length < 3) note = `<div class="hint warn">只有 ${chs.length} 章，有点薄。再想想读者还会问什么。</div>`;
+      else if (chs.length > 6) note = `<div class="hint warn">${chs.length} 章、${pages.length} 页，第一版太厚了。挑最急的 6 章，其余留到第二版。</div>`;
+      else note = `<div class="hint ok">${chs.length} 章，一共 ${pages.length} 页，一个周末写得完。</div>`;
+      const noQ = chs.filter(c => !/[？?]$/.test(c));
+      if (chs.length && noQ.length) note += `<div class="hint">有 ${noQ.length} 章不是问句。换成读者会问的话，目录会更好卖。</div>`;
+      $("calc").innerHTML = note;
+      $("out").value = [
+        `【${title}】`,
+        ...pages.map((s, i) => `P${i + 1}  ${s}`),
+        "",
+        `这是我的电子手册骨架，书名“${title}”，承诺是“${promise}”。现在只写第 1 章“${chs[0] || "（第一章）"}”：先用编号步骤讲怎么做，再给一份读者拿来就能改的模板。只写我做过的，不确定的地方标“待核对”。`
+      ].join("\n");
+    }
+    ["f-title", "f-promise", "f-chapters"].forEach(id => $(id).addEventListener("input", run));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  })();
+  </script>
+</body>
+</html>

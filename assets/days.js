@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 24,
+    keywords: "手册 电子书 PDF 排版 目录 模板 清单 产品",
+    date: "2026-11-22",
+    week: 4,
+    title: "做一本电子小手册",
+    summary: "把一页方案变成一本小手册：一句话承诺开头，每章回答一个问题，给步骤也给模板，最后一页清单收尾。先定骨架，再一章一章写，最后排成 PDF。",
+    tool: "手册骨架排页器",
+    glyph: "册",
+    grad: "linear-gradient(135deg, #f3f0ff 0%, #9ad9e8 50%, #3f7ae0 100%)",
+    url: "days/day-24.html"
+  },
+  {
     day: 23,
     keywords: "产品 方案 商业计划 定价 预售 验证 副业 一页纸",
     date: "2026-11-21",
