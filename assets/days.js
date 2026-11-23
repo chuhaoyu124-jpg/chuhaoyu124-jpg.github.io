@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 25,
+    keywords: "展示页 落地页 网页 Artifact 文案 预售 按钮 产品",
+    date: "2026-11-23",
+    week: 4,
+    title: "产品展示页",
+    summary: "一个好的产品展示页，一屏讲清五件事：承诺、给谁、能得到什么、样张、价格和按钮。让 Claude 做成 Artifact，发给三个人看，问他们会不会点。",
+    tool: "展示页预览器",
+    glyph: "展",
+    grad: "linear-gradient(135deg, #e8fbff 0%, #86d4f0 50%, #4566e0 100%)",
+    url: "days/day-25.html"
+  },
+  {
     day: 24,
     keywords: "手册 电子书 PDF 排版 目录 模板 清单 产品",
     date: "2026-11-22",

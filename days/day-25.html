@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AI 工具箱">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <title>Day 25 · 产品展示页 · Haoyu 的 AI 工具箱</title>
+  <meta name="description" content="一个好的产品展示页，一屏讲清五件事：承诺、给谁、能得到什么、样张、价格和按钮。让 Claude 做成 Artifact，发给三个人看，问他们会不会点。">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%238fd8ff'/><stop offset='.5' stop-color='%2338bdf8'/><stop offset='1' stop-color='%234f7cf7'/></linearGradient></defs><circle cx='50' cy='50' r='44' fill='url(%23g)'/></svg>">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haoyu 的 AI 工具箱">
+  <meta property="og:title" content="Day 25 · 产品展示页 · Haoyu 的 AI 工具箱">
+  <meta property="og:description" content="一个好的产品展示页，一屏讲清五件事：承诺、给谁、能得到什么、样张、价格和按钮。让 Claude 做成 Artifact，发给三个人看，问他们会不会点。">
+  <meta property="og:url" content="https://chuhaoyu124-jpg.github.io/days/day-25.html">
+  <meta property="og:image" content="https://chuhaoyu124-jpg.github.io/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="apple-touch-icon" href="../assets/icon-180.png">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container wide">
+      <a class="brand" href="../index.html"><span class="brand-mark"></span><span>Haoyu<span class="full"> 的 AI 工具箱</span></span></a>
+      <div class="nav-links">
+        <a href="#learn">笔记</a>
+        <a href="#practice">练习</a>
+        <a href="#tool">工具</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ① 标题 -->
+    <section class="lesson-hero">
+      <div class="container narrow">
+        <div class="glyph reveal" style="--g:linear-gradient(135deg, #e8fbff 0%, #86d4f0 50%, #4566e0 100%)">展</div>
+        <span class="eyebrow reveal d1">Day 25 · 把信息做成产品</span>
+        <h1 class="headline reveal d1">给产品<br>一个门面。</h1>
+        <p class="lead reveal d2">一屏讲清楚：这是什么、给谁、值不值。</p>
+        <div class="links reveal d3"><a href="#practice">看我的练习</a><a href="#tool">直接用工具</a></div>
+        <p class="meta reveal d3">2026 年 11 月 23 日 · 第 4 周</p>
+      </div>
+    </section>
+
+    <!-- ② 今天学了什么 -->
+    <section class="section alt" id="learn">
+      <div class="container wide">
+        <span class="chapter-label center reveal">今天学了什么</span>
+        <p class="statement reveal d1">展示页不是说明书，<br><span class="dim">它只负责让人愿意点那个按钮。</span></p>
+        <p class="pull reveal">一个承诺，<br>三样收获，<br>一个按钮。</p>
+
+        <div class="features">
+          <div class="feature reveal"><span class="k">01</span><h4>大标题是承诺</h4><p>不写书名，写结果：“一周内，把课堂录音变成能复习的笔记”。副标题再点明给谁。</p></div>
+          <div class="feature hl reveal d1"><span class="k">02</span><h4>三样收获</h4><p>读者能拿到什么，写三条就够，每条一句话，最好带数字：几步、几份模板、省几小时。</p></div>
+          <div class="feature reveal d2"><span class="k">03</span><h4>给一页样张</h4><p>放目录或一页真实内容。看得见里面有什么，人才敢付钱。</p></div>
+          <div class="feature reveal d3"><span class="k">04</span><h4>价格和一个按钮</h4><p>只放一个按钮，第一版可以是“预约登记”，先收集有兴趣的人，再决定做不做完。</p></div>
+        </div>
+
+        <div class="note-grid" style="margin-top:56px">
+          <div class="note reveal">
+            <h4>先给三个人看</h4>
+            <p>页面做好，先发给三个可能会买的人，只问一句：“你会点这个按钮吗？为什么？”三个回答，比自己改十遍有用。</p>
+          </div>
+          <div class="note reveal d1">
+            <h4>写进 skill 的一块：产品展示页</h4>
+            <pre class="code" style="margin-top:12px">## 产品展示页
+- 一屏讲清：大标题写承诺、副标题写给谁、三条收获、一页样张、价格和一个按钮。
+- 收获每条一句话，尽量带数字；不写空话，不写“最全”“必备”。
+- 做成 Artifact 网页，手机上也好看；按钮先做成“预约登记”。
+- 不放我的真名、学校和联系方式，除非我明确要放。</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 我的练习 -->
+    <section class="section" id="practice">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">我的练习</span>
+          <h2 class="title reveal d1">给小手册做一个展示页。</h2>
+          <p class="lead reveal d2">先写文案，再让 Claude 做成网页，最后找三个人看。练完后，结果会补在这里。</p>
+        </div>
+
+        <div class="result-card reveal" style="margin-top:56px">
+          <span class="label">第一步：先写文案</span>
+          <pre class="code">根据我的电子小手册骨架，写一页产品展示页的文案：大标题写读完能做成什么，副标题写给谁，三条“你会得到”（每条一句话，尽量带数字），一段目录样张，价格，一个按钮文字。不写“最全”“必备”这类空话。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第二步：做成网页</span>
+          <pre class="code">把这份文案做成一个 Artifact 网页：一屏一个重点，手机上好看，配色干净。按钮先做成“预约登记”，点了只显示一句感谢，不收集任何信息。不放我的真名、学校和联系方式。</pre>
+        </div>
+        <div class="result-card reveal">
+          <span class="label">第三步：找三个人看</span>
+          <pre class="code">帮我写一句发给朋友的话，请他们看这个页面，只回答一个问题：你会点这个按钮吗？为什么？语气轻松，不像推销。</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 小工具 -->
+    <section class="section alt" id="tool">
+      <div class="container wide">
+        <div class="center">
+          <span class="chapter-label reveal">今天的小工具</span>
+          <h2 class="title reveal d1">展示页预览器。</h2>
+          <p class="lead reveal d2">填进承诺、对象、三条收获和价格，右边立刻排出一屏预览，挑出空话，再生成一段让 Claude 做成网页的提示词。</p>
+        </div>
+
+        <div class="studio">
+          <div class="panel-card reveal">
+            <div class="field"><label for="f-promise"><span>大标题（读完能做成什么）</span></label><input type="text" id="f-promise" value="一周内，把课堂录音变成能复习的笔记"></div>
+            <div class="field"><label for="f-who"><span>副标题（给谁）</span></label><input type="text" id="f-who" value="写给上德语课、总觉得听不全的理工科留学生"></div>
+            <div class="field"><label for="f-gets"><span>你会得到（一行一条，最多三条）</span></label><textarea id="f-gets" rows="4">5 步把一节课录音整理成笔记
+3 份拿来就能用的提示词模板
+每节课补笔记从 2 小时缩到 30 分钟</textarea></div>
+            <div class="field"><label for="f-price"><span>价格和按钮</span></label><input type="text" id="f-price" value="9 欧 · 预约登记"></div>
+          </div>
+
+          <div class="panel-card preview reveal d1">
+            <h3>一屏预览</h3>
+            <div class="result-card" id="pv"></div>
+            <div id="calc"></div>
+            <textarea id="out" class="output" rows="8" readonly></textarea>
+            <div class="row">
+              <button class="btn" id="copy">复制做网页的提示词</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight">
+      <div class="container">
+        <nav class="pager">
+          <a href="day-24.html"><small>上一课 · Day 24</small><b>‹ 做一本电子小手册</b></a>
+          <span class="next"><small>下一课 · Day 26</small><b>明天见</b></span>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container wide">
+      <span class="crumbs"><a href="../index.html">Haoyu 的 AI 工具箱</a><span class="sep">›</span><span>Day 25 · 产品展示页</span></span>
+      <span><a href="../index.html#all">全部课程</a> · <a href="../about.html">关于</a></span>
+      <span class="copy">© 2026 Haoyu · 和 Claude 一起，一天一块砖。</span>
+    </div>
+  </footer>
+
+  <script src="../assets/site.js"></script>
+  <script>
+  (() => {
+    const $ = id => document.getElementById(id);
+    const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const FLUFF = ["最全", "必备", "终极", "干货", "史上", "保姆级", "一站式", "神器"];
+    function run() {
+      const v = id => $(id).value.trim();
+      const promise = v("f-promise"), who = v("f-who"), price = v("f-price");
+      const gets = $("f-gets").value.split("\n").map(s => s.trim()).filter(Boolean);
+      $("pv").innerHTML = `<span class="label">${esc(price || "价格 · 按钮")}</span><h4>${esc(promise || "（大标题：读完能做成什么）")}</h4><p class="muted">${esc(who || "（副标题：给谁）")}</p>` +
+        gets.slice(0, 3).map((g, i) => `<p>${i + 1}. ${esc(g)}</p>`).join("");
+      const tips = [];
+      const all = [promise, who, ...gets].join(" ");
+      const hit = FLUFF.filter(w => all.includes(w));
+      if (hit.length) tips.push(`<div class="hint warn">有空话：${hit.map(esc).join("、")}。换成具体的数字或结果。</div>`);
+      if (gets.length > 3) tips.push(`<div class="hint warn">收获写了 ${gets.length} 条，预览只放前三条。挑最打动人的三条。</div>`);
+      if (!gets.length) tips.push(`<div class="hint warn">写几条“你会得到”。</div>`);
+      const noNum = gets.slice(0, 3).filter(g => !/\d|[一二三四五六七八九十两]/.test(g)).length;
+      if (noNum) tips.push(`<div class="hint">有 ${noNum} 条收获没带数字，加个数字会更具体。</div>`);
+      if (!tips.length) tips.push(`<div class="hint ok">承诺、对象、收获都齐了，可以去做网页了。</div>`);
+      $("calc").innerHTML = tips.join("");
+      $("out").value = [
+        "把下面这份文案做成一个 Artifact 网页，一屏一个重点，手机上好看，配色干净：",
+        `大标题：${promise || "（大标题）"}`,
+        `副标题：${who || "（副标题）"}`,
+        "你会得到：",
+        ...gets.slice(0, 3).map((g, i) => `${i + 1}. ${g}`),
+        `价格和按钮：${price || "（价格 · 按钮）"}`,
+        "再加一块目录样张。按钮点了只显示一句感谢，不收集任何信息。不放我的真名、学校和联系方式。"
+      ].join("\n");
+    }
+    ["f-promise", "f-who", "f-gets", "f-price"].forEach(id => $(id).addEventListener("input", run));
+    $("copy").addEventListener("click", () => copyText($("out").value));
+    run();
+  })();
+  </script>
+</body>
+</html>
