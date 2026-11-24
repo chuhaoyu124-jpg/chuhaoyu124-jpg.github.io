@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 26,
+    keywords: "推广 冷启动 小红书 学生群 私信 钩子 干货 预约 种子用户",
+    date: "2026-11-24",
+    week: 4,
+    title: "第一波推广",
+    summary: "第一波推广不靠广告，靠先送出一招真本事：选一个主战场，发一篇免费干货，把感兴趣的人领到展示页，先聊出前 10 个人。",
+    tool: "第一周推广排班表",
+    glyph: "推",
+    grad: "linear-gradient(135deg, #eafaf3 0%, #7cd0e6 50%, #3d6fe0 100%)",
+    url: "days/day-26.html"
+  },
+  {
     day: 25,
     keywords: "展示页 落地页 网页 Artifact 文案 预售 按钮 产品",
     date: "2026-11-23",
