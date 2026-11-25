@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 27,
+    keywords: "skill 拼装 信息变产品 复盘 第四周 习惯 SKILL.md",
+    date: "2026-11-25",
+    week: 4,
+    title: "拼出信息变产品",
+    summary: "第四周的五块规则，加上这一周练出来的习惯，拼成第四个 skill。以后说一句“把这个做成产品”，它就从找主题开始，一路走到第一波推广。",
+    tool: "信息变产品拼装台",
+    glyph: "品",
+    grad: "linear-gradient(135deg, #fff4e0 0%, #8fdcc8 50%, #3b6fe0 100%)",
+    url: "days/day-27.html"
+  },
+  {
     day: 26,
     keywords: "推广 冷启动 小红书 学生群 私信 钩子 干货 预约 种子用户",
     date: "2026-11-24",
