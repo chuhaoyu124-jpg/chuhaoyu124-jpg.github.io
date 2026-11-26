@@ -2,6 +2,18 @@
 // keywords：搜索用的关键词（可选）；glyph：图标上的一个字；grad：图标渐变（可选，不填用默认暖橙）
 window.DAYS = [
   {
+    day: 28,
+    keywords: "毕业 作品 手册 PPT 海报 推广 一鱼多吃 收官",
+    date: "2026-11-26",
+    week: 4,
+    title: "毕业作品",
+    summary: "毕业作品：同一个主题、同一句核心，换四种外壳：手册、PPT、海报、推广文案。四个 skill 第一次一起上场，28 天的课在这里收官。",
+    tool: "毕业作品清单",
+    glyph: "毕",
+    grad: "linear-gradient(135deg, #fff3d6 0%, #8fd8ff 45%, #4f7cf7 100%)",
+    url: "days/day-28.html"
+  },
+  {
     day: 27,
     keywords: "skill 拼装 信息变产品 复盘 第四周 习惯 SKILL.md",
     date: "2026-11-25",
